@@ -1,6 +1,6 @@
 var H5P = H5P || {};
 H5P.Components = H5P.Components || {};
-const createElement = H5P.Components.utils.createElement;
+let createElement = H5P.Components.utils.createElement;
 
 /**
  * Create a result screen, summing up the tasks of the content and the scores achieved
@@ -8,6 +8,10 @@ const createElement = H5P.Components.utils.createElement;
  * @param {string} params.header The main header of the result screen
  * @param {string} params.scoreHeader The header detailing the total score
  * @param {[string]} params.listHeaders The table headers
+ *
+ * @param {[Object]} params.questions The list of tasks to be summarized
+ * @property {string} params.questions.title The textual description of the question
+ * @property {string} params.questions.points The score of the question
  */
 H5P.Components.ResultScreen = (function () {
   function ResultScreen (container, params) {
@@ -36,8 +40,28 @@ H5P.Components.ResultScreen = (function () {
     });
     listContainer.appendChild(listHeaders);
 
-    const resultList = createElement('div', { classList: 'h5p-theme-results-list' });
-    // TODO: loop through questions
+    const resultList = createElement('ul', { classList: 'h5p-theme-results-list' });
+    params.questions.forEach((question) => {
+      const listItem = createElement('li', {
+        classList: 'h5p-theme-results-list-item'
+      });
+
+      const questionContainer = createElement('div', {
+        classList: 'h5p-theme-results-question-container'
+      });
+      questionContainer.appendChild(createElement('div', {
+        classList: 'h5p-theme-results-question',
+        innerText: question.title
+      }));
+      listItem.appendChild(questionContainer);
+
+      listItem.appendChild(createElement('div', {
+        classList: 'h5p-theme-results-points',
+        innerText: question.points
+      }));
+
+      resultList.appendChild(listItem);
+    });
 
     listContainer.appendChild(resultList);
     resultScreen.appendChild(listContainer);
