@@ -6,7 +6,7 @@ H5P.Components.utils = {};
  * Create an HTML element, and apply potential options/css
  * 
  * @param {string} tag The HTML tag to create
- * @param {object} options Options like classList, text etc.
+ * @param {object} options Options like classList, textContent etc.
  * @param {object} style Styles/css to apply to the element
  * @returns 
  */
