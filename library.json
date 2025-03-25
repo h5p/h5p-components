@@ -14,6 +14,9 @@
     },
     {
       "path": "src/components/h5p-result-screen.js"
+    },
+    {
+      "path": "src/components/h5p-button.js"
     }
   ],
   "preloadedCss": [
