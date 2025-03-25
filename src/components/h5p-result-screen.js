@@ -75,7 +75,8 @@ H5P.Components.ResultScreen = (function () {
         textContent: question.title
       }));
 
-      if(question.userAnswer) {
+      // UserAnswer might be an empty string
+      if (typeof(question.userAnswer) === 'string') {
         const answerContainer = createElement('div', {
           classList: 'h5p-theme-results-answer'
         });
