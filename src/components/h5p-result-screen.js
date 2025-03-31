@@ -1,6 +1,5 @@
 var H5P = H5P || {};
 H5P.Components = H5P.Components || {};
-let createElement = H5P.Components.utils.createElement;
 
 /**
  * Create a result screen, summing up the tasks of the content and the scores achieved
@@ -21,6 +20,8 @@ let createElement = H5P.Components.utils.createElement;
  * @property {string} [params.question.correctAnswerPrepend] The label before the correct answer
  */
 H5P.Components.ResultScreen = (function () {
+  const { createElement } = H5P.Components.utils;
+
   function ResultScreen (container, params) {
     // Create main wrapper
     const resultScreen = document.createElement('div');
