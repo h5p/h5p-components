@@ -15,7 +15,7 @@ H5P.Components.Button = (function () {
    * @param {function} [params.onClick] The function to perform once the button is clicked
    * @param {string} [params.buttonType] which html type the button should be. Default is button
    */
-  function Button (container, params) {
+  function Button (params) {
     const button = createElement('button', {
       innerHTML: params.label ? `<span class="h5p-theme-label">${params.label}</span>` : '',
       ariaLabel: params.ariaLabel ?? params.label,
@@ -45,7 +45,6 @@ H5P.Components.Button = (function () {
       H5P.Tooltip(button, { text: params.tooltip });
     }
 
-    container.appendChild(button);
     return button;
   }
 
