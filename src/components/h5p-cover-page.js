@@ -34,8 +34,8 @@ H5P.Components.CoverPage = (function () {
 
     if (params.icon) {
       detailContainer.appendChild(createElement('span', {
-        classList: 'h5p-theme-' + params.icon,
-        alt: '',
+        classList: 'h5p-theme-cover-icon h5p-theme-' + params.icon,
+        ariaHidden: true,
       }));
     }
 
@@ -45,6 +45,7 @@ H5P.Components.CoverPage = (function () {
 
     if (params.description) {
       detailContainer.appendChild(createElement('p', {
+        classList: 'h5p-theme-cover-description',
         innerHTML: params.description,
       }));
     }

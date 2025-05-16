@@ -23,5 +23,20 @@
 }
 
 .h5p-theme-cover-details {
-  width: 100%;
+  margin: auto 0;
+}
+
+.h5p-theme-cover-icon {
+  color: var(--h5p-theme-text-third);
+  font-size: var(--h5p-theme-font-size-xl);
+}
+
+.h5p-theme-cover-details h2 {
+  color: var(--h5p-theme-text-primary);
+  margin: var(--h5p-theme-spacing-xxs) 0;
+}
+
+.h5p-theme-cover-description {
+  color: var(--h5p-theme-text-secondary);
+  margin: 0 0 var(--h5p-theme-spacing-l);
 }
