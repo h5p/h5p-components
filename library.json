@@ -13,6 +13,9 @@
       "path": "src/utils.js"
     },
     {
+      "path": "src/components/h5p-cover-page.js"
+    },
+    {
       "path": "src/components/h5p-result-screen.js"
     },
     {
@@ -20,6 +23,9 @@
     }
   ],
   "preloadedCss": [
+    {
+      "path": "src/styles/h5p-cover-page.css"
+    },
     {
       "path": "src/styles/h5p-result-screen.css"
     }

@@ -5,7 +5,6 @@ createElement = H5P.Components.utils.createElement;
 H5P.Components.Button = (function () {
   /**
    * Create a themed, responsive button
-   * @param {HTMLElement} container
    * @param {string} [params.label] The button text
    * @param {string} [params.ariaLabel] The screenreader friendly text. Default is label.
    * @param {string} [params.tooltip] The tooltip to show on hover/focus. Default is label if icon enabled. Needed since icon only button on small screens

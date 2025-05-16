@@ -1,0 +1,27 @@
+.h5p-theme-cover-page {
+  display: grid;
+  gap: var(--h5p-theme-spacing-xl);
+  grid-template-columns: min-content 1fr 3fr;
+  padding: var(--h5p-theme-spacing-xl) 0;
+}
+
+.h5p-theme-cover-page .h5p-theme-pattern-container {
+  width: 2.5rem;
+  height: auto;
+  margin: calc(-1 * var(--h5p-theme-spacing-xl)) 0;
+  padding: var(--h5p-theme-spacing-xl) 0;
+}
+
+.h5p-theme-cover-page .h5p-theme-pattern-container .h5p-theme-pattern {
+  mask-size: 500%;
+}
+
+.h5p-theme-cover-page .h5p-theme-cover-img {
+  width: 15rem;
+  box-shadow: 9px 9px 16.1px 0px #25252533;
+  border-radius: var(--h5p-theme-border-radius-large);
+}
+
+.h5p-theme-cover-details {
+  width: 100%;
+}
