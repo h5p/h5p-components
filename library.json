@@ -22,6 +22,9 @@
   "preloadedCss": [
     {
       "path": "src/styles/h5p-result-screen.css"
+    },
+    {
+      "path": "src/styles/h5p-button.css"
     }
   ]
 }
