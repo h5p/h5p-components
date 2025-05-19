@@ -12,10 +12,13 @@
   height: 100%;
   margin: calc(-1 * var(--h5p-theme-spacing-xl)) 0;
   padding: var(--h5p-theme-spacing-xl) 0;
+  background-color: var(--h5p-theme-ui-base);
 }
 
 .h5p-theme-cover-page .h5p-theme-pattern-container .h5p-theme-pattern {
   mask-size: 500%;
+  opacity: 1;
+  background-color: var(--h5p-theme-alternative-light);
 }
 
 .h5p-theme-cover-page .h5p-theme-cover-img {
