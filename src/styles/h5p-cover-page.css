@@ -1,13 +1,15 @@
 .h5p-theme-cover-page {
   display: grid;
+  align-items: center;
   gap: var(--h5p-theme-spacing-xl);
   grid-template-columns: min-content 1fr 3fr;
   padding: var(--h5p-theme-spacing-xl) 0;
 }
 
 .h5p-theme-cover-page .h5p-theme-pattern-container {
+  position: relative;
   width: 2.5rem;
-  height: auto;
+  height: 100%;
   margin: calc(-1 * var(--h5p-theme-spacing-xl)) 0;
   padding: var(--h5p-theme-spacing-xl) 0;
 }
@@ -18,12 +20,12 @@
 
 .h5p-theme-cover-page .h5p-theme-cover-img {
   width: 15rem;
+  height: fit-content;
   box-shadow: 9px 9px 16.1px 0px #25252533;
   border-radius: var(--h5p-theme-border-radius-large);
-}
 
-.h5p-theme-cover-details {
-  margin: auto 0;
+  /* Enforce border radius if media attached as child */
+  overflow: hidden; 
 }
 
 .h5p-theme-cover-icon {

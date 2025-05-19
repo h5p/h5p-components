@@ -9,6 +9,7 @@ H5P.Components.CoverPage = (function () {
    * @param {string} [params.description] The description or sub-title of the content
    * @param {string} [params.img] The url to the image
    * @param {string} [params.imgAlt] The alt text for the image
+   * @param {string} [useMediaContainer] Add a container instead of an img, so the consumer can attach it themselves
    * @param {string} params.buttonLabel The label of the button
    * @param {string} params.buttonOnClick The function to trigger when clicking the button
    * @param {string} [params.icon] The name of the icon to use for the button and above the title
@@ -24,11 +25,18 @@ H5P.Components.CoverPage = (function () {
       innerHTML: '<div class="h5p-theme-pattern"></div>'
     }));
 
-    coverPage.appendChild(createElement('img', {
-      src: params.img ?? '', // TODO: actual placeholder
-      alt: params.imgAlt ?? '',
-      classList: 'h5p-theme-cover-img',
-    }));
+    if (params.useMediaContainer) {
+      coverPage.appendChild(createElement('div', {
+        classList: 'h5p-theme-cover-img',
+      }));
+    }
+    else if (params.img) {
+      coverPage.appendChild(createElement('img', {
+        src: params.img,
+        alt: params.imgAlt ?? '',
+        classList: 'h5p-theme-cover-img',
+      }));
+    }
 
     const detailContainer = createElement('div', { classList: 'h5p-theme-cover-details' });
 
