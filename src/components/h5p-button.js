@@ -16,30 +16,27 @@ H5P.Components.Button = (function () {
    * @param {string} [params.buttonType] which html type the button should be. Default is button
    */
   function Button (params) {
-    const button = createElement('button', {
-      innerHTML: params.label ? `<span class="h5p-theme-label">${params.label}</span>` : '',
-      ariaLabel: params.ariaLabel ?? params.label,
-      classList: params.classes ?? '',
-      onclick: params.onClick,
-      type: params.buttonType ?? 'button',
-    });
+    let buttonStyleType = 'h5p-theme-primary-cta';
 
-    switch (params.styleType) {
-      case 'secondary':
-        button.classList.add('h5p-theme-secondary-cta');
-        break;
-      case 'nav':
-        button.classList.add('h5p-theme-nav-button');
-        break;
-      default:
-        button.classList.add('h5p-theme-primary-cta');
-        break;
+    if (params.styleType === 'secondary') {
+      buttonStyleType = 'h5p-theme-secondary-cta';
+    } else if (params.styleType === 'nav') {
+      buttonStyleType = 'h5p-theme-nav-button';
     }
 
     if (params.icon) {
-      button.classList.add(`h5p-theme-${params.icon}`);
+      buttonStyleType += ` h5p-theme-${params.icon}`;
       params.tooltip = params.tooltip ?? params.label;
     }
+
+    const button = createElement('button', {
+      innerHTML: params.label ? `<span class="h5p-theme-label">${params.label}</span>` : '',
+      ariaLabel: params.ariaLabel ?? params.label,
+      classList: params.classes ? `${buttonStyleType} ${params.classes}` : buttonStyleType,
+      onclick: params.onClick,
+      type: params.buttonType ?? 'button',
+      disabled: params.disabled ?? false,
+    });
 
     if (params.tooltip) {
       H5P.Tooltip(button, { text: params.tooltip });
