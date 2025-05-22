@@ -3,14 +3,17 @@
   "description": "This component library can be used to quickly and easily get a unified look across different content types",
   "majorVersion": 1,
   "minorVersion": 0,
-  "patchVersion": 2,
-  "runnable": 1,
+  "patchVersion": 7,
+  "runnable": 0,
   "author": "H5P Group",
   "license": "MIT",
   "machineName": "H5P.Components",
   "preloadedJs": [
     {
       "path": "src/utils.js"
+    },
+    {
+      "path": "src/components/h5p-cover-page.js"
     },
     {
       "path": "src/components/h5p-result-screen.js"
@@ -20,6 +23,9 @@
     }
   ],
   "preloadedCss": [
+    {
+      "path": "src/styles/h5p-cover-page.css"
+    },
     {
       "path": "src/styles/h5p-result-screen.css"
     }

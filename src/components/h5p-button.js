@@ -4,7 +4,6 @@ H5P.Components = H5P.Components || {};
 H5P.Components.Button = (function () {
   /**
    * Create a themed, responsive button
-   * @param {HTMLElement} container
    * @param {string} [params.label] The button text
    * @param {string} [params.ariaLabel] The screenreader friendly text. Default is label.
    * @param {string} [params.tooltip] The tooltip to show on hover/focus. Default is label if icon enabled. Needed since icon only button on small screens
@@ -14,39 +13,34 @@ H5P.Components.Button = (function () {
    * @param {function} [params.onClick] The function to perform once the button is clicked
    * @param {string} [params.buttonType] which html type the button should be. Default is button
    */
-  function Button (container, params) {
+  function Button (params) {
     const { createElement } = H5P.Components.utils;
+    let buttonStyleType = 'h5p-theme-primary-cta';
+
+    if (params.styleType === 'secondary') {
+      buttonStyleType = 'h5p-theme-secondary-cta';
+    } else if (params.styleType === 'nav') {
+      buttonStyleType = 'h5p-theme-nav-button';
+    }
+
+    if (params.icon) {
+      buttonStyleType += ` h5p-theme-${params.icon}`;
+      params.tooltip = params.tooltip ?? params.label;
+    }
 
     const button = createElement('button', {
       innerHTML: params.label ? `<span class="h5p-theme-label">${params.label}</span>` : '',
       ariaLabel: params.ariaLabel ?? params.label,
-      classList: params.classes ?? '',
+      classList: params.classes ? `${buttonStyleType} ${params.classes}` : buttonStyleType,
       onclick: params.onClick,
       type: params.buttonType ?? 'button',
+      disabled: params.disabled ?? false,
     });
-
-    switch (params.styleType) {
-      case 'secondary':
-        button.classList.add('h5p-theme-secondary-cta');
-        break;
-      case 'nav':
-        button.classList.add('h5p-theme-nav-button');
-        break;
-      default:
-        button.classList.add('h5p-theme-primary-cta');
-        break;
-    }
-
-    if (params.icon) {
-      button.classList.add(`h5p-theme-${params.icon}`);
-      params.tooltip = params.tooltip ?? params.label;
-    }
 
     if (params.tooltip) {
       H5P.Tooltip(button, { text: params.tooltip });
     }
 
-    container.appendChild(button);
     return button;
   }
 
