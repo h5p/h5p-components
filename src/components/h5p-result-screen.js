@@ -1,6 +1,5 @@
 var H5P = H5P || {};
 H5P.Components = H5P.Components || {};
-let createElement = H5P.Components.utils.createElement;
 
 H5P.Components.ResultScreen = (function () {
   /**
@@ -22,6 +21,7 @@ H5P.Components.ResultScreen = (function () {
    * @property {string} [params.questionGroups.question.correctAnswerPrepend] The label before the correct answer
    */
   function ResultScreen (params) {
+    const { createElement } = H5P.Components.utils;
     // Create main wrapper
     const resultScreen = document.createElement('div');
     resultScreen.classList.add('h5p-theme-result-screen');

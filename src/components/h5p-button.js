@@ -1,6 +1,5 @@
 var H5P = H5P || {};
 H5P.Components = H5P.Components || {};
-createElement = H5P.Components.utils.createElement;
 
 H5P.Components.Button = (function () {
   /**
@@ -15,6 +14,7 @@ H5P.Components.Button = (function () {
    * @param {string} [params.buttonType] which html type the button should be. Default is button
    */
   function Button (params) {
+    const { createElement } = H5P.Components.utils;
     let buttonStyleType = 'h5p-theme-primary-cta';
 
     if (params.styleType === 'secondary') {

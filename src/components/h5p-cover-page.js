@@ -1,6 +1,5 @@
 var H5P = H5P || {};
 H5P.Components = H5P.Components || {};
-createElement = H5P.Components.utils.createElement;
 
 H5P.Components.CoverPage = (function () {
   /**
@@ -16,6 +15,7 @@ H5P.Components.CoverPage = (function () {
    *                               Options are check, retry, done, show-results, book, flip, reveal-answer, next, previous
    */
   function CoverPage (params) {
+    const { createElement } = H5P.Components.utils;
     const coverPage = createElement('div', {
       classList: 'h5p-theme-cover-page',
     });
