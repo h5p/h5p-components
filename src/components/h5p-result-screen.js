@@ -23,8 +23,7 @@ H5P.Components.ResultScreen = (function () {
   function ResultScreen (params) {
     const { createElement } = H5P.Components.utils;
     // Create main wrapper
-    const resultScreen = document.createElement('div');
-    resultScreen.classList.add('h5p-theme-result-screen');
+    const resultScreen = createElement('div', { classList: 'h5p-theme-result-screen' });
 
     // Create header banner
     const header = createElement('div', { classList: 'h5p-theme-results-banner' });
@@ -68,6 +67,8 @@ H5P.Components.ResultScreen = (function () {
   }
 
   const createQuestion = (question) => {
+    const { createElement } = H5P.Components.utils;
+
     const listItem = createElement('li', {
       classList: 'h5p-theme-results-list-item'
     });
@@ -89,6 +90,7 @@ H5P.Components.ResultScreen = (function () {
     const questionContainer = createElement('div', {
       classList: 'h5p-theme-results-question-container'
     });
+
     questionContainer.appendChild(createElement('div', {
       classList: 'h5p-theme-results-question',
       innerHTML: question.title
@@ -141,6 +143,6 @@ H5P.Components.ResultScreen = (function () {
 
     return listItem;
   };
-  
+
   return ResultScreen;
 })();
