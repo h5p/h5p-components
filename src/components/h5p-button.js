@@ -11,7 +11,8 @@ H5P.Components.Button = (function () {
    * @param {string} [params.icon] Which icon to show on the button. Options are check, retry, done, show-results, book, flip, reveal-answer, next, previous
    * @param {string} [params.classes] Additional classes to add to the button
    * @param {function} [params.onClick] The function to perform once the button is clicked
-   * @param {string} [params.buttonType] which html type the button should be. Default is button
+   * @param {string} [params.buttonType] Which html type the button should be. Default is button
+   * @param {boolean} [params.disabled] Whether the button should be enabled or disabled. Default is enabled
    */
   function Button (params) {
     const { createElement } = H5P.Components.utils;
