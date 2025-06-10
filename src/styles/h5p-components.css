@@ -119,6 +119,14 @@
   padding: 5px;
 }
 
+.h5p-navigation .h5p-theme-primary-cta {
+  padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-l);
+}
+
+.h5p-navigation .h5p-theme-primary-cta:hover {
+  padding: var(--h5p-theme-spacing-xs) calc(var(--h5p-theme-spacing-l) - 0.75em);
+}
+
 /* QUESTION DESCRIPTIONS */
 .h5p-theme-question-description {
   font-size: var(--h5p-theme-font-size-xl);
