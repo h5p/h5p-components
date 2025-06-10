@@ -27,6 +27,12 @@
   ],
   "preloadedCss": [
     {
+      "path": "src/styles/h5p-button.css"
+    },
+    {
+      "path": "src/styles/h5p-components.css"
+    },
+    {
       "path": "src/styles/h5p-cover-page.css"
     },
     {

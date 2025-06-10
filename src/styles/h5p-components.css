@@ -1,0 +1,214 @@
+/* A h5p-theme version of selectors is included sometimes to override old css in e.g. Question and JoubelUI */
+
+/* GENERAL */
+.h5p-content:has(.h5p-theme) .h5p-inner {
+  min-width: 35rem;
+  color: var(--h5p-theme-text-primary);
+  border-radius: var(--h5p-theme-border-radius-large);
+}
+
+/* PATTERN (used in backgrounds of certain elements like results/summary screens, welcome screen, feedback section etc. */
+.h5p-theme-pattern {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--h5p-theme-main-cta-dark);
+  opacity: 25%;
+  -webkit-mask-image: url(./../images/pattern.svg);
+  mask-image: url(./../images/pattern.svg);
+  mask-size: 40%;
+  background-repeat: repeat;
+}
+
+/* INPUT FIELDS */
+.h5p-theme-input {
+  container-type: inline-size;
+  display: flex;
+  align-items: center;
+  background-color: var(--h5p-theme-ui-base);
+  box-shadow: inset 0px 0px 4px 4px rgba(117, 128, 147, 0.10);
+  border-radius: var(--h5p-theme-border-radius-medium);
+  border: 2px solid var(--h5p-theme-stroke-1);
+  padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-xs);
+  color: var(--h5p-theme-text-primary);
+}
+
+.h5p-theme-input::placeholder {
+  color: var(--h5p-theme-text-third);
+  opacity: 1; /* Firefox */
+}
+
+.h5p-theme-input:focus, .h5p-theme-input:focus-within {
+  outline: none;
+  /* box-shadow: 0 0 0.5em 0 var(--h5p-theme-main-cta-base);*/
+  border-color: var(--h5p-theme-main-cta-base);
+}
+
+.h5p-theme-input:has(.h5p-theme-primary-cta:focus) {
+  border-color: var(--h5p-theme-stroke-1);
+}
+
+.h5p-theme-input input {
+  display: inline-block;
+  width: 100%;
+  padding-top: var(--h5p-theme-spacing-xs);
+  padding-bottom: var(--h5p-theme-spacing-xs);
+  font-size: var(--h5p-theme-font-size-m);
+  word-wrap: break-word;
+  border: none;
+  background: none;
+  color: var(--h5p-theme-text-primary);
+}
+
+.h5p-theme-input input:focus {
+  outline: none;
+}
+
+.h5p-theme-input.h5p-correct {
+  color: var(--h5p-theme-feedback-correct-main);
+  background-color: var(--h5p-theme-feedback-correct-secondary);
+  border-color: var(--h5p-theme-feedback-correct-third);
+  box-shadow: none;
+}
+
+.h5p-theme-input.h5p-correct input {
+  color: var(--h5p-theme-feedback-correct-main);
+  padding: var(--h5p-theme-spacing-xs) 0;
+}
+
+.h5p-theme-input.h5p-wrong {
+  color: var(--h5p-theme-feedback-incorrect-main);
+  background-color: var(--h5p-theme-feedback-incorrect-secondary);
+  border-color: var(--h5p-theme-feedback-incorrect-third);
+  box-shadow: none;
+}
+
+.h5p-theme-input.h5p-wrong input {
+  color: var(--h5p-theme-feedback-incorrect-main);
+  padding: var(--h5p-theme-spacing-xs) 0;
+}
+
+/* NAVIGATION */
+.h5p-theme .h5p-navigation {
+  display: grid;
+  grid-gap: var(--h5p-theme-spacing-l);
+  grid-template-columns: min-content 1fr min-content;
+  align-items: center;
+  justify-items: center;
+  container-type: inline-size;
+  container-name: h5p-navigation;
+  overflow: hidden;
+  padding: var(--h5p-theme-spacing-m);
+  clear: both;
+  max-width: 100%;
+  /* Min height is the height of a secondary button */
+  min-height: calc(var(--h5p-theme-spacing-xs)*2 + 1.5em + 3px*2);
+  background-color: var(--h5p-theme-ui-base);
+  border-top: 1px solid var(--h5p-theme-stroke-1);
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.05);
+}
+
+.h5p-theme .h5p-navigation .h5p-joubelui-progressbar {
+  grid-column: 2;
+  width: 100%;
+  background-color: var(--h5p-theme-contrast-cta-light);
+  border: 1px solid var(--h5p-theme-contrast-cta-white);
+  border-radius: 8px;
+  padding: 5px;
+}
+
+/* QUESTION DESCRIPTIONS */
+.h5p-theme-question-description {
+  font-size: var(--h5p-theme-font-size-xl);
+  color: var(--h5p-theme-text-primary);
+  font-weight: 600;
+}
+
+.h5p-theme-lines {
+  line-height: var(--h5p-theme-spacing-xl);
+  -webkit-background-size: 100% var(--h5p-theme-spacing-xl);
+  background-size: 100% var(--h5p-theme-spacing-xl);
+  background-image: -moz-linear-gradient(transparent calc(var(--h5p-theme-spacing-xl) - 1px), var(--h5p-theme-alternative-base) 0px);
+  background-image: -webkit-linear-gradient(transparent calc(var(--h5p-theme-spacing-xl) - 1px), var(--h5p-theme-alternative-base) 0);
+}
+
+/* PAGE COUNTER */
+.h5p-theme-progress {
+  display: table;
+  padding: var(--h5p-theme-spacing-xxs) var(--h5p-theme-spacing-s);
+  color: var(--h5p-theme-contrast-cta-white);
+  font-weight: bold;
+  background-color: var(--h5p-theme-contrast-cta-light);
+  border-radius: var(--h5p-theme-border-radius-medium);
+
+  @media (max-width: 576px) {
+    scale: 0.8;
+  }
+}
+
+/* CARDS */
+.h5p-theme .h5p-cardholder {
+  background-color: var(--h5p-theme-ui-base);
+  border: 0.1em solid transparent;
+  border-radius: var(--h5p-theme-border-radius-large);
+  box-shadow: 10px 10px 20px 5px rgba(0, 0, 0, 0.08);
+  border-color: var(--h5p-theme-stroke-1);
+}
+
+/* ICONS */
+.h5p-theme-check:before {
+  content: "\e908";
+  font-family: "h5p-theme";
+}
+
+.h5p-theme-show-results:before {
+  content: "\e90a";
+  font-family: "h5p-theme";
+}
+
+.h5p-theme-retry:before {
+  content: "\e906";
+  font-family: "h5p-theme";
+}
+
+.h5p-theme-book:before {
+  content: "\e909";
+  font-family: "h5p-theme";
+}
+
+.h5p-theme-flip:before {
+  content: "\e907";
+  font-family: "h5p-theme";
+}
+
+.h5p-theme-reveal-answer:before {
+  content: "\e905";
+  font-family: "h5p-theme";
+}
+
+.h5p-theme-continue:before {
+  content: "\e901";
+  font-family: "h5p-theme";
+}
+
+.h5p-theme-go-to-start:before {
+  content: "\e916";
+  font-family: "h5p-theme";
+}
+
+.h5p-theme-quiz:before {
+  content: "\e935";
+  font-family: "h5p-theme";
+}
+
+.h5p-theme-done:before {
+  content: "\e908";
+  font-family: "h5p-theme";
+}
+
+.h5p-theme-download:before {
+  content: "\e911";
+  font-family: "h5p-theme";
+}
