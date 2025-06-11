@@ -16,8 +16,8 @@
   left: 0;
   background-color: var(--h5p-theme-main-cta-dark);
   opacity: 25%;
-  -webkit-mask-image: url(./../images/pattern.svg);
-  mask-image: url(./../images/pattern.svg);
+  -webkit-mask-image: url(./../assets/pattern.svg);
+  mask-image: url(./../assets/pattern.svg);
   mask-size: 40%;
   background-repeat: repeat;
 }
