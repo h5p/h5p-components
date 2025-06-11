@@ -6,9 +6,9 @@ H5P.Components.ResultScreen = (function () {
    * Create a result screen, summing up the tasks of the content and the scores achieved
    * @param {string} params.header The main header of the result screen
    * @param {string} params.scoreHeader The header detailing the total score
-   * @param {[string]} params.listHeaders The table headers
    *
    * @param {[Object]} params.questionGroups The groups of questions
+   * @property {[string]} [params.questionGroups.listHeaders] The table headers
    * @property {[Object]} params.questionGroups.questions The list of tasks to be summarized
    * @property {string} [params.questionGroups.questions.imgUrl] The url to an image to display before the question
    * @property {boolean} [params.questionGroups.question.useDefaultImg] Use a default image. Will be overwritten by imgUrl

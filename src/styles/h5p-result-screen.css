@@ -21,7 +21,7 @@
   z-index: 1;
 
   @media (max-width: 576px) {
-      font-size: var(--h5p-theme-font-size-xl);
+    font-size: var(--h5p-theme-font-size-xl);
   }
 }
 
