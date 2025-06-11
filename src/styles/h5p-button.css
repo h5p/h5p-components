@@ -53,15 +53,15 @@
 
 .h5p-theme-primary-cta:hover,
 .h5p-theme .h5p-theme-primary-cta:hover {
-  padding: var(--h5p-theme-spacing-xs) calc(var(--h5p-theme-spacing-l) - 0.75em);
+  padding: var(--h5p-theme-spacing-xs) calc(var(--h5p-theme-spacing-l) - 0.75rem);
   background-color: var(--h5p-theme-main-cta-light);
   border-color: var(--h5p-theme-main-cta-light);
-  text-indent: 1.5em;
+  text-indent: 1.5rem;
 }
 
 .h5p-theme-primary-cta:before {
   position: absolute;
-  text-indent: -1.8em;
+  text-indent: -1.8rem;
   opacity: 0;
   transform: translate(10px, 10px);
   transition: all 0.1s linear 0s;
