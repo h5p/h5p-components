@@ -61,7 +61,7 @@
 
 .h5p-theme-primary-cta:before {
   position: absolute;
-  text-indent: -1.8rem;
+  text-indent: -0.5rem;
   opacity: 0;
   transform: translate(10px, 10px);
   transition: all 0.1s linear 0s;
