@@ -46,9 +46,12 @@
 /* PRIMARY CTA (USED FOR VALIDATION BUTTONS) */
 .h5p-theme-primary-cta,
 .h5p-theme .h5p-theme-primary-cta {
+  display: flex;
+  align-items: center;
   padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-l);
   background-color: var(--h5p-theme-main-cta-base);
   transition-property: text-indent, padding;
+  max-width: 100%;
 }
 
 .h5p-theme-primary-cta:hover,
@@ -83,6 +86,10 @@
     min-width: var(--h5p-theme-spacing-xl);
   }
 
+  .h5p-theme-primary-cta .h5p-theme-label {
+    display: none;
+  }
+
   .h5p-theme .h5p-theme-primary-cta:hover {
     text-indent: 0;
     padding: 0;
@@ -93,6 +100,7 @@
     opacity: 1;
     transform: translate(0, 0);
     text-indent: 0;
+    margin-right: 0;
   }
 
   .h5p-theme .h5p-theme-label {
