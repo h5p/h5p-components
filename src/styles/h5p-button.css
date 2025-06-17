@@ -46,13 +46,12 @@
 /* PRIMARY CTA (USED FOR VALIDATION BUTTONS) */
 .h5p-theme-primary-cta,
 .h5p-theme .h5p-theme-primary-cta {
+  display: flex;
+  align-items: center;
   padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-l);
   background-color: var(--h5p-theme-main-cta-base);
   transition-property: text-indent, padding;
   max-width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .h5p-theme-primary-cta:hover,
