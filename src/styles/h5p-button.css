@@ -56,22 +56,22 @@
   padding: var(--h5p-theme-spacing-xs) calc(var(--h5p-theme-spacing-l) - 0.75rem);
   background-color: var(--h5p-theme-main-cta-light);
   border-color: var(--h5p-theme-main-cta-light);
-  text-indent: 1.5rem;
+  text-indent: var(--h5p-theme-spacing-m);
 }
 
 .h5p-theme-primary-cta:before {
   position: absolute;
-  text-indent: -0.5rem;
   opacity: 0;
-  transform: translate(10px, 10px);
+  transform: translate(calc(-1 * var(--h5p-theme-spacing-xxs) - 0.75rem), 10px);
   transition: all 0.1s linear 0s;
-  transition-property: transform, opacity;
+  transition-property: text-indent, transform, opacity;
   margin-right: 0;
 }
 
 .h5p-theme-primary-cta:hover:before {
   opacity: 1;
   transform: translate(0, 0);
+  text-indent: calc(-1 * var(--h5p-theme-spacing-xxs));
 }
 
 /* If the container is smaller than 200px */
@@ -136,6 +136,7 @@
   background-color: var(--h5p-theme-secondary-cta-base);
   font-size: var(--h5p-theme-font-size-s);
   font-weight: bold;
+  color: var(--h5p-theme-secondary-contrast-cta);
   white-space: nowrap;
 }
 
