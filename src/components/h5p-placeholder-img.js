@@ -7,6 +7,7 @@ H5P.Components.PlaceholderImg = (function () {
    */
   function PlaceholderImg (svgMarkup) {
     const { createElement } = H5P.Components.utils;
+
     return createElement('div', {
       classList: 'h5p-theme-placeholder-img',
       innerHTML: svgMarkup || placeholder
