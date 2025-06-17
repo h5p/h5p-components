@@ -5,12 +5,11 @@ H5P.Components.PlaceholderImg = (function () {
   /**
    * Create a themed placeholder svg
    */
-  function PlaceholderImg () {
+  function PlaceholderImg (svgMarkup) {
     const { createElement } = H5P.Components.utils;
-
     return createElement('div', {
       classList: 'h5p-theme-placeholder-img',
-      innerHTML: placeholder
+      innerHTML: svgMarkup || placeholder
     });
   }
 
