@@ -5,21 +5,18 @@ H5P.Components.PlaceholderImg = (function () {
   /**
    * Create a themed placeholder svg
    */
-  function PlaceholderImg () {
+  function PlaceholderImg (svg) {
     const { createElement } = H5P.Components.utils;
 
     return createElement('div', {
       classList: 'h5p-theme-placeholder-img',
-      innerHTML: placeholder
+      innerHTML: svg ?? placeholder
     });
-  }
+    }
 
-  return PlaceholderImg;
-})();
-
-// Has to be a variable, instead of a file for security reasons
-// Can't use img, or object with a path since we need to access variables outside the svg
-const placeholder =
+  // Has to be a variable, instead of a file for security reasons
+  // Can't use img, or object with a path since we need to access variables outside the svg
+  const placeholder =
   '<svg version="1.1"id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">' +
     '<style type="text/css">' +
       '.st0{fill:var(--h5p-theme-alternative-darker);}' +
@@ -43,3 +40,6 @@ const placeholder =
       '<path class="st3" d="M387.3,425.3c-0.6,0-1.2,0-1.8-0.1L94.1,385.9c-2.6-0.4-5-1.7-6.6-3.8c-1.6-2.1-2.3-4.8-2-7.4l39.3-291.4c0.7-5.5,5.8-9.3,11.2-8.6l291.4,39.3c2.6,0.4,5,1.7,6.6,3.8c1.6,2.1,2.3,4.8,2,7.4l-39.3,291.4C396,421.5,392,425.1,387.3,425.3zM106.7,367.5l271.5,36.6l36.6-271.5L143.3,95.9L106.7,367.5z"/>' +
     '</g>' +
   '</svg>';
+
+  return PlaceholderImg;
+})();
