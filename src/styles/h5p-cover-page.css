@@ -72,4 +72,18 @@
 .h5p-theme-cover-description {
   color: var(--h5p-theme-text-secondary);
   margin: 0 0 var(--h5p-theme-spacing-l);
+
+  > p {
+    text-align: left !important;
+
+    @media (max-width: 576px) {
+      text-align: center !important;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .h5p-theme-book {
+    margin: auto;
+  }
 }
