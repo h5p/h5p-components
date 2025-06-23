@@ -22,8 +22,6 @@
         "handle-callback-err": ["error"],
         "comma-dangle": ["error", "always-multiline"],
         "import/prefer-default-export": "off",
-        "jsx-a11y/no-noninteractive-tabindex": "off",
-        "jsx-a11y/no-static-element-interactions": "off",
         "no-restricted-syntax": "off",
         "no-plusplus": "off",
         "no-continue": "off"
