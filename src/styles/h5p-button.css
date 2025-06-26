@@ -2,12 +2,8 @@
 .h5p-theme-primary-cta,
 .h5p-theme-secondary-cta,
 .h5p-theme-nav-button {
-  padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-s);
   border: solid 3px var(--h5p-theme-main-cta-base);
   border-radius: var(--h5p-theme-border-radius-medium);
-  color: var(--h5p-theme-contrast-cta);
-  font-size: var(--h5p-theme-font-size-m);
-  font-weight: 600;
   line-height: 1;
   transition: all 0.1s linear 0s;
   cursor: pointer;
@@ -17,6 +13,13 @@
 .h5p-theme-secondary-cta {
   display: flex;
   align-items: center;
+  font-size: var(--h5p-theme-font-size-m);
+  font-weight: 600;
+}
+
+.h5p-theme-secondary-cta,
+.h5p-theme-nav-button {
+  padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-s);
 }
 
 .h5p-theme-primary-cta:active,
@@ -51,6 +54,7 @@
   padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-l);
   background-color: var(--h5p-theme-main-cta-base);
   transition-property: text-indent, padding;
+  color: var(--h5p-theme-contrast-cta);
   max-width: 100%;
 }
 
