@@ -1,4 +1,4 @@
-// eslint-disable-next-line no-use-before-define, no-va
+// eslint-disable-next-line no-use-before-define, no-var
 var H5P = H5P || {};
 H5P.Components = H5P.Components || {};
 
