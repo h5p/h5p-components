@@ -2,19 +2,18 @@
 var H5P = H5P || {};
 H5P.Components = H5P.Components || {};
 
-H5P.Components.CoverPage = (function selfInvokeInit() {
+H5P.Components.CoverPage = (function () {
   /**
    * Create a themed, responsive button
    * @param {string} params.title The title for the cover page
    * @param {string} [params.description] The description or sub-title of the content
    * @param {string} [params.img] The url to the image
    * @param {string} [params.imgAlt] The alt text for the image
-   * @param {string} [useMediaContainer] Add a container instead of an img, so the consumer
-   * can attach it themselves
+   * @param {string} [useMediaContainer] Add a container instead of an img, so the consumer can attach it themselves
    * @param {string} params.buttonLabel The label of the button
    * @param {string} params.buttonOnClick The function to trigger when clicking the button
    * @param {string} [params.icon] The name of the icon to use for the button and above the title
-   * Options are check, retry, done, show-results, book, flip, reveal-answer, next, previous
+   *                               Options are check, retry, done, show-results, book, flip, reveal-answer, next, previous
    */
   function CoverPage(params) {
     const { createElement } = H5P.Components.utils;
@@ -31,7 +30,8 @@ H5P.Components.CoverPage = (function selfInvokeInit() {
       coverPage.appendChild(createElement('div', {
         classList: 'h5p-theme-cover-img',
       }));
-    } else if (params.img) {
+    }
+    else if (params.img) {
       coverPage.appendChild(createElement('img', {
         src: params.img,
         alt: params.imgAlt ?? '',
@@ -43,7 +43,7 @@ H5P.Components.CoverPage = (function selfInvokeInit() {
 
     if (params.icon) {
       detailContainer.appendChild(createElement('span', {
-        classList: `h5p-theme-cover-icon h5p-theme-${params.icon}`,
+        classList: 'h5p-theme-cover-icon h5p-theme-' + params.icon,
         ariaHidden: true,
       }));
     }
@@ -71,4 +71,4 @@ H5P.Components.CoverPage = (function selfInvokeInit() {
   }
 
   return CoverPage;
-}());
+})();

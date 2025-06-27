@@ -1,17 +1,18 @@
 {
   "name": "h5p.components-1.0",
   "version": "1.0.0",
-  "description": "This component library can be used to quickly and easily get a unified look across different content types",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "lint": "eslint 'src/**/*.js'",
-    "lint:fix": "eslint --fix 'src/**/*.js'"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "author": "H5P",
   "license": "MIT",
-  "dependencies": {
-    "@babel/eslint-parser": "^7.27.5",
+  "devDependencies": {
     "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-h5p": "^1.0.0",
     "eslint-plugin-import": "^2.32.0"
   }
 }

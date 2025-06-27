@@ -2,7 +2,71 @@
 var H5P = H5P || {};
 H5P.Components = H5P.Components || {};
 
-H5P.Components.ResultScreen = (function selfInvokeInit() {
+H5P.Components.ResultScreen = (function () {
+  /**
+   * Create a result screen, summing up the tasks of the content and the scores achieved
+   * @param {string} params.header The main header of the result screen
+   * @param {string} params.scoreHeader The header detailing the total score
+   *
+   * @param {[Object]} params.questionGroups The groups of questions
+   * @property {[string]} [params.questionGroups.listHeaders] The table headers
+   * @property {[Object]} params.questionGroups.questions The list of tasks to be summarized
+   * @property {string} [params.questionGroups.questions.imgUrl] The url to an image to display before the question
+   * @property {boolean} [params.questionGroups.question.useDefaultImg] Use a default image. Will be overwritten by imgUrl
+   * @property {string} params.questionGroups.questions.title The textual description of the question
+   * @property {string} params.questionGroups.questions.points The score of the question
+   * @property {boolean} [params.questionGroups.question.isCorrect] If the answer is considered correct
+   *                     (Some content types are more lenient)
+   * @property {string} [params.questionGroups.question.userAnswer] What the user answered
+   * @property {string} [params.questionGroups.question.correctAnswer] The correct answer
+   * @property {string} [params.questionGroups.question.correctAnswerPrepend] The label before the correct answer
+   */
+  function ResultScreen(params) {
+    const { createElement } = H5P.Components.utils;
+    // Create main wrapper
+    const resultScreen = createElement('div', { classList: 'h5p-theme-result-screen' });
+
+    // Create header banner
+    const header = createElement('div', { classList: 'h5p-theme-results-banner' });
+    header.appendChild(createElement('div', { classList: 'h5p-theme-pattern' }));
+    header.appendChild(createElement('div', {
+      classList: 'h5p-theme-results-title',
+      textContent: params.header,
+    }));
+    header.appendChild(createElement('div', {
+      classList: 'h5p-theme-results-score',
+      innerHTML: params.scoreHeader,
+    }));
+    resultScreen.append(header);
+
+    // Create the summary table
+    params.questionGroups.forEach((group) => {
+
+      const groupContainer = createElement('div', {
+        classList: 'h5p-theme-results-list-container',
+      });
+
+      if (group.listHeaders) {
+        const listHeaders = createElement('div', { classList: 'h5p-theme-results-list-heading' });
+        group.listHeaders.forEach(title => {
+          listHeaders.appendChild(createElement('h3', { textContent: title }));
+        });
+        groupContainer.appendChild(listHeaders);
+      }
+
+      const resultList = createElement('ul', { classList: 'h5p-theme-results-list' });
+
+      group.questions.forEach((question) => {
+        resultList.appendChild(createQuestion(question));
+      });
+
+      groupContainer.appendChild(resultList);
+      resultScreen.appendChild(groupContainer);
+    });
+
+    return resultScreen;
+  }
+
   const createQuestion = (question) => {
     const { createElement } = H5P.Components.utils;
 
@@ -16,7 +80,8 @@ H5P.Components.ResultScreen = (function selfInvokeInit() {
         { classList: 'h5p-theme-results-image' },
         { 'background-image': `url("${question.imgUrl}")` },
       ));
-    } else if (question.useDefaultImg) {
+    }
+    else if (question.useDefaultImg) {
       listItem.appendChild(createElement(
         'div',
         { classList: 'h5p-theme-results-image default-image' },
@@ -33,7 +98,7 @@ H5P.Components.ResultScreen = (function selfInvokeInit() {
     }));
 
     // UserAnswer might be an empty string
-    if (typeof (question.userAnswer) === 'string') {
+    if (typeof(question.userAnswer) === 'string') {
       const answerContainer = createElement('div', {
         classList: 'h5p-theme-results-answer',
       });
@@ -80,72 +145,5 @@ H5P.Components.ResultScreen = (function selfInvokeInit() {
     return listItem;
   };
 
-  /**
-   * Create a result screen, summing up the tasks of the content and the scores achieved
-   * @param {string} params.header The main header of the result screen
-   * @param {string} params.scoreHeader The header detailing the total score
-   *
-   * @param {[Object]} params.questionGroups The groups of questions
-   * @property {[string]} [params.questionGroups.listHeaders] The table headers
-   * @property {[Object]} params.questionGroups.questions The list of tasks to be summarized
-   * @property {string} [params.questionGroups.questions.imgUrl] The url to an image to display
-   * before the question
-   * @property {boolean} [params.questionGroups.question.useDefaultImg] Use a default image.
-   * Will be overwritten by imgUrl
-   * @property {string} params.questionGroups.questions.title The textual description of
-   * the question
-   * @property {string} params.questionGroups.questions.points The score of the question
-   * @property {boolean} [params.questionGroups.question.isCorrect] If the answer is considered
-   * correct (Some content types are more lenient)
-   * @property {string} [params.questionGroups.question.userAnswer] What the user answered
-   * @property {string} [params.questionGroups.question.correctAnswer] The correct answer
-   * @property {string} [params.questionGroups.question.correctAnswerPrepend] The label before the
-   * correct answer
-   */
-  function ResultScreen(params) {
-    const { createElement } = H5P.Components.utils;
-    // Create main wrapper
-    const resultScreen = createElement('div', { classList: 'h5p-theme-result-screen' });
-
-    // Create header banner
-    const header = createElement('div', { classList: 'h5p-theme-results-banner' });
-    header.appendChild(createElement('div', { classList: 'h5p-theme-pattern' }));
-    header.appendChild(createElement('div', {
-      classList: 'h5p-theme-results-title',
-      textContent: params.header,
-    }));
-    header.appendChild(createElement('div', {
-      classList: 'h5p-theme-results-score',
-      innerHTML: params.scoreHeader,
-    }));
-    resultScreen.append(header);
-
-    // Create the summary table
-    params.questionGroups.forEach((group) => {
-      const groupContainer = createElement('div', {
-        classList: 'h5p-theme-results-list-container',
-      });
-
-      if (group.listHeaders) {
-        const listHeaders = createElement('div', { classList: 'h5p-theme-results-list-heading' });
-        group.listHeaders.forEach((title) => {
-          listHeaders.appendChild(createElement('h3', { textContent: title }));
-        });
-        groupContainer.appendChild(listHeaders);
-      }
-
-      const resultList = createElement('ul', { classList: 'h5p-theme-results-list' });
-
-      group.questions.forEach((question) => {
-        resultList.appendChild(createQuestion(question));
-      });
-
-      groupContainer.appendChild(resultList);
-      resultScreen.appendChild(groupContainer);
-    });
-
-    return resultScreen;
-  }
-
   return ResultScreen;
-}());
+})();
