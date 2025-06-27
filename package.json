@@ -1,0 +1,17 @@
+{
+  "name": "h5p.components-1.0",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "author": "H5P",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-h5p": "^1.0.0",
+    "eslint-plugin-import": "^2.32.0"
+  }
+}
