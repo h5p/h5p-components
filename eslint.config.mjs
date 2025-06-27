@@ -4,8 +4,6 @@ export default [
   h5pConfig,
   {
     rules: {
-      'indent': ['error', 2],
-      'semi': ['error', 'always'],
       'quotes': ['error', 'single'],
       'handle-callback-err': ['error'],
       'comma-dangle': ['error', 'always-multiline'],
