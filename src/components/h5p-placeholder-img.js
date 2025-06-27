@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-use-before-define, no-var
 var H5P = H5P || {};
 H5P.Components = H5P.Components || {};
 
@@ -5,12 +6,12 @@ H5P.Components.PlaceholderImg = (function () {
   /**
    * Create a themed placeholder svg
    */
-  function PlaceholderImg (svg) {
+  function PlaceholderImg(svg) {
     const { createElement } = H5P.Components.utils;
 
     return createElement('div', {
       classList: 'h5p-theme-placeholder-img',
-      innerHTML: svg ?? placeholder
+      innerHTML: svg ?? placeholder,
     });
   }
 

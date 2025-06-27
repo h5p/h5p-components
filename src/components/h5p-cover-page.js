@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-use-before-define, no-va
 var H5P = H5P || {};
 H5P.Components = H5P.Components || {};
 
@@ -14,7 +15,7 @@ H5P.Components.CoverPage = (function () {
    * @param {string} [params.icon] The name of the icon to use for the button and above the title
    *                               Options are check, retry, done, show-results, book, flip, reveal-answer, next, previous
    */
-  function CoverPage (params) {
+  function CoverPage(params) {
     const { createElement } = H5P.Components.utils;
     const coverPage = createElement('div', {
       classList: 'h5p-theme-cover-page',
@@ -22,7 +23,7 @@ H5P.Components.CoverPage = (function () {
 
     coverPage.appendChild(createElement('div', {
       classList: 'h5p-theme-pattern-container',
-      innerHTML: '<div class="h5p-theme-pattern"></div>'
+      innerHTML: '<div class="h5p-theme-pattern"></div>',
     }));
 
     if (params.useMediaContainer) {

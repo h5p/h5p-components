@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-use-before-define, no-var
 var H5P = H5P || {};
 H5P.Components = H5P.Components || {};
 H5P.Components.utils = {};
@@ -15,4 +16,4 @@ H5P.Components.utils.createElement = (tag, options, style = {}) => {
   Object.assign(element.style, style);
 
   return element;
-}
+};

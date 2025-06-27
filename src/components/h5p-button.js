@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-use-before-define, no-var
 var H5P = H5P || {};
 H5P.Components = H5P.Components || {};
 
@@ -14,13 +15,14 @@ H5P.Components.Button = (function () {
    * @param {string} [params.buttonType] Which html type the button should be. Default is button
    * @param {boolean} [params.disabled] Whether the button should be enabled or disabled. Default is enabled
    */
-  function Button (params) {
+  function Button(params) {
     const { createElement } = H5P.Components.utils;
     let buttonStyleType = 'h5p-theme-primary-cta';
 
     if (params.styleType === 'secondary') {
       buttonStyleType = 'h5p-theme-secondary-cta';
-    } else if (params.styleType === 'nav') {
+    }
+    else if (params.styleType === 'nav') {
       buttonStyleType = 'h5p-theme-nav-button';
     }
 

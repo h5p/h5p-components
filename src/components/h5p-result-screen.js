@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-use-before-define, no-var
 var H5P = H5P || {};
 H5P.Components = H5P.Components || {};
 
@@ -20,7 +21,7 @@ H5P.Components.ResultScreen = (function () {
    * @property {string} [params.questionGroups.question.correctAnswer] The correct answer
    * @property {string} [params.questionGroups.question.correctAnswerPrepend] The label before the correct answer
    */
-  function ResultScreen (params) {
+  function ResultScreen(params) {
     const { createElement } = H5P.Components.utils;
     // Create main wrapper
     const resultScreen = createElement('div', { classList: 'h5p-theme-result-screen' });
@@ -41,8 +42,8 @@ H5P.Components.ResultScreen = (function () {
     // Create the summary table
     params.questionGroups.forEach((group) => {
 
-      const groupContainer = createElement('div',{
-        classList: 'h5p-theme-results-list-container'
+      const groupContainer = createElement('div', {
+        classList: 'h5p-theme-results-list-container',
       });
 
       if (group.listHeaders) {
@@ -70,17 +71,17 @@ H5P.Components.ResultScreen = (function () {
     const { createElement } = H5P.Components.utils;
 
     const listItem = createElement('li', {
-      classList: 'h5p-theme-results-list-item'
+      classList: 'h5p-theme-results-list-item',
     });
 
-    if(question.imgUrl) {
+    if (question.imgUrl) {
       listItem.appendChild(createElement(
         'div',
         { classList: 'h5p-theme-results-image' },
         { 'background-image': `url("${question.imgUrl}")` },
       ));
     }
-    else if(question.useDefaultImg) {
+    else if (question.useDefaultImg) {
       listItem.appendChild(createElement(
         'div',
         { classList: 'h5p-theme-results-image default-image' },
@@ -88,18 +89,18 @@ H5P.Components.ResultScreen = (function () {
     }
 
     const questionContainer = createElement('div', {
-      classList: 'h5p-theme-results-question-container'
+      classList: 'h5p-theme-results-question-container',
     });
 
     questionContainer.appendChild(createElement('div', {
       classList: 'h5p-theme-results-question',
-      innerHTML: question.title
+      innerHTML: question.title,
     }));
 
     // UserAnswer might be an empty string
     if (typeof(question.userAnswer) === 'string') {
       const answerContainer = createElement('div', {
-        classList: 'h5p-theme-results-answer'
+        classList: 'h5p-theme-results-answer',
       });
 
       const answer = createElement('span', {
@@ -115,13 +116,13 @@ H5P.Components.ResultScreen = (function () {
 
         if (question.correctAnswer) {
           const solutionContainer = createElement('span', {
-            classList: 'h5p-theme-results-solution'
+            classList: 'h5p-theme-results-solution',
           });
 
           if (question.correctAnswerPrepend) {
             solutionContainer.appendChild(createElement('span', {
               classList: 'h5p-theme-results-solution-label',
-              textContent: question.correctAnswerPrepend
+              textContent: question.correctAnswerPrepend,
             }));
           }
 
@@ -138,7 +139,7 @@ H5P.Components.ResultScreen = (function () {
 
     listItem.appendChild(createElement('div', {
       classList: 'h5p-theme-results-points',
-      innerHTML: question.points
+      innerHTML: question.points,
     }));
 
     return listItem;
