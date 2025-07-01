@@ -17,8 +17,14 @@ H5P.Components.CoverPage = (function () {
    */
   function CoverPage(params) {
     const { createElement } = H5P.Components.utils;
+    let coverPageClasses = 'h5p-theme-cover-page';
+
+    if (params.useMediaContainer || params.img) {
+      coverPageClasses += ' h5p-theme-cover-page-with-image';
+    }
+
     const coverPage = createElement('div', {
-      classList: 'h5p-theme-cover-page',
+      classList: coverPageClasses,
     });
 
     coverPage.appendChild(createElement('div', {
