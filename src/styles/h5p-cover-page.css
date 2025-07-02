@@ -5,19 +5,22 @@
   grid-template-columns: min-content 1fr;
   padding: var(--h5p-theme-spacing-xl) 0;
   background-color: var(--h5p-theme-ui-base);
-
-  @media (max-width: 768px) {
-    gap: var(--h5p-theme-spacing-xl);
-  }
-
-  @media (max-width: 576px) {
-    grid-template-columns: 1fr;
-    justify-items: center;   
-  }
 }
 
 .h5p-theme-cover-page.h5p-theme-cover-page-with-image {
   grid-template-columns: min-content 1fr 3fr;
+}
+
+.h5p-theme-cover-page,
+.h5p-theme-cover-page.h5p-theme-cover-page-with-image {
+  @media (max-width: 768px) {
+      gap: var(--h5p-theme-spacing-xl);
+    }
+
+  @media (max-width: 576px) {
+      grid-template-columns: 1fr;
+      justify-items: center;   
+  }
 }
 
 .h5p-theme-cover-page .h5p-theme-pattern-container {
