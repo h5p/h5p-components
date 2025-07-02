@@ -116,6 +116,7 @@
 .h5p-theme-secondary-cta,
 .h5p-theme .h5p-theme-secondary-cta {
   background-color: var(--h5p-theme-ui-base);
+  border-color: var(--h5p-theme-contract-cta-white);
   color: var(--h5p-theme-contrast-cta-white);
   width: fit-content;
 }
