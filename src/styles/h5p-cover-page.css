@@ -14,12 +14,12 @@
 .h5p-theme-cover-page,
 .h5p-theme-cover-page.h5p-theme-cover-page-with-image {
   @media (max-width: 768px) {
-      gap: var(--h5p-theme-spacing-xl);
-    }
+    gap: var(--h5p-theme-spacing-xl);
+  }
 
   @media (max-width: 576px) {
-      grid-template-columns: 1fr;
-      justify-items: center;   
+    grid-template-columns: 1fr;
+    justify-items: center;   
   }
 }
 
