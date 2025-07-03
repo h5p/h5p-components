@@ -90,7 +90,7 @@
 }
 
 @media (max-width: 576px) {
-  .h5p-theme-book {
+  .h5p-theme-book, .h5p-theme-quiz {
     margin: auto;
   }
 }
