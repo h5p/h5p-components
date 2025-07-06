@@ -271,3 +271,8 @@
 .h5p-theme-results-answer .h5p-theme-results-incorrect.h5p-theme-results-box-small:before {
   content: "\e902";
 }
+
+.h5p-theme-result-screen + .buttons {
+  container-name: h5p-theme-results-buttons;
+  container-type: inline-size;
+}
