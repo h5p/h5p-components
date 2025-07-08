@@ -273,6 +273,5 @@
 }
 
 .h5p-theme-result-screen + .buttons {
-  container-name: h5p-theme-results-buttons;
   container-type: inline-size;
 }
