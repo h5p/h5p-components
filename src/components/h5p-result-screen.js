@@ -68,7 +68,7 @@ H5P.Components.ResultScreen = (function () {
   }
 
   const createQuestion = (question) => {
-    const { createElement } = H5P.Components.utils;
+    const { createElement, stripHtmlTags } = H5P.Components.utils;
 
     const listItem = createElement('li', {
       classList: 'h5p-theme-results-list-item',
@@ -94,7 +94,7 @@ H5P.Components.ResultScreen = (function () {
 
     questionContainer.appendChild(createElement('div', {
       classList: 'h5p-theme-results-question',
-      innerHTML: question.title,
+      textContent: stripHtmlTags(question.title),
     }));
 
     // UserAnswer might be an empty string

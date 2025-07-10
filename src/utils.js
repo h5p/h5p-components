@@ -17,3 +17,14 @@ H5P.Components.utils.createElement = (tag, options, style = {}) => {
 
   return element;
 };
+
+/**
+ * Strips HTML tags from a string while preserving the text content
+ * @param {string} str String to strip
+ * @returns {string} Text without HTML tags
+ */
+H5P.Components.utils.stripHtmlTags = (str) => {
+  const div = document.createElement('div');
+  div.innerHTML = str;
+  return div.textContent || div.innerText || '';
+};
