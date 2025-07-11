@@ -1,12 +1,5 @@
 /* A h5p-theme version of selectors is included sometimes to override old css in e.g. Question and JoubelUI */
 
-/* GENERAL */
-.h5p-content:has(.h5p-theme) .h5p-inner {
-  min-width: 35rem;
-  color: var(--h5p-theme-text-primary);
-  border-radius: var(--h5p-theme-border-radius-large);
-}
-
 /* PATTERN (used in backgrounds of certain elements like results/summary screens, welcome screen, feedback section etc. */
 .h5p-theme-pattern {
   position: absolute;
