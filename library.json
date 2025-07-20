@@ -23,6 +23,15 @@
     },
     {
       "path": "src/components/h5p-placeholder-img.js"
+    },
+    {
+      "path": "src/components/h5p-progress-bar.js"
+    },
+    {
+      "path": "src/components/h5p-progress-dots.js"
+    },
+    {
+      "path": "src/components/h5p-navigation.js"
     }
   ],
   "preloadedCss": [
@@ -40,6 +49,15 @@
     },
     {
       "path": "src/styles/h5p-placeholder-img.css"
+    },
+    {
+      "path": "src/styles/h5p-progress-bar.css"
+    },
+    {
+      "path": "src/styles/h5p-progress-dots.css"
+    },
+    {
+      "path": "src/styles/h5p-navigation.css"
     }
   ]
 }
