@@ -29,7 +29,7 @@ H5P.Components.Navigation = (function () {
    * @typedef {'bar' | 'dots' | 'text'} NavigationProgressType
    */
 
-  /**ßß
+  /**
    * @typedef NavigationParams
    * @type {object}
    * @property {number} index The current position in the navigation.
