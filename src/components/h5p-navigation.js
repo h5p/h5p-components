@@ -112,7 +112,6 @@ H5P.Components.Navigation = (function () {
       container.appendChild(dotsNavigation);
     }
     else if (params.progressType === 'text') {
-      // @todo Should this be a separate component like dots or bar?
       progressText = createElement('span', {
         classList: 'progress-text h5p-theme-progress',
       });

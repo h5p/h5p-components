@@ -1,7 +1,5 @@
 .h5p-visual-progress {
-  /* grid-column: 2; */
   width: -webkit-fill-available;
-  /* width: 100%; */
   width: calc(100% - 2*5px - 2px);
   background-color: var(--h5p-theme-contrast-cta-light);
   border: 1px solid var(--h5p-theme-contrast-cta-white);

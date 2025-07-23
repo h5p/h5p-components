@@ -41,7 +41,6 @@ H5P.Components.ProgressBar = (function () {
     
     const updateProgressBar = (newIndex) => {
       index = newIndex;
-      // @todo should aria values be percentage?
       progressBar.setAttribute('aria-valuenow', (newIndex + 1 / progressLength * 100).toFixed(2));
       progressBarInner.style.width = (newIndex + 1) / progressLength * 100 + '%';
     };
