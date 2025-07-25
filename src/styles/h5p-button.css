@@ -181,7 +181,6 @@
 
 .h5p-theme .h5p-theme-next {
   justify-self: flex-end;
-  grid-column: 3;
 }
 
 .h5p-theme-next:after {
