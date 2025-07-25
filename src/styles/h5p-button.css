@@ -63,6 +63,7 @@
   padding: var(--h5p-theme-spacing-xs) calc(var(--h5p-theme-spacing-l) - var(--h5p-theme-spacing-m)/2);
   background-color: var(--h5p-theme-main-cta-light);
   border-color: var(--h5p-theme-main-cta-light);
+  color: var(--h5p-theme-main-contrast-cta-hover);
   text-indent: var(--h5p-theme-spacing-m);
 }
 
