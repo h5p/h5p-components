@@ -20,7 +20,7 @@
   border-radius: 50%;
   margin: 0 calc(var(--h5p-theme-spacing-s)*0.35);
   cursor: pointer;
-  border: 1px solid var(--h5p-theme-main-cta-base);
+  border: 1px solid var(--h5p-theme-contrast-cta-white);
   position: relative;
   transition: transform 0.2s;
 }
