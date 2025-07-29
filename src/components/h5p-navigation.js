@@ -3,7 +3,6 @@ var H5P = H5P || {};
 H5P.Components = H5P.Components || {};
 
 H5P.Components.Navigation = (function () {
-  
   /**
    * @typedef NavigationTexts
    * @type {object}
@@ -17,7 +16,7 @@ H5P.Components.Navigation = (function () {
    * @property {[string]} nextTooltip
    * @property {[string]} lastTooltip
    * The items below are used by ProgressDots
-   * @property {string} jumpToQuestion 
+   * @property {string} jumpToQuestion
    * @property {string} answeredText
    * @property {string} unansweredText
    * The item below is used by ProgressText
@@ -45,6 +44,7 @@ H5P.Components.Navigation = (function () {
    * @property {[function]} handleProgressDotClick A function that is called when the user clicks the on a "dot". Optional.
    * @property {[object]} options
    * @property {[boolean]} options.disableBackwardsNavigation If backwards navigation should be disabled or not.
+   * @property {[boolean]} showDisabledButtons If true, buttons will be disabled instead of hidden when not usable.
    */
 
   /**
@@ -55,7 +55,12 @@ H5P.Components.Navigation = (function () {
   function Navigation(params = {}) {
     const { createElement } = H5P.Components.utils;
 
-    let progressBar, dotsNavigation, progressText, prevButton, nextButton, lastButton;
+    let progressBar,
+      dotsNavigation,
+      progressText,
+      prevButton,
+      nextButton,
+      lastButton;
     let canShowLast = false;
     let index = params.index ?? 0;
     let className = 'h5p-navigation';
@@ -83,11 +88,17 @@ H5P.Components.Navigation = (function () {
         ariaLabel: params?.texts.previousButtonAria,
         tooltip: params?.texts.previousTooltip,
         icon: 'previous',
-        classes: index === 0 ? `${prevClassList} h5p-visibility-hidden` : prevClassList,
+        classes:
+          index === 0
+            ? params.showDisabledButtons
+              ? `${prevClassList} h5p-disabled`
+              : `${prevClassList} h5p-visibility-hidden`
+            : prevClassList,
+        disabled: params.showDisabledButtons && index === 0,
         onClick: (event) => {
           if (params.handlePrevious(event) !== false) {
             previous();
-          };
+          }
         },
       });
       container.appendChild(prevButton);
@@ -115,7 +126,9 @@ H5P.Components.Navigation = (function () {
       progressText = createElement('span', {
         classList: 'progress-text h5p-theme-progress',
       });
-      progressText.textContent = params.texts.textualProgress.replace('@current', index+1).replace('@total', params.navigationLength);
+      progressText.textContent = params.texts.textualProgress
+        .replace('@current', index + 1)
+        .replace('@total', params.navigationLength);
       container.appendChild(progressText);
     }
 
@@ -127,11 +140,18 @@ H5P.Components.Navigation = (function () {
         ariaLabel: params?.texts.nextButtonAria,
         tooltip: params?.texts.nextTooltip,
         icon: 'next',
-        classes: index === params.navigationLength-1 ? `${nextClassList} h5p-visibility-hidden` : nextClassList,
+        classes:
+          index === params.navigationLength - 1
+            ? params.showDisabledButtons
+              ? `${nextClassList} h5p-disabled`
+              : `${nextClassList} h5p-visibility-hidden`
+            : nextClassList,
+        disabled:
+          params.showDisabledButtons && index === params.navigationLength - 1,
         onClick: (event) => {
           if (params.handleNext(event) !== false) {
             next();
-          };
+          }
         },
       });
       container.appendChild(nextButton);
@@ -154,20 +174,42 @@ H5P.Components.Navigation = (function () {
     }
 
     const calculateButtonVisibility = () => {
-      if (prevButton && index === 0) {
-        prevButton.classList.add('h5p-visibility-hidden');
+      if (params.showDisabledButtons) {
+        // Disable/enable buttons instead of hiding them
+        if (prevButton) {
+          prevButton.toggleAttribute('disabled', index === 0);
+          prevButton.classList.toggle('h5p-disabled', index === 0);
+        }
+
+        if (nextButton) {
+          const isLastPage = index >= params.navigationLength - 1;
+          nextButton.toggleAttribute('disabled', isLastPage);
+          nextButton.classList.toggle('h5p-disabled', isLastPage);
+
+          // Last button still uses visibility logic
+          lastButton?.classList.toggle(
+            'h5p-visibility-hidden',
+            !canShowLast || !isLastPage,
+          );
+        }
       }
-      else if (prevButton && index > 0) {
-        prevButton.classList.remove('h5p-visibility-hidden');
-      }
-      
-      if (nextButton && index >= params.navigationLength - 1) {
-        nextButton.classList.add('h5p-visibility-hidden');
-        lastButton?.classList.toggle('h5p-visibility-hidden', !canShowLast);
-      }
-      else if (nextButton && index < params.navigationLength - 1) {
-        nextButton.classList.remove('h5p-visibility-hidden');
-        lastButton?.classList.add('h5p-visibility-hidden');
+      else {
+        // Original behavior - hide/show buttons
+        if (prevButton && index === 0) {
+          prevButton.classList.add('h5p-visibility-hidden');
+        }
+        else if (prevButton && index > 0) {
+          prevButton.classList.remove('h5p-visibility-hidden');
+        }
+
+        if (nextButton && index >= params.navigationLength - 1) {
+          nextButton.classList.add('h5p-visibility-hidden');
+          lastButton?.classList.toggle('h5p-visibility-hidden', !canShowLast);
+        }
+        else if (nextButton && index < params.navigationLength - 1) {
+          nextButton.classList.remove('h5p-visibility-hidden');
+          lastButton?.classList.add('h5p-visibility-hidden');
+        }
       }
     };
 
@@ -182,7 +224,9 @@ H5P.Components.Navigation = (function () {
         progressBar.updateProgressBar(index);
       }
       else if (progressText) {
-        progressText.textContent = params.texts.textualProgress.replace('@current', index+1).replace('@total', params.navigationLength);
+        progressText.textContent = params.texts.textualProgress
+          .replace('@current', index + 1)
+          .replace('@total', params.navigationLength);
       }
       else if (dotsNavigation) {
         dotsNavigation.toggleCurrentDot(index);
