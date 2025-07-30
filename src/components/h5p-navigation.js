@@ -45,6 +45,7 @@ H5P.Components.Navigation = (function () {
    * @property {[object]} options
    * @property {[boolean]} options.disableBackwardsNavigation If backwards navigation should be disabled or not.
    * @property {[boolean]} showDisabledButtons If true, buttons will be disabled instead of hidden when not usable.
+   * @property {[string]} title Optional page title, used in content-types such as IB.
    */
 
   /**
@@ -58,6 +59,7 @@ H5P.Components.Navigation = (function () {
     let progressBar,
       dotsNavigation,
       progressText,
+      title,
       prevButton,
       nextButton,
       lastButton;
@@ -123,13 +125,27 @@ H5P.Components.Navigation = (function () {
       container.appendChild(dotsNavigation);
     }
     else if (params.progressType === 'text') {
+      const progressContainer = createElement('div', {
+        classList: 'progress-container h5p-theme-progress',
+      });
+
       progressText = createElement('span', {
-        classList: 'progress-text h5p-theme-progress',
+        classList: 'progress-text',
       });
       progressText.textContent = params.texts.textualProgress
         .replace('@current', index + 1)
         .replace('@total', params.navigationLength);
-      container.appendChild(progressText);
+      progressContainer.appendChild(progressText);
+
+      if (params.title) {
+        titleElement = createElement('h1', {
+          classList: 'title',
+        });
+        titleElement.textContent = params.title;
+        progressContainer.appendChild(titleElement);
+      }
+
+      container.appendChild(progressContainer);
     }
 
     if (params.handleNext) {
@@ -218,6 +234,12 @@ H5P.Components.Navigation = (function () {
       calculateButtonVisibility();
     };
 
+    const updateTitle = (newTitle) => {
+      if (title) {
+        title.textContent = newTitle;
+      }
+    };
+
     const setCurrentIndex = (newIndex) => {
       index = newIndex;
       if (progressBar) {
@@ -247,6 +269,7 @@ H5P.Components.Navigation = (function () {
     container.previous = previous;
     container.next = next;
     container.setCanShowLast = setCanShowLast;
+    container.updateTitle = updateTitle;
     container.progressBar = progressBar;
     container.progressDots = dotsNavigation;
 
