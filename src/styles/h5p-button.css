@@ -148,7 +148,7 @@
 /* NAVIGATION BUTTONS */
 .h5p-theme-nav-button,
 .h5p-theme .h5p-theme-nav-button {
-  display: inline-block;
+  display: flex;
   min-width: max-content;
   border: none;
   background-color: var(--h5p-theme-secondary-cta-base);
