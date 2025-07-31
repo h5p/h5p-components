@@ -49,7 +49,7 @@ H5P.Components.ResultScreen = (function () {
       if (group.listHeaders) {
         const listHeaders = createElement('div', { classList: 'h5p-theme-results-list-heading' });
         group.listHeaders.forEach(title => {
-          listHeaders.appendChild(createElement('h3', { textContent: title }));
+          listHeaders.appendChild(createElement('div', { classList: 'heading-item', textContent: title }));
         });
         groupContainer.appendChild(listHeaders);
       }
