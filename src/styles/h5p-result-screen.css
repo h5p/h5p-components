@@ -85,8 +85,9 @@
   padding: 0 var(--h5p-theme-spacing-m);
 }
 
-.h5p-theme-results-list-heading h3 {
+.h5p-theme-results-list-heading .heading-item {
   font-size: var(--h5p-theme-font-size-xl);
+  font-weight: bold;
   margin: var(--h5p-theme-font-size-m) 0;
   width: 100%;
   text-align: left;
@@ -97,7 +98,7 @@
   }
 }
 
-.h5p-theme-results-list-heading h3:last-child:not(:first-child) {
+.h5p-theme-results-list-heading .heading-item:last-child:not(:first-child) {
   grid-column: 3;
 }
 
