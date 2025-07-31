@@ -125,7 +125,6 @@
 .h5p-theme .h5p-theme-secondary-cta:hover {
   background-color: var(--h5p-theme-contrast-cta-white);
   border-color: var(--h5p-theme-contrast-cta-white);
-  color: var(--h5p-theme-secondary-contrast-cta-hover);
 }
 
 .h5p-theme-secondary-cta:active,
