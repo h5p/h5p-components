@@ -137,15 +137,24 @@ H5P.Components.Navigation = (function () {
         .replace('@total', params.navigationLength);
       progressContainer.appendChild(progressText);
 
+      // Page chapter title used in IB
       if (params.title) {
-        titleElement = createElement('h1', {
+        title = createElement('h1', {
           classList: 'title',
         });
-        titleElement.textContent = params.title;
-        progressContainer.appendChild(titleElement);
+        title.textContent = params.title;
+
+        const progressWrapper = createElement('div', {
+          classList: 'progress-wrapper',
+        });
+        progressWrapper.appendChild(progressContainer);
+        progressWrapper.appendChild(title);
+        container.appendChild(progressWrapper);
+      }
+      else {
+        container.appendChild(progressContainer);
       }
 
-      container.appendChild(progressContainer);
     }
 
     if (params.handleNext) {
