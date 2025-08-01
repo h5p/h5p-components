@@ -56,6 +56,43 @@
   display: none;
 }
 
+/* IB navigation specific styles */
+.h5p-navigation .progress-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.h5p-navigation .progress-wrapper .title {
+  color: var(--h5p-theme-text-secondary);
+  font-family: var(--h5p-theme-font-name);
+  font-size: var(--h5p-theme-font-size-m);
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0;
+  overflow: hidden;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.h5p-navigation .progress-wrapper .progress-text {
+  margin: 0;
+  white-space: nowrap;
+  padding: 0;
+}
+
+.h5p-navigation .progress-wrapper .progress-container {
+  margin: 0;
+  white-space: nowrap;
+  padding: calc(var(--h5p-theme-spacing-xxs)/2) var(--h5p-theme-spacing-xxs);
+  margin-bottom: var(--h5p-theme-spacing-xxs);
+}
+
 /* We do not want the next button to take up space if we're showing the last/finish/submit button */
 .h5p-navigation .h5p-theme-next.h5p-visibility-hidden:has(+ .h5p-theme-submit:not(.h5p-visibility-hidden)) {
   display: none;
