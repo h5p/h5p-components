@@ -115,7 +115,7 @@
 /* CARDS */
 .h5p-theme .h5p-cardholder {
   background-color: var(--h5p-theme-ui-base);
-  border: 0.1em solid transparent;
+  border: 0.2em solid transparent;
   border-radius: var(--h5p-theme-border-radius-large);
   box-shadow: 10px 10px 20px 5px rgba(0, 0, 0, 0.08);
   border-color: var(--h5p-theme-stroke-1);
