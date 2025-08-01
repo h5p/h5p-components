@@ -45,7 +45,7 @@ H5P.Components.Navigation = (function () {
    * @property {[object]} options
    * @property {[boolean]} options.disableBackwardsNavigation If backwards navigation should be disabled or not.
    * @property {[boolean]} showDisabledButtons If true, buttons will be disabled instead of hidden when not usable.
-   * @property {[string]} title Optional page title, used in content-types such as IB.
+   *  @property {[Array]} titles Array of titles for each page/chapter, used when progressType is 'text'.
    */
 
   /**
@@ -138,11 +138,11 @@ H5P.Components.Navigation = (function () {
       progressContainer.appendChild(progressText);
 
       // Page chapter title used in IB
-      if (params.title) {
+      if (params.titles && params.titles.length > 0) {
         title = createElement('h1', {
           classList: 'title',
         });
-        title.textContent = params.title;
+        title.textContent = params.titles[index] || '';
 
         const progressWrapper = createElement('div', {
           classList: 'progress-wrapper',
@@ -243,14 +243,13 @@ H5P.Components.Navigation = (function () {
       calculateButtonVisibility();
     };
 
-    const updateTitle = (newTitle) => {
-      if (title) {
-        title.textContent = newTitle;
-      }
-    };
-
     const setCurrentIndex = (newIndex) => {
       index = newIndex;
+      
+      if (title && params.titles && params.titles[index]) {
+        title.textContent = params.titles[index];
+      }
+      
       if (progressBar) {
         progressBar.updateProgressBar(index);
       }
@@ -278,7 +277,6 @@ H5P.Components.Navigation = (function () {
     container.previous = previous;
     container.next = next;
     container.setCanShowLast = setCanShowLast;
-    container.updateTitle = updateTitle;
     container.progressBar = progressBar;
     container.progressDots = dotsNavigation;
 
