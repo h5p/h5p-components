@@ -7,12 +7,12 @@
   line-height: 1;
   transition: all 0.1s linear 0s;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .h5p-theme-primary-cta,
 .h5p-theme-secondary-cta {
-  display: flex;
-  align-items: center;
   font-size: var(--h5p-theme-font-size-m);
   font-weight: 600;
 }
@@ -49,11 +49,11 @@
 /* PRIMARY CTA (USED FOR VALIDATION BUTTONS) */
 .h5p-theme-primary-cta,
 .h5p-theme .h5p-theme-primary-cta {
-  display: flex;
-  align-items: center;
+  --transition-h5p-theme-primary-cta: all 0.1s linear 0s;
   padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-l);
   background-color: var(--h5p-theme-main-cta-base);
   transition-property: text-indent, padding;
+  transition: var(--transition-h5p-theme-primary-cta);
   color: var(--h5p-theme-contrast-cta);
   max-width: 100%;
 }
@@ -70,15 +70,15 @@
   position: absolute;
   opacity: 0;
   transform: translate3d(calc(-1 * var(--h5p-theme-spacing-xxs) - var(--h5p-theme-spacing-m) / 2), 10px, 0);
-  transition: all 0.1s linear 0s;
-  transition-property: text-indent, transform, opacity;
+  transition: var(--transition-h5p-theme-primary-cta);
+  transition-property: transform, opacity;
   margin-right: 0;
 }
 
 .h5p-theme-primary-cta:hover:before {
   opacity: 1;
   transform: translate3d(0, 0, 0);
-  text-indent: calc(-1 * var(--h5p-theme-spacing-xxs));
+  transform: translate(calc(-1 * var(--h5p-theme-spacing-xxs) - var(--h5p-theme-spacing-m)), 0);
 }
 
 /* If the container is smaller than 200px */
@@ -125,7 +125,7 @@
 .h5p-theme .h5p-theme-secondary-cta:hover {
   background-color: var(--h5p-theme-contrast-cta-white);
   border-color: var(--h5p-theme-contrast-cta-white);
-  color: var(--h5p-theme-contrast-cta);
+  color: var(--h5p-theme-secondary-contrast-cta-hover);
 }
 
 .h5p-theme-secondary-cta:active,
@@ -148,7 +148,6 @@
 /* NAVIGATION BUTTONS */
 .h5p-theme-nav-button,
 .h5p-theme .h5p-theme-nav-button {
-  display: inline-block;
   min-width: max-content;
   border: none;
   background-color: var(--h5p-theme-secondary-cta-base);
@@ -181,7 +180,6 @@
 
 .h5p-theme .h5p-theme-next {
   justify-self: flex-end;
-  grid-column: 3;
 }
 
 .h5p-theme-next:after {
