@@ -77,7 +77,6 @@
 
 .h5p-theme-primary-cta:hover:before {
   opacity: 1;
-  transform: translate(0, 0);
   transform: translate(calc(-1 * var(--h5p-theme-spacing-xxs) - var(--h5p-theme-spacing-m)), 0);
 }
 
