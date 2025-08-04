@@ -7,12 +7,12 @@
   line-height: 1;
   transition: all 0.1s linear 0s;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .h5p-theme-primary-cta,
 .h5p-theme-secondary-cta {
-  display: flex;
-  align-items: center;
   font-size: var(--h5p-theme-font-size-m);
   font-weight: 600;
 }
@@ -50,8 +50,6 @@
 .h5p-theme-primary-cta,
 .h5p-theme .h5p-theme-primary-cta {
   --transition-h5p-theme-primary-cta: all 0.1s linear 0s;
-  display: flex;
-  align-items: center;
   padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-l);
   background-color: var(--h5p-theme-main-cta-base);
   transition-property: text-indent, padding;
@@ -150,7 +148,6 @@
 /* NAVIGATION BUTTONS */
 .h5p-theme-nav-button,
 .h5p-theme .h5p-theme-nav-button {
-  display: flex;
   min-width: max-content;
   border: none;
   background-color: var(--h5p-theme-secondary-cta-base);
