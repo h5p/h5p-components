@@ -80,6 +80,13 @@
   transform: translate(calc(-1 * var(--h5p-theme-spacing-xxs) - var(--h5p-theme-spacing-m)), 0);
 }
 
+/* Will target Safari only which needs this or makes the whole content shift a bit. Applied selectively to prevent performance issues */
+@supports (-webkit-hyphens: none) and (not (-moz-appearance: none)) {
+  .h5p-theme-primary-cta:before {
+    will-change: transform;
+  }
+}
+
 /* If the container is smaller than 200px */
 @container (max-width: 200px) {
   .h5p-theme .h5p-theme-primary-cta {
