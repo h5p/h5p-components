@@ -49,9 +49,11 @@
 /* PRIMARY CTA (USED FOR VALIDATION BUTTONS) */
 .h5p-theme-primary-cta,
 .h5p-theme .h5p-theme-primary-cta {
+  --transition-h5p-theme-primary-cta: all 0.1s linear 0s;
   padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-l);
   background-color: var(--h5p-theme-main-cta-base);
   transition-property: text-indent, padding;
+  transition: var(--transition-h5p-theme-primary-cta);
   color: var(--h5p-theme-contrast-cta);
   max-width: 100%;
 }
@@ -68,15 +70,15 @@
   position: absolute;
   opacity: 0;
   transform: translate(calc(-1 * var(--h5p-theme-spacing-xxs) - var(--h5p-theme-spacing-m) / 2), 10px);
-  transition: all 0.1s linear 0s;
-  transition-property: text-indent, transform, opacity;
+  transition: var(--transition-h5p-theme-primary-cta);
+  transition-property: transform, opacity;
   margin-right: 0;
 }
 
 .h5p-theme-primary-cta:hover:before {
   opacity: 1;
   transform: translate(0, 0);
-  text-indent: calc(-1 * var(--h5p-theme-spacing-xxs));
+  transform: translate(calc(-1 * var(--h5p-theme-spacing-xxs) - var(--h5p-theme-spacing-m)), 0);
 }
 
 /* If the container is smaller than 200px */
