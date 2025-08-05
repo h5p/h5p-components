@@ -7,11 +7,11 @@ H5P.Components.ProgressBar = (function () {
   /**
    * @typedef ProgressBarParams
    * @type {object}
-   * @property {number} [index = 0] The current position in the navigation.
-   * @property {number} [progressLength = 1] The number of "items" we can navigate through.
-   * @property {number} [ariaValueMax = 100] The max value of the slider
-   * @property {number} [ariaValueMin = 0] The min value of the slider
-   * @property {number} [ariaValueNow = 0] The current/initial value of the slider
+   * @property {number} [index] The current position in the navigation (default: 0).
+   * @property {number} [progressLength] The number of "items" we can navigate through (default: 1).
+   * @property {number} [ariaValueMax] The max value of the slider (default: 100)
+   * @property {number} [ariaValueMin] The min value of the slider (default: 0)
+   * @property {number} [ariaValueNow] The current/initial value of the slider (default: 0)
    */
 
   /**

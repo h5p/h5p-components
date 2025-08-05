@@ -4,22 +4,37 @@ H5P.Components = H5P.Components || {};
 
 H5P.Components.ResultScreen = (function () {
   /**
+   * @typedef ResultQuestion
+   * @type {object}
+   * @property {[string]} imgUrl The url to an image to display before the question
+   * @property {[boolean]} useDefaultImg Use a default image. Will be overwritten by imgUrl
+   * @property {string} title The textual description of the question
+   * @property {string} points The score of the question
+   * @property {[boolean]} isCorrect If the answer is considered correct (Some content types are more lenient)
+   * @property {[string]} userAnswer What the user answered
+   * @property {[string]} correctAnswer The correct answer
+   * @property {[string]} correctAnswerPrepend The label before the correct answer
+   */
+
+  /**
+   * @typedef ResultQuestionGroup
+   * @type {object}
+   * @property {[string[]]} listHeaders The table headers
+   * @property {ResultQuestion[]} questions The list of tasks to be summarized
+   */
+
+  /**
+   * @typedef ResultScreenParams
+   * @type {object}
+   * @property {string} header The main header of the result screen
+   * @property {string} scoreHeader The header detailing the total score
+   * @property {ResultQuestionGroup[]} questionGroups The groups of questions
+   */
+
+  /**
    * Create a result screen, summing up the tasks of the content and the scores achieved
-   * @param {string} params.header The main header of the result screen
-   * @param {string} params.scoreHeader The header detailing the total score
-   *
-   * @param {[Object]} params.questionGroups The groups of questions
-   * @property {[string]} [params.questionGroups.listHeaders] The table headers
-   * @property {[Object]} params.questionGroups.questions The list of tasks to be summarized
-   * @property {string} [params.questionGroups.questions.imgUrl] The url to an image to display before the question
-   * @property {boolean} [params.questionGroups.question.useDefaultImg] Use a default image. Will be overwritten by imgUrl
-   * @property {string} params.questionGroups.questions.title The textual description of the question
-   * @property {string} params.questionGroups.questions.points The score of the question
-   * @property {boolean} [params.questionGroups.question.isCorrect] If the answer is considered correct
-   *                     (Some content types are more lenient)
-   * @property {string} [params.questionGroups.question.userAnswer] What the user answered
-   * @property {string} [params.questionGroups.question.correctAnswer] The correct answer
-   * @property {string} [params.questionGroups.question.correctAnswerPrepend] The label before the correct answer
+   * @param {ResultScreenParams} params A set of parameters to configure the ResultScreen component.
+   * @returns {HTMLElement} The result screen element.
    */
   function ResultScreen(params) {
     const { createElement } = H5P.Components.utils;
