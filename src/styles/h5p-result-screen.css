@@ -1,3 +1,8 @@
+.h5p-theme-result-screen {
+  container-name: h5p-theme-result-screen;
+  container-type: inline-size;
+}
+
 /* Main banner */
 .h5p-theme-results-banner {
   position: relative;
@@ -9,7 +14,7 @@
   width: 100%;
   box-sizing: border-box;
 
-  @media (max-width: 576px) {
+  @container h5p-theme-result-screen (max-width: 576px) {
     padding: var(--h5p-theme-spacing-m)  var(--h5p-theme-spacing-m) calc(var(--h5p-theme-spacing-m)*1.2) var(--h5p-theme-spacing-m);
   }
 }
@@ -20,7 +25,7 @@
   font-weight: 600;
   z-index: 1;
 
-  @media (max-width: 576px) {
+  @container h5p-theme-result-screen (max-width: 576px) {
     font-size: var(--h5p-theme-font-size-xl);
   }
 }
@@ -31,7 +36,7 @@
   font-weight: 600;
   z-index: 1;
 
-  @media (max-width: 576px) {
+  @container h5p-theme-result-screen (max-width: 576px) {
     font-size: var(--h5p-theme-font-size-l);
   }
 }
@@ -55,7 +60,7 @@
   z-index: 1000;
   max-height: calc(var(--h5p-theme-spacing-xl)*10);
 
-  @media (max-width: 576px) {
+  @container h5p-theme-result-screen (max-width: 576px) {
     margin: calc(-1 * var(--h5p-theme-spacing-xs)) var(--h5p-theme-spacing-s) var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-s);
   }
 }
@@ -73,7 +78,7 @@
   padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-m);
   flex: 1;
 
-  @media (max-width: 576px) {
+  @container h5p-theme-result-screen (max-width: 576px) {
     padding: 0 var(--h5p-theme-spacing-s);
   }
 }
@@ -83,6 +88,10 @@
   box-shadow: 10px 10px 20px 5px rgba(0, 0, 0, 0.08);
   border-bottom: none;
   padding: 0 var(--h5p-theme-spacing-m);
+
+  @container h5p-theme-result-screen (max-width: 576px) {
+    padding: 0 var(--h5p-theme-spacing-s);
+  }
 }
 
 .h5p-theme-results-list-heading h3 {
@@ -91,7 +100,7 @@
   width: 100%;
   text-align: left;
 
-  @media (max-width: 576px) {
+  @container h5p-theme-result-screen (max-width: 576px) {
     font-size: var(--h5p-theme-font-size-m);
     margin: var(--h5p-theme-font-size-s) 0;
   }
@@ -128,7 +137,7 @@
   text-align: left;
 	padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-m);
 
-  @media(max-width: 576px) {
+  @container h5p-theme-result-screen (max-width: 576px) {
     padding: var(--h5p-theme-spacing-xxs) var(--h5p-theme-spacing-s);
   }
 }
@@ -139,7 +148,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 
-  @media(max-width: 576px) {
+  @container h5p-theme-result-screen (max-width: 576px) {
     font-size: var(--h5p-theme-font-size-m);
   }
 }
