@@ -16,12 +16,13 @@ H5P.Components.ProgressDots = (function () {
    * @property {string} jumpToQuestion 
    * @property {string} answeredText
    * @property {string} unansweredText
+   * @property {string} currentQuestionText
    */
 
   /**
    * @typedef ProgressDotsParams
    * @type {object}
-   * @property {number} index The current position in the navigation.
+   * @property {[number]} index The current position in the navigation.
    * @property {ProgressDots[]} dots Array of dots to process.
    * @property {ProgressDotsTexts} texts A collection of translatable strings.
    * @property {[function]} handleProgressDotClick A callback function when a dot is clicked.

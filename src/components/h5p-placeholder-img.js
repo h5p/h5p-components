@@ -3,8 +3,17 @@ var H5P = H5P || {};
 H5P.Components = H5P.Components || {};
 
 H5P.Components.PlaceholderImg = (function () {
+  
+  /**
+   * @typedef PlaceholderImgParams
+   * @type {object}
+   * @property {[string]} svg Custom SVG content to use instead of the default placeholder
+   */
+
   /**
    * Create a themed placeholder svg
+   * @param {[string]} svg Custom SVG content to use instead of the default placeholder
+   * @returns {HTMLElement} The placeholder image element.
    */
   function PlaceholderImg(svg) {
     const { createElement } = H5P.Components.utils;
