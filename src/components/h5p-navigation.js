@@ -273,7 +273,16 @@ H5P.Components.Navigation = (function () {
       setCurrentIndex(index + 1);
     };
 
+    const setNavigationLength = (navigationLength) => {
+      if (typeof navigationLength !== 'number' || navigationLength < 0) {
+        throw new Error('Invalid navigation length');
+      }
+
+      params.navigationLength = navigationLength;
+    };
+
     container.setCurrentIndex = setCurrentIndex;
+    container.setNavigationLength = setNavigationLength;
     container.previous = previous;
     container.next = next;
     container.setCanShowLast = setCanShowLast;
