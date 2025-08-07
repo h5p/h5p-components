@@ -107,9 +107,11 @@ H5P.Components.ResultScreen = (function () {
       classList: 'h5p-theme-results-question-container',
     });
 
+    const questionTitleStripped = question.title.replace(/<[^>]*>/g, '').trim();
+
     questionContainer.appendChild(createElement('div', {
       classList: 'h5p-theme-results-question',
-      innerHTML: question.title,
+      innerHTML: questionTitleStripped,
     }));
 
     // UserAnswer might be an empty string
