@@ -111,7 +111,7 @@ H5P.Components.ResultScreen = (function () {
 
     questionContainer.appendChild(createElement('div', {
       classList: 'h5p-theme-results-question',
-      innerHTML: questionTitleStripped,
+      textContent: questionTitleStripped,
     }));
 
     // UserAnswer might be an empty string
