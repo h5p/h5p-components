@@ -107,7 +107,22 @@ H5P.Components.ResultScreen = (function () {
       classList: 'h5p-theme-results-question-container',
     });
 
-    const questionTitleStripped = question.title.replace(/<[^>]*>/g, '').trim();
+    /**
+     * Strips html tags and converts special characters.
+     * Example: "<div>Me &amp; you</div>" is converted to "Me & you".
+     *
+     * @param {String} text The text to be parsed
+     * @returns {String} The parsed text
+     */
+    function parseString(text) {
+      if (text === null || text === undefined) {
+        return '';
+      }
+      const doc = new DOMParser().parseFromString(text, 'text/html');
+      return doc.documentElement.textContent;
+    }
+
+    const questionTitleStripped = parseString(question.title);
 
     questionContainer.appendChild(createElement('div', {
       classList: 'h5p-theme-results-question',
