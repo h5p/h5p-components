@@ -45,7 +45,7 @@ H5P.Components.Button = (function () {
 
     const button = createElement('button', {
       innerHTML: params.label ? `<span class="h5p-theme-label">${params.label}</span>` : '',
-      ariaLabel: params.ariaLabel ?? params.label,
+      ariaLabel: H5P.Components.utils.parseString(params.ariaLabel ?? params.label),
       classList: params.classes ? `${buttonStyleType} ${params.classes}` : buttonStyleType,
       onclick: params.onClick,
       type: params.buttonType ?? 'button',

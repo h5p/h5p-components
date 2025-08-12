@@ -4,6 +4,22 @@ H5P.Components = H5P.Components || {};
 H5P.Components.utils = {};
 
 /**
+ * Strips html tags and converts special characters.
+ * Example: "<div>Me &amp; you</div>" is converted to "Me & you".
+ *
+ * @param {String} text The text to be parsed
+ * @returns {String} The parsed text
+ */
+H5P.Components.utils.parseString = (text) => {
+  if (text === null || text === undefined) {
+    return '';
+  }
+  const div = document.createElement('div');
+  div.innerHTML = text;
+  return div.textContent;
+};
+
+/**
  * Create an HTML element, and apply potential options/css
  * 
  * @param {string} tag The HTML tag to create
