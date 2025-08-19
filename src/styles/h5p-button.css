@@ -6,9 +6,14 @@
   border-radius: var(--h5p-theme-border-radius-medium);
   line-height: 1;
   transition: all 0.1s linear 0s;
-  cursor: pointer;
   display: flex;
   align-items: center;
+}
+
+.h5p-theme-primary-cta:not([disabled]):not([aria-disabled="true"]),
+.h5p-theme-secondary-cta:not([disabled]):not([aria-disabled="true"]),
+.h5p-theme-nav-button:not([disabled]):not([aria-disabled="true"]) {
+  cursor: pointer;
 }
 
 .h5p-theme-primary-cta,
