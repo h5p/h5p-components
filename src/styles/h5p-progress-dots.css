@@ -62,6 +62,5 @@
 .h5p-progress-dot:focus {
   transform: scale(1.15);
   outline: 2px ridge var(--h5p-theme-main-cta-base);
-  border-radius: 4px;
   outline-offset: 2px;
 }
