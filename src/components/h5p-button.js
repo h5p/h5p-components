@@ -53,7 +53,7 @@ H5P.Components.Button = (function () {
     });
 
     if (params.tooltip) {
-      H5P.Tooltip(button, { text: params.tooltip });
+      H5P.Tooltip(button, { text: params.tooltip, position: params.tooltipPosition ?? 'top' });
     }
 
     return button;
