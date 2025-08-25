@@ -121,6 +121,12 @@
   border-color: var(--h5p-theme-stroke-1);
 }
 
+.h5p-theme .h5p-cardholder.selected{
+  outline: solid 9px var(--h5p-theme-contrast-cta-white);
+  outline-offset: -0.2em; /* Matching border from card */
+  box-shadow: 0 0 0 9px var(--h5p-theme-ui-base); /* 3px of outline */
+}
+
 /* ICONS */
 .h5p-theme-check:before {
   content: "\e908";
