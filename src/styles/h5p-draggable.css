@@ -126,3 +126,20 @@
   background-color: var(--h5p-theme-feedback-incorrect-third);
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--h5p-theme-feedback-incorrect-third), transparent 30%);
 }
+
+/* Feedback icon */
+.h5p-component-draggable.h5p-drag-draggable-correct:after {
+  display: inline-grid;
+  align-items: center;
+  font-family: 'h5p-theme';
+  content: "\e903";
+  color: var(--h5p-theme-feedback-correct-main);
+}
+
+.h5p-component-draggable.h5p-drag-draggable-wrong:after {
+  display: inline-grid;
+  align-items: center;
+  font-family: 'h5p-theme';
+  content: "\e902";
+  color: var(--h5p-theme-feedback-incorrect-main);
+}
