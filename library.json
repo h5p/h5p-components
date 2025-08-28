@@ -32,6 +32,9 @@
     },
     {
       "path": "src/components/h5p-navigation.js"
+    },
+    {
+      "path": "src/components/h5p-draggable.js"
     }
   ],
   "preloadedCss": [
@@ -58,6 +61,16 @@
     },
     {
       "path": "src/styles/h5p-navigation.css"
+    },
+    {
+      "path": "src/styles/h5p-draggable.css"
+    }
+  ],
+  "preloadedDependencies": [
+    {
+      "machineName": "jQuery.ui",
+      "majorVersion": 1,
+      "minorVersion": 10
     }
   ]
 }
