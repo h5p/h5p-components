@@ -23,12 +23,18 @@ H5P.Components.Draggable = (function ($) {
    */
   function Draggable(params) {
     const { createElement } = H5P.Components.utils;
-    // @todo VA-1146: Rename to 'h5p-draggable'. Currently using longer classname to avoid
-    // conflict with class in Drag the Words. 
-    let classes = 'h5p-component-draggable';
+    let classes = 'h5p-draggable';
 
     if (params.hasHandle) {
-      classes += ' h5p-component-draggable--has-handle';
+      classes += ' h5p-draggable--has-handle';
+    }
+
+    if (params.statusChangesBackground) {
+      classes += ' h5p-draggable--background-status';
+    }
+
+    if (params.pointsAndStatus) {
+      classes += ' h5p-draggable--points-and-status';
     }
 
     const draggable = createElement('div', {
