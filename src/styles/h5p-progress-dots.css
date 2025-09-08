@@ -59,8 +59,8 @@
   outline: none
 }
 
-.h5p-progress-dot:focus {
+.h5p-progress-dot:focus-visible {
   transform: scale(1.15);
-  outline: 2px ridge var(--h5p-theme-main-cta-base);
+  outline: 2px ridge var(--h5p-theme-contrast-cta-white);
   outline-offset: 2px;
 }

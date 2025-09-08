@@ -33,13 +33,13 @@
   opacity: 1; /* Firefox */
 }
 
-.h5p-theme-input:focus, .h5p-theme-input:focus-within {
+.h5p-theme-input:focus-visible, .h5p-theme-input:focus-within {
   outline: none;
   /* box-shadow: 0 0 0.5em 0 var(--h5p-theme-main-cta-base);*/
   border-color: var(--h5p-theme-main-cta-base);
 }
 
-.h5p-theme-input:has(.h5p-theme-primary-cta:focus) {
+.h5p-theme-input:has(.h5p-theme-primary-cta:focus-visible) {
   border-color: var(--h5p-theme-stroke-1);
 }
 
