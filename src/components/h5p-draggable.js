@@ -7,6 +7,7 @@ H5P.Components.Draggable = (function ($) {
    * @typedef DraggableParams
    * @type {object}
    * @property {string} label A label for the draggable element.
+   * @property {HTMLElement} [dom] A DOM element to use as the draggable element. Label will be used as fallback.
    * @property {[number]} tabIndex Tabindex to use on the draggable element (default 0).
    * @property {[boolean]} ariaGrabbed Initialize the grabbed state on the draggable (default false).
    * @property {[boolean]} hasHandle A boolean determining if the draggable has visual handles or not.
@@ -39,10 +40,16 @@ H5P.Components.Draggable = (function ($) {
 
     const draggable = createElement('div', {
       classList: classes,
-      innerHTML: `<span>${params.label}</span><span class="h5p-hidden-read"></span>`,
       role: 'button',
       tabIndex: params.tabIndex ?? 0,
     });
+
+    if (params.dom) {
+      draggable.append(params.dom);
+    }
+    else {
+      draggable.innerHTML = `<span>${params.label}</span><span class="h5p-hidden-read"></span>`;
+    }
 
     // Have to set it like this, because it cannot be set with createElement.
     draggable.setAttribute('aria-grabbed', params.ariaGrabbed ?? false);
