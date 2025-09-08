@@ -1,6 +1,7 @@
 .h5p-draggable {
   --opacity: 1;
-  display: flex;
+  --handle-width: 16px;
+
   align-items: center;
   background: hsl(from var(--h5p-theme-alternative-base) h s l / var(--content-opacity, 1));
   border: solid 2px hsl(from var(--h5p-theme-alternative-base) h s l / var(--content-opacity, 1));
@@ -27,7 +28,7 @@
 
 .h5p-draggable.h5p-draggable--has-handle:not(.h5p-draggable-correct):not(.h5p-draggable-wrong) {
   /* Matching the size of the handle */
-  padding-left: 16px;
+  padding-left: var(--handle-width);
 }
 
 .h5p-draggable span:not(.h5p-hidden-read),
