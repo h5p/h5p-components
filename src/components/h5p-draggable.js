@@ -62,7 +62,31 @@ H5P.Components.Draggable = (function ($) {
       stop: params.handleDragStopEvent,
       containment: params.containment,
     });
-    
+
+    /**
+     * Set opacity of element content
+     * @param {number} value Opacity value between 0 and 100.
+     */
+    const setContentOpacity = (value) => {
+      if (typeof value !== 'number' || isNaN(value)) {
+        value = 100;
+      }
+
+      sanitizedValue = Math.max(0, Math.min(value, 100)) / 100;
+      draggable.style.setProperty('--content-opacity', sanitizedValue);
+    };
+
+    const setOpacity = (value) => {
+      if (typeof value !== 'number' || isNaN(value)) {
+        value = 100;
+      }
+
+      sanitizedValue = Math.max(0, Math.min(value, 100)) / 100;
+      draggable.style.setProperty('--opacity', sanitizedValue);
+    };
+
+    draggable.setContentOpacity = setContentOpacity;
+    draggable.setOpacity = setOpacity;
 
     return draggable;
   }

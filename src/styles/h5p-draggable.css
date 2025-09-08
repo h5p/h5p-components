@@ -1,20 +1,21 @@
 .h5p-draggable {
+  --opacity: 1;
   display: flex;
   align-items: center;
-  /* Do we need this padding for drag-text? It is 8px vs the handle that is 16px? */
-  /* padding: 0 var(--h5p-theme-spacing-xxs) 0 0; */
-  padding: 0;
-  margin: var(--h5p-theme-spacing-xxs);
-  vertical-align: top;
-  text-align: center;
-  line-height: var(--h5p-theme-spacing-s);
-  font-weight: bold;
-  background: var(--h5p-theme-alternative-base);
+  background: hsl(from var(--h5p-theme-alternative-base) h s l / var(--content-opacity, 1));
+  border: solid 2px hsl(from var(--h5p-theme-alternative-base) h s l / var(--content-opacity, 1));
+  border-bottom-color: hsl(from var(--h5p-theme-alternative-dark) h s l / var(--content-opacity, 1));
   border-radius: var(--h5p-theme-border-radius-medium);
-  box-shadow: 0px 1px 0em 0px var(--h5p-theme-alternative-dark);
+  box-shadow: 0px 1px 0em 0px hsl(from var(--h5p-theme-alternative-dark) h s l / var(--content-opacity, 1));
+  display: flex;
+  font-weight: bold;
+  line-height: var(--h5p-theme-spacing-s);
+  margin: var(--h5p-theme-spacing-xxs);
+  opacity: var(--opacity);
+  padding: 0;
+  text-align: center;
+  vertical-align: top;
   z-index: 3;
-  border: solid 2px var(--h5p-theme-alternative-base);
-  border-bottom-color: var(--h5p-theme-alternative-dark);
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -95,9 +96,8 @@
 .h5p-draggable.h5p-draggable--dropped:not(.ui-draggable-disabled).hover,
 .h5p-draggable:not(.ui-draggable-disabled):hover {
   color: var(--h5p-theme-text-primary);
-  background: var(--h5p-theme-alternative-dark);
-  border-color: var(--h5p-theme-alternative-dark);
-  box-shadow: 0px 3px 0.3em 0px var(--h5p-theme-alternative-darker);
+  background: hsl(from var(--h5p-theme-alternative-dark) h s l / var(--content-opacity, 1));
+  box-shadow: 0px 3px 0.3em 0px hsl(from var(--h5p-theme-alternative-darker) h s l / var(--content-opacity, 1));
   border-color: var(--h5p-theme-contrast-cta-white);
 }
 
