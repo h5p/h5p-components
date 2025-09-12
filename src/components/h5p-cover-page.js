@@ -4,7 +4,7 @@ H5P.Components = H5P.Components || {};
 
 H5P.Components.CoverPage = (function () {
   /**
-   * @typedef {'check' | 'retry' | 'done' | 'show-results' | 'book' | 'flip' | 'reveal-answer' | 'next' | 'previous'} CoverPageIcon
+   * @typedef {'check' | 'retry' | 'done' | 'show-results' | 'book' | 'flip' | 'next' | 'previous'} CoverPageIcon
    */
 
   /**
