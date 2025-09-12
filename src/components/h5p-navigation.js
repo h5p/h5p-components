@@ -15,6 +15,8 @@ H5P.Components.Navigation = (function () {
    * @property {[string]} previousTooltip
    * @property {[string]} nextTooltip
    * @property {[string]} lastTooltip
+   * @property {[string]} currentTooltip
+   * @property {[string]} totalTooltip
    * The items below are used by ProgressDots
    * @property {string} jumpToQuestion
    * @property {string} answeredText
@@ -47,6 +49,70 @@ H5P.Components.Navigation = (function () {
    * @property {[boolean]} showDisabledButtons If true, buttons will be disabled instead of hidden when not usable.
    *  @property {[Array]} titles Array of titles for each page/chapter, used when progressType is 'text'.
    */
+
+  /**
+   * Create DOM elements from text with placeholders
+   * @param {string} text - Text containing placeholders like @current, @total
+   * @param {object} replacements - Object mapping placeholder names to replacement functions
+   * @returns {[Node]} Array of DOM nodes (text nodes and elements)
+   */
+  function createElementsFromPlaceholders(text, replacements) {
+    const placeholders = Object.keys(replacements);
+    const regExp = new RegExp(`(${placeholders.map(p => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`, 'g');
+
+    return text.split(regExp)
+      .filter(part => part !== '')
+      .map((part) => replacements[part] ? replacements[part]() : document.createTextNode(part));
+  }
+
+  /**
+   * Create a span element with optional tooltip
+   * @param {string} className - CSS class name for the span
+   * @param {string|number} content - Text content for the span
+   * @param {string} [tooltipText] - Optional tooltip text
+   * @returns {HTMLElement} The span element
+   */
+  function createProgressSpan(className, content, tooltipText) {
+    const { createElement } = H5P.Components.utils;
+
+    const span = createElement('span', {
+      classList: className,
+      innerText: content,
+    });
+
+    if (tooltipText) {
+      H5P.Tooltip(span, { text: tooltipText, position: 'top' });
+    }
+
+    return span;
+  }
+
+  /**
+   * Create a progress text element with current/total placeholders
+   * @param {object} params - Parameters for creating progress text
+   * @param {string} params.textualProgress - Text template with @current and @total placeholders
+   * @param {number} params.currentIndex - Current index (0-based)
+   * @param {number} params.navigationLength - Total number of items
+   * @param {object} params.texts - Text configuration object
+   * @param {string} [params.texts.currentTooltip] - Tooltip for current index
+   * @param {string} [params.texts.totalTooltip] - Tooltip for total count
+   * @returns {HTMLElement} The complete progressText element
+   */
+  function createProgressText({ textualProgress, currentIndex, navigationLength, texts = {} }) {
+    const { createElement } = H5P.Components.utils;
+
+    const domParts = createElementsFromPlaceholders(textualProgress, {
+      '@current': () => createProgressSpan('progress-current', currentIndex + 1, texts.currentTooltip),
+      '@total': () => createProgressSpan('progress-last', navigationLength, texts.totalTooltip)
+    });
+
+    const progressText = createElement('div', {
+      classList: 'progress-text',
+    });
+
+    domParts.forEach(part => progressText.appendChild(part));
+    return progressText;
+  }
 
   /**
    * Create a navigation component, with optional progress components.
@@ -129,12 +195,13 @@ H5P.Components.Navigation = (function () {
         classList: 'progress-container h5p-theme-progress',
       });
 
-      progressText = createElement('span', {
-        classList: 'progress-text',
+      progressText = createProgressText({
+        textualProgress: params.texts.textualProgress,
+        currentIndex: index,
+        navigationLength: params.navigationLength,
+        texts: params.texts
       });
-      progressText.textContent = params.texts.textualProgress
-        .replace('@current', index + 1)
-        .replace('@total', params.navigationLength);
+
       progressContainer.appendChild(progressText);
 
       // Page chapter title used in IB
@@ -245,11 +312,11 @@ H5P.Components.Navigation = (function () {
 
     const setCurrentIndex = (newIndex) => {
       index = newIndex;
-      
+
       if (title && params.titles && params.titles[index]) {
         title.textContent = params.titles[index];
       }
-      
+
       if (progressBar) {
         progressBar.updateProgressBar(index);
       }
