@@ -72,7 +72,7 @@ H5P.Components.Draggable = (function ($) {
         value = 100;
       }
 
-      sanitizedValue = Math.max(0, Math.min(value, 100)) / 100;
+      const sanitizedValue = Math.max(0, Math.min(value, 100)) / 100;
       draggable.style.setProperty('--content-opacity', sanitizedValue);
     };
 
@@ -81,7 +81,7 @@ H5P.Components.Draggable = (function ($) {
         value = 100;
       }
 
-      sanitizedValue = Math.max(0, Math.min(value, 100)) / 100;
+      const sanitizedValue = Math.max(0, Math.min(value, 100)) / 100;
       draggable.style.setProperty('--opacity', sanitizedValue);
     };
 
