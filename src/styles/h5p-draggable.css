@@ -125,13 +125,6 @@
   border-color: var(--h5p-theme-contrast-cta-white);
 }
 
-
-.h5p-draggable[aria-grabbed='true'] {
-  z-index: 5;
-  box-shadow: 0 0 0.5em 0 var(--h5p-theme-contrast-cta-white);
-  border-color: var(--h5p-theme-contrast-cta-white);
-}
-
 .h5p-draggable.h5p-draggable--dropped.h5p-drag-draggable-correct {
   box-shadow: none;
   border: solid 2px var(--h5p-theme-feedback-correct-third);
