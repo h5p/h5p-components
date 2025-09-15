@@ -7,6 +7,7 @@ H5P.Components.Draggable = (function ($) {
    * @typedef DraggableParams
    * @type {object}
    * @property {string} label A label for the draggable element.
+   * @property {HTMLElement} [dom] A DOM element to use as the draggable element. Label will be used as fallback.
    * @property {[number]} tabIndex Tabindex to use on the draggable element (default 0).
    * @property {[boolean]} ariaGrabbed Initialize the grabbed state on the draggable (default false).
    * @property {[boolean]} hasHandle A boolean determining if the draggable has visual handles or not.
@@ -23,20 +24,32 @@ H5P.Components.Draggable = (function ($) {
    */
   function Draggable(params) {
     const { createElement } = H5P.Components.utils;
-    // @todo VA-1146: Rename to 'h5p-draggable'. Currently using longer classname to avoid
-    // conflict with class in Drag the Words. 
-    let classes = 'h5p-component-draggable';
+    let classes = 'h5p-draggable';
 
     if (params.hasHandle) {
-      classes += ' h5p-component-draggable--has-handle';
+      classes += ' h5p-draggable--has-handle';
+    }
+
+    if (params.statusChangesBackground) {
+      classes += ' h5p-draggable--background-status';
+    }
+
+    if (params.pointsAndStatus) {
+      classes += ' h5p-draggable--points-and-status';
     }
 
     const draggable = createElement('div', {
       classList: classes,
-      innerHTML: `<span>${params.label}</span><span class="h5p-hidden-read"></span>`,
       role: 'button',
       tabIndex: params.tabIndex ?? 0,
     });
+
+    if (params.dom) {
+      draggable.append(params.dom);
+    }
+    else {
+      draggable.innerHTML = `<span>${params.label}</span><span class="h5p-hidden-read"></span>`;
+    }
 
     // Have to set it like this, because it cannot be set with createElement.
     draggable.setAttribute('aria-grabbed', params.ariaGrabbed ?? false);
@@ -49,7 +62,31 @@ H5P.Components.Draggable = (function ($) {
       stop: params.handleDragStopEvent,
       containment: params.containment,
     });
-    
+
+    /**
+     * Set opacity of element content
+     * @param {number} value Opacity value between 0 and 100.
+     */
+    const setContentOpacity = (value) => {
+      if (typeof value !== 'number' || isNaN(value)) {
+        value = 100;
+      }
+
+      const sanitizedValue = Math.max(0, Math.min(value, 100)) / 100;
+      draggable.style.setProperty('--content-opacity', sanitizedValue);
+    };
+
+    const setOpacity = (value) => {
+      if (typeof value !== 'number' || isNaN(value)) {
+        value = 100;
+      }
+
+      const sanitizedValue = Math.max(0, Math.min(value, 100)) / 100;
+      draggable.style.setProperty('--opacity', sanitizedValue);
+    };
+
+    draggable.setContentOpacity = setContentOpacity;
+    draggable.setOpacity = setOpacity;
 
     return draggable;
   }
