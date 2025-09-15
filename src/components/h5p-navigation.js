@@ -88,6 +88,29 @@ H5P.Components.Navigation = (function () {
   }
 
   /**
+   * Update progress text element with new current/total values
+   * @param {HTMLElement} progressText - Existing progress text element to update
+   * @param {string} textualProgress - Text template with @current and @total placeholders
+   * @param {number} currentIndex - Current index (0-based)
+   * @param {number} navigationLength - Total number of items
+   * @param {object} texts - Text configuration object
+   * @param {string} [params.texts.currentTooltip] - Tooltip for current index
+   * @param {string} [params.texts.totalTooltip] - Tooltip for total count*
+   */
+  function updateProgressText(progressText, textualProgress, currentIndex, navigationLength, texts = {}) {
+    // Clear existing content
+    progressText.innerHTML = '';
+
+    // Create new content
+    const domParts = createElementsFromPlaceholders(textualProgress, {
+      '@current': () => createProgressSpan('progress-current', currentIndex + 1, texts.currentTooltip),
+      '@total': () => createProgressSpan('progress-last', navigationLength, texts.totalTooltip)
+    });
+
+    domParts.forEach(part => progressText.appendChild(part));
+  }
+
+  /**
    * Create a progress text element with current/total placeholders
    * @param {object} params - Parameters for creating progress text
    * @param {string} params.textualProgress - Text template with @current and @total placeholders
@@ -101,16 +124,12 @@ H5P.Components.Navigation = (function () {
   function createProgressText({ textualProgress, currentIndex, navigationLength, texts = {} }) {
     const { createElement } = H5P.Components.utils;
 
-    const domParts = createElementsFromPlaceholders(textualProgress, {
-      '@current': () => createProgressSpan('progress-current', currentIndex + 1, texts.currentTooltip),
-      '@total': () => createProgressSpan('progress-last', navigationLength, texts.totalTooltip)
-    });
-
     const progressText = createElement('div', {
       classList: 'progress-text',
     });
 
-    domParts.forEach(part => progressText.appendChild(part));
+    updateProgressText(progressText, textualProgress, currentIndex, navigationLength, texts);
+
     return progressText;
   }
 
@@ -321,9 +340,13 @@ H5P.Components.Navigation = (function () {
         progressBar.updateProgressBar(index);
       }
       else if (progressText) {
-        progressText.textContent = params.texts.textualProgress
-          .replace('@current', index + 1)
-          .replace('@total', params.navigationLength);
+        updateProgressText(
+          progressText,
+          params.texts.textualProgress,
+          index,
+          params.navigationLength,
+          params.texts,
+        );
       }
       else if (dotsNavigation) {
         dotsNavigation.toggleCurrentDot(index);
