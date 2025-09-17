@@ -5,7 +5,7 @@ H5P.Components = H5P.Components || {};
 H5P.Components.Button = (function () {
   /**
    * @typedef {'primary' | 'secondary' | 'nav'} ButtonStyleType
-   * @typedef {'check' | 'retry' | 'done' | 'show-results' | 'book' | 'flip' | 'reveal-answer' | 'next' | 'previous'} ButtonIcon
+   * @typedef {'check' | 'retry' | 'done' | 'show-results' | 'book' | 'flip' | 'next' | 'previous' | 'show-solutions'} ButtonIcon
    */
 
   /**

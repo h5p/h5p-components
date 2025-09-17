@@ -275,7 +275,7 @@ H5P.Components.Navigation = (function () {
         ariaLabel: params?.texts.lastButtonAria,
         tooltip: params?.texts.lastTooltip,
         icon: 'show-results',
-        classes: 'h5p-theme-submit h5p-visibility-hidden',
+        classes: 'h5p-visibility-hidden',
         onClick: (event) => {
           next();
           params.handleLast(event);

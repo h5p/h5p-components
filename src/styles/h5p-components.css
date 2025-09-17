@@ -126,9 +126,14 @@
   font-family: "h5p-theme";
 }
 
-.h5p-theme-show-results:before {
+.h5p-theme-show-solutions:before {
   content: "\e905";
   font-family: "h5p-theme";
+}
+
+.h5p-theme-show-results:before {
+  content: "\e904";
+  font-family: 'h5p-theme';
 }
 
 .h5p-theme-retry:before {
@@ -143,11 +148,6 @@
 
 .h5p-theme-flip:before {
   content: "\e907";
-  font-family: "h5p-theme";
-}
-
-.h5p-theme-reveal-answer:before {
-  content: "\e905";
   font-family: "h5p-theme";
 }
 
@@ -174,16 +174,6 @@
 .h5p-theme-download:before {
   content: "\e911";
   font-family: "h5p-theme";
-}
-
-.h5p-theme-submit:before {
-  content: "\e90a";
-  font-family: "h5p-theme";
-}
-
-.h5p-theme-results::before {
-  content: "\e904";
-  font-family: 'h5p-theme';
 }
 
 .h5p-theme-export::before {

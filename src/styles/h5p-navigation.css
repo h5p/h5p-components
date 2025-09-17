@@ -94,9 +94,9 @@
 }
 
 /* We do not want the next button to take up space if we're showing the last/finish/submit button */
-.h5p-navigation .h5p-theme-next.h5p-visibility-hidden:has(+ .h5p-theme-submit:not(.h5p-visibility-hidden)) {
+.h5p-navigation .h5p-theme-next.h5p-visibility-hidden:has(+ .h5p-theme-show-results:not(.h5p-visibility-hidden)) {
   display: none;
 }
-.h5p-navigation .h5p-theme-next + .h5p-theme-submit.h5p-visibility-hidden {
+.h5p-navigation .h5p-theme-next + .h5p-theme-show-results.h5p-visibility-hidden {
   display: none;
 }
