@@ -1,10 +1,11 @@
 .h5p-draggable {
   --opacity: 1;
-  --handle-width: 16px;
+  --handle-width: 16px; /* May be used by component parent */
+  --border-width: 2px; /* May be used by component parent */
 
   align-items: center;
   background: hsl(from var(--h5p-theme-alternative-base) h s l / var(--content-opacity, 1));
-  border: solid 2px hsl(from var(--h5p-theme-alternative-base) h s l / var(--content-opacity, 1));
+  border: solid var(--border-width) hsl(from var(--h5p-theme-alternative-base) h s l / var(--content-opacity, 1));
   border-bottom-color: hsl(from var(--h5p-theme-alternative-dark) h s l / var(--content-opacity, 1));
   border-radius: var(--h5p-theme-border-radius-medium);
   box-shadow: 0px 1px 0em 0px hsl(from var(--h5p-theme-alternative-dark) h s l / var(--content-opacity, 1));
@@ -113,9 +114,9 @@
 
 .h5p-draggable.h5p-draggable--dropped {
   width: 100%;
-  margin: 0 -2px;
+  margin: 0 calc(-1 * var(--border-width));
   white-space: nowrap;
-  border: 2px solid var(--h5p-theme-alternative-base);
+  border: var(--border-width) solid var(--h5p-theme-alternative-base);
   border-color: var(--h5p-theme-alternative-darker);
 }
 
@@ -127,14 +128,14 @@
 
 .h5p-draggable.h5p-draggable--dropped.h5p-drag-draggable-correct {
   box-shadow: none;
-  border: solid 2px var(--h5p-theme-feedback-correct-third);
+  border: solid var(--border-width) var(--h5p-theme-feedback-correct-third);
   color: var(--h5p-theme-feedback-correct-main);
   background-color: var(--h5p-theme-feedback-correct-secondary);
 }
 
 .h5p-draggable.h5p-draggable--dropped.h5p-drag-draggable-wrong {
   box-shadow: none;
-  border: solid 2px var(--h5p-theme-feedback-incorrect-third);
+  border: solid var(--border-width) var(--h5p-theme-feedback-incorrect-third);
   background-color: var(--h5p-theme-feedback-incorrect-secondary);
 }
 
@@ -210,7 +211,7 @@
 .h5p-drag-text .h5p-drag-show-solution-container.incorrect {
   color: var(--h5p-theme-feedback-correct-main);
   font-weight: bold;
-  border: 2px var(--h5p-theme-feedback-correct-main) dashed;
+  border: var(--border-width) var(--h5p-theme-feedback-correct-main) dashed;
   background-color: var(--h5p-theme-feedback-correct-secondary);
   border-radius: var(--h5p-theme-border-radius-medium);
   margin-left: var(--h5p-theme-spacing-xxs);
