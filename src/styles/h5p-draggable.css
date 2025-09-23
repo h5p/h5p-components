@@ -12,7 +12,6 @@
   display: flex;
   font-weight: bold;
   line-height: var(--h5p-theme-spacing-s);
-  margin: var(--h5p-theme-spacing-xxs);
   opacity: var(--opacity);
   padding: 0;
   text-align: center;
