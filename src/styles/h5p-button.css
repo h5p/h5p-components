@@ -57,10 +57,6 @@
 .h5p-theme .h5p-theme-primary-cta:disabled {
   opacity: 0.4;
 
-  &::before {
-    opacity: 0;
-  }
-
   &:hover {
     padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-l);
     text-indent: 0;
@@ -78,6 +74,12 @@
   }
 }
 
+.h5p-theme .h5p-theme-secondary-cta[aria-disabled="true"],
+.h5p-theme .h5p-theme-primary-cta:disabled {
+  &::before {
+    opacity: 0;
+  }
+}
 /* PRIMARY CTA (USED FOR VALIDATION BUTTONS) */
 .h5p-theme-primary-cta,
 .h5p-theme .h5p-theme-primary-cta {
