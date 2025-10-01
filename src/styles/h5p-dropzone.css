@@ -1,0 +1,83 @@
+/* Variant "inline" */
+.h5p-dropzone.h5p-dropzone--inline {
+  position: relative;
+  display: inline-flex;
+  align-content: center;
+  height: calc(var(--h5p-theme-spacing-l) * 0.8 + 4px);
+  padding-right: calc(var(--h5p-theme-spacing-xxs)/5);
+  margin-bottom: 3px;
+  vertical-align: middle;
+}
+.h5p-dropzone.h5p-dropzone--inline [aria-dropeffect] {
+  position:relative;
+  display: flex;
+  align-items: center;
+  width: 10rem;
+  height: calc(100% - 4px);
+  border: solid 2px var(--h5p-theme-alternative-dark);
+  background-color: var(--h5p-theme-alternative-dark);
+  border-radius: var(--h5p-theme-border-radius-medium);
+  vertical-align: middle;
+  text-align: center;
+  transition: all 0.1s linear 0s;
+}
+
+.h5p-dropzone [aria-grabbed]:focus-visible,
+.h5p-dropzone.h5p-dropzone--inline [aria-dropeffect]:focus-visible {
+  outline: 2px ridge var(--h5p-theme-contrast-cta-white);
+  border-radius: 4px;
+  outline-offset: 2px;
+}
+
+.h5p-dropzone.h5p-dropzone--inline [aria-dropeffect].h5p-dropzone-correct {
+  background: var(--h5p-theme-feedback-correct-secondary);
+  border-color: var(--h5p-theme-feedback-correct-third);
+}
+
+.h5p-dropzone.h5p-dropzone--inline [aria-dropeffect].h5p-dropzone-wrong {
+  color: var(--h5p-theme-feedback-incorrect-main);
+  background-color: var(--h5p-theme-feedback-incorrect-secondary);
+  border-color: var(--h5p-theme-feedback-incorrect-third);
+}
+
+.h5p-dropzone.h5p-dropzone--inline [aria-dropeffect]:before {
+  line-height: 1.25;
+}
+
+/* Variant "area" */
+.h5p-dropzone.h5p-dropzone--area {
+  z-index: 2;
+  position: absolute;
+}
+
+.h5p-dropzone.h5p-dropzone--area > .h5p-inner {
+  height: 100%;
+  min-width: unset;
+  position: relative;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  background-color: var(--h5p-theme-alternative-dark);
+  border-radius: var(--h5p-theme-border-radius-medium);
+}
+
+/* @todo: waiting confirmation if this should be used */
+/* .h5p-dragquestion .h5p-dropzone.h5p-has-label > .h5p-inner {
+  border-radius: 0 0em 0.25em 0.25em;
+} */
+
+.h5p-dragquestion .h5p-dq-highlight-dz .h5p-dropzone > .h5p-inner.h5p-dropzone--active, .h5p-dragquestion .h5p-dq-highlight-dz-always .h5p-dropzone > .h5p-inner {
+  padding: 0;
+  border: 2px dashed var(--h5p-theme-contrast-cta-white);
+  border-style: dashed;
+}
+
+.h5p-dropzone.h5p-dropzone--area > .h5p-inner.h5p-over {
+  background: color-mix(in srgb, var(--h5p-theme-main-cta-base), transparent 60%);
+}
+
+.h5p-dropzone.h5p-dropzone--area .joubel-tip-container {
+  position: absolute;
+  right: 0.5em;
+  bottom: 0;
+  font-size: 0.8em;
+}
