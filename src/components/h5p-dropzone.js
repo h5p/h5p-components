@@ -13,6 +13,7 @@ H5P.Components.Dropzone = (function ($) {
    * @type {object}
    * @property {string} ariaLabel A label for the draggable element.
    * @property {[string]} classes Extra classes to be added to the dropzone.
+   * @property {[string]} containerClasses Extra classes to be added to the container of the dropzone.
    * @property {[number]} tabIndex Tabindex to use on the dropzone element (default -1).
    * @property {[DropzoneVariant]} The type of dropzone to use. Default is 'inline'.
    * @property {DropzoneTolerance} tolerance Specifies which mode to use for testing whether draggable is hovering over a droppable.
