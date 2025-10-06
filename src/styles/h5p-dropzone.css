@@ -60,12 +60,8 @@
   border-radius: var(--h5p-theme-border-radius-medium);
 }
 
-/* @todo: waiting confirmation if this should be used */
-/* .h5p-dragquestion .h5p-dropzone.h5p-has-label > .h5p-inner {
-  border-radius: 0 0em 0.25em 0.25em;
-} */
-
-.h5p-dragquestion .h5p-dq-highlight-dz .h5p-dropzone > .h5p-inner.h5p-dropzone--active, .h5p-dragquestion .h5p-dq-highlight-dz-always .h5p-dropzone > .h5p-inner {
+.h5p-dragquestion .h5p-dq-highlight-dz .h5p-dropzone > .h5p-inner.h5p-dropzone--active,
+.h5p-dragquestion .h5p-dq-highlight-dz-always .h5p-dropzone > .h5p-inner {
   padding: 0;
   border: 2px dashed var(--h5p-theme-contrast-cta-white);
   border-style: dashed;
@@ -80,4 +76,8 @@
   right: 0.5em;
   bottom: 0;
   font-size: 0.8em;
+}
+
+.h5p-dropzone.h5p-dropzone--area:focus-visible {
+  outline: var(--h5p-theme-contrast-cta-white) auto 1px
 }
