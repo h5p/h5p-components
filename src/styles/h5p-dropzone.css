@@ -56,7 +56,6 @@
   position: relative;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
-  background-color: var(--h5p-theme-alternative-dark);
   border-radius: var(--h5p-theme-border-radius-medium);
 }
 
@@ -99,4 +98,12 @@
 .h5p-dropzone.h5p-dropzone--area .h5p-dropzone_label > div {
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+/* General */
+.h5p-dropzone .ui-droppable-hover {
+  background-color: color-mix(in srgb, var(--h5p-theme-contrast-cta-white), transparent 60%);
+  border-style: dashed;
+  border-color: var(--h5p-theme-main-cta-dark);
+  cursor: pointer;
 }
