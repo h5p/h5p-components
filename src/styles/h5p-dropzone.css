@@ -101,7 +101,8 @@
 }
 
 /* General */
-.h5p-dropzone .ui-droppable-hover {
+.h5p-dropzone.h5p-dropzone--inline .ui-droppable-hover,
+.h5p-dropzone.h5p-dropzone--area .ui-droppable-hover {
   background-color: color-mix(in srgb, var(--h5p-theme-contrast-cta-white), transparent 60%);
   border-style: dashed;
   border-color: var(--h5p-theme-main-cta-dark);
