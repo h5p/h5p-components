@@ -2,7 +2,7 @@
 .h5p-dropzone.h5p-dropzone--inline {
   position: relative;
   display: inline-flex;
-  align-content: center;
+  align-items: center;
   height: calc(var(--h5p-theme-spacing-l) * 0.8 + 0.25rem);
   padding-right: calc(var(--h5p-theme-spacing-xxs)/5);
   margin-bottom: 3px;
@@ -13,7 +13,7 @@
   display: flex;
   align-items: center;
   width: 10rem;
-  height: calc(100% - 4px);
+  height: calc(100% - 0.25rem);
   border: solid 2px var(--h5p-theme-alternative-dark);
   background-color: var(--h5p-theme-alternative-dark);
   border-radius: var(--h5p-theme-border-radius-medium);
