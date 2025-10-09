@@ -11,9 +11,9 @@ H5P.Components.Dropzone = (function ($) {
   /**
    * @typedef DropzoneParams
    * @type {object}
-   * @property {string} role Role for the container element of the dropzone.
-   * @property {string} ariaLabel A label for the draggable element.
-   * @property {boolean} ariaDisabled If the container element of the dropzone you have aria disabled.
+   * @property {string} role Role for the dropzone.
+   * @property {string} ariaLabel A label for the dropzone element.
+   * @property {boolean} ariaDisabled If the dropzone should be aria disabled.
    * @property {string} [classes] Extra classes to be added to the dropzone.
    * @property {string} [containerClasses] Extra classes to be added to the container of the dropzone.
    * @property {number} [tabIndex] Tabindex to use on the dropzone element (default -1).
@@ -28,9 +28,9 @@ H5P.Components.Dropzone = (function ($) {
    */
 
   /**
-   * Create a themed, Draggable element
-   * @param {DropzoneParams} params A set of parameters to configure the Draggable component.
-   * @returns {HTMLElement} The Draggable element.
+   * Create a themed, Dropzone element
+   * @param {DropzoneParams} params A set of parameters to configure the Dropzone component.
+   * @returns {HTMLElement} The dropzone element
    */
   function Dropzone(params) {
     const { createElement } = H5P.Components.utils;

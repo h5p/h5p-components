@@ -17,8 +17,6 @@
   border: solid 2px var(--h5p-theme-alternative-dark);
   background-color: var(--h5p-theme-alternative-dark);
   border-radius: var(--h5p-theme-border-radius-medium);
-  vertical-align: middle;
-  text-align: center;
   transition: all 0.1s linear 0s;
 }
 
@@ -55,7 +53,6 @@
   min-width: unset;
   position: relative;
   box-sizing: border-box;
-  -moz-box-sizing: border-box;
   border-radius: var(--h5p-theme-border-radius-medium);
   background-color: var(--h5p-theme-alternative-dark);
 }
