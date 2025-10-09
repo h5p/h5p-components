@@ -11,14 +11,17 @@ H5P.Components.Dropzone = (function ($) {
   /**
    * @typedef DropzoneParams
    * @type {object}
+   * @property {string} role Role for the container element of the dropzone.
    * @property {string} ariaLabel A label for the draggable element.
-   * @property {[string]} classes Extra classes to be added to the dropzone.
-   * @property {[string]} containerClasses Extra classes to be added to the container of the dropzone.
-   * @property {[number]} tabIndex Tabindex to use on the dropzone element (default -1).
-   * @property {[boolean]} hasOpaqueBackground If the dropzone background is opaque.
-   * @property {[DropzoneVariant]} variant The type of dropzone to use. Default is 'inline'.
+   * @property {boolean} ariaDisabled If the container element of the dropzone you have aria disabled.
+   * @property {string} [classes] Extra classes to be added to the dropzone.
+   * @property {string} [containerClasses] Extra classes to be added to the container of the dropzone.
+   * @property {number} [tabIndex] Tabindex to use on the dropzone element (default -1).
+   * @property {boolean} [hasOpaqueBackground] If the dropzone background is opaque.
+   * @property {DropzoneVariant} [variant] The type of dropzone to use. Default is 'inline'.
    * @property {DropzoneTolerance} tolerance Specifies which mode to use for testing whether draggable is hovering over a droppable.
-   * @property {[string]} areaLabel A label used for a dropzone area.
+   * @property {string} [areaLabel] A label used for a dropzone area.
+   * @property {function} handleAcceptEvent A function for jquery-droppable accept option.
    * @property {function} handleDropEvent A callback function for the drop event.
    * @property {function} handleDropOutEvent A callback function for the out event.
    * @property {function} handleDropOverEvent A callback function for the over event.
@@ -31,25 +34,20 @@ H5P.Components.Dropzone = (function ($) {
    */
   function Dropzone(params) {
     const { createElement } = H5P.Components.utils;
-    let classes = 'h5p-dropzone ';
-
-    if (params.variant === 'area') {
-      classes += ' h5p-dropzone--area';
-    }
-    else {
-      classes += ' h5p-dropzone--inline';
-    }
+    const classList = ['h5p-dropzone',
+      params.variant === 'area' ? 'h5p-dropzone--area' : 'h5p-dropzone--inline'
+    ];
 
     if (typeof params.containerClasses === 'string') {
-      classes += ` ${params.containerClasses}`;
+      classList.push(params.containerClasses);
     }
 
     if (!params.hasOpaqueBackground) {
-      classes += ' h5p-dropzone--opaque-background';
+      classList.push('h5p-dropzone--opaque-background');
     }
 
     const options = {
-      classList: classes,
+      classList: classList.join(' '),
       role: params.role,
       ariaDisabled: params.ariaDisabled
     };

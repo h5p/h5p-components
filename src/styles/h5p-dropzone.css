@@ -3,7 +3,7 @@
   position: relative;
   display: inline-flex;
   align-content: center;
-  height: calc(var(--h5p-theme-spacing-l) * 0.8 + 4px);
+  height: calc(var(--h5p-theme-spacing-l) * 0.8 + 0.25rem);
   padding-right: calc(var(--h5p-theme-spacing-xxs)/5);
   margin-bottom: 3px;
   vertical-align: middle;
@@ -25,7 +25,7 @@
 .h5p-dropzone [aria-grabbed]:focus-visible,
 .h5p-dropzone.h5p-dropzone--inline [aria-dropeffect]:focus-visible {
   outline: 2px ridge var(--h5p-theme-contrast-cta-white);
-  border-radius: 4px;
+  border-radius: var(--h5p-theme-border-radius-medium);
   outline-offset: 2px;
 }
 
@@ -96,7 +96,7 @@
   left: 0;
   bottom: 100%;
   white-space: nowrap;
-  border-radius: 0.25em 0.25em 0 0;
+  border-radius: var(--h5p-theme-border-radius-medium) var(--h5p-theme-border-radius-medium) 0 0;
   position: absolute;
   background-color: var(--h5p-theme-alternative-dark);
   color: var(--h5p-theme-text-primary);
