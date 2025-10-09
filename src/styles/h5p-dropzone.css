@@ -60,7 +60,7 @@
   background-color: var(--h5p-theme-alternative-dark);
 }
 
-.h5p-dropzone.h5p-dropzone--area.h5p-dropzone--opaque-background > .h5p-inner {
+.h5p-dropzone.h5p-dropzone--area.h5p-dropzone--opaque-background:has(.h5p-dropzone_label) > .h5p-inner {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }

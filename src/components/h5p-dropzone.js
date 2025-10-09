@@ -16,7 +16,7 @@ H5P.Components.Dropzone = (function ($) {
    * @property {[string]} containerClasses Extra classes to be added to the container of the dropzone.
    * @property {[number]} tabIndex Tabindex to use on the dropzone element (default -1).
    * @property {[boolean]} hasOpaqueBackground If the dropzone background is opaque.
-   * @property {[DropzoneVariant]} The type of dropzone to use. Default is 'inline'.
+   * @property {[DropzoneVariant]} variant The type of dropzone to use. Default is 'inline'.
    * @property {DropzoneTolerance} tolerance Specifies which mode to use for testing whether draggable is hovering over a droppable.
    * @property {[string]} areaLabel A label used for a dropzone area.
    * @property {function} handleDropEvent A callback function for the drop event.
