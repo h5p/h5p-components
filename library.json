@@ -35,6 +35,9 @@
     },
     {
       "path": "src/components/h5p-draggable.js"
+    },
+    {
+      "path": "src/components/h5p-dropzone.js"
     }
   ],
   "preloadedCss": [
@@ -64,6 +67,9 @@
     },
     {
       "path": "src/styles/h5p-draggable.css"
+    },
+    {
+      "path": "src/styles/h5p-dropzone.css"
     }
   ],
   "preloadedDependencies": [
