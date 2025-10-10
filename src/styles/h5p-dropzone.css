@@ -71,7 +71,7 @@
 }
 
 .h5p-dropzone.h5p-dropzone--area > .h5p-inner.h5p-over {
-  background: color-mix(in srgb, var(--h5p-theme-main-cta-base), transparent 60%);
+  background: var(--h5p-theme-contrast-cta-light);
 }
 
 .h5p-dropzone.h5p-dropzone--area .joubel-tip-container {
@@ -105,9 +105,8 @@
 }
 
 /* General */
-.h5p-dropzone.h5p-dropzone--inline .ui-droppable-hover,
-.h5p-dropzone.h5p-dropzone--area .ui-droppable-hover {
-  background-color: color-mix(in srgb, var(--h5p-theme-contrast-cta-white), transparent 60%);
+.h5p-dropzone.h5p-dropzone--inline .h5p-dropzone--hover {
+  background-color: var(--h5p-theme-contrast-cta-light);
   border-style: dashed;
   border-color: var(--h5p-theme-main-cta-dark);
   cursor: pointer;
