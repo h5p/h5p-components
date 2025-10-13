@@ -13,6 +13,7 @@ H5P.Components.Dropzone = (function ($) {
    * @type {object}
    * @property {string} role Role for the dropzone.
    * @property {string} ariaLabel A label for the dropzone element.
+   * @property {number} [index] An index to track which dropzone this element is in a set. Defaults to -1.
    * @property {boolean} ariaDisabled If the dropzone should be aria disabled.
    * @property {string} [classes] Extra classes to be added to the dropzone.
    * @property {string} [containerClasses] Extra classes to be added to the container of the dropzone.
@@ -56,11 +57,11 @@ H5P.Components.Dropzone = (function ($) {
 
     if (params.variant === 'area' && params.areaLabel) {
       const areaLabel = createElement('div', { classList: 'h5p-dropzone_label' });
-      areaLabel.textContent = params.areaLabel;
+      areaLabel.innerHTML = params.areaLabel;
       dropzoneContainer.appendChild(areaLabel);
     }
     
-    $('<div/>', {
+    const $dropzone = $('<div/>', {
       'aria-dropeffect': 'none',
       'aria-label':  params.ariaLabel,
       'tabindex': params.tabIndex ?? -1,
@@ -70,10 +71,20 @@ H5P.Components.Dropzone = (function ($) {
         activeClass: 'h5p-dropzone--active',
         tolerance: params.tolerance,
         accept: params.handleAcceptEvent,
-        over: params.handleDropOverEvent,
-        out: params.handleDropOutEvent,
-        drop: params.handleDropEvent
+        over: (event, ui) => {
+          dropzone.classList.add('h5p-dropzone--hover');
+          params.handleDropOverEvent?.(event, ui);
+        },
+        out: (event, ui) => {
+          dropzone.classList.remove('h5p-dropzone--hover');
+          params.handleDropOutEvent?.(event, ui);
+        },
+        drop: (event, ui) => {
+          dropzone.classList.remove('h5p-dropzone--hover');
+          params.handleDropEvent?.(event, ui, params.index ?? -1);
+        }
       });
+    const dropzone = $dropzone.get(0);
 
     return dropzoneContainer;
   }
