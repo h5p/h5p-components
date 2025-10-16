@@ -56,8 +56,34 @@ H5P.Components.Button = (function () {
       H5P.Tooltip(button, { text: params.tooltip, position: params.tooltipPosition ?? 'top' });
     }
 
+    if (params.icon && H5P.Components.ButtonIconOnlyObserver) {
+      H5P.Components.ButtonIconOnlyObserver.observe(button);
+    }
     return button;
   }
-
   return Button;
 })();
+
+H5P.Components.ButtonIconOnlyObserver = H5P.Components.ButtonIconOnlyObserver || new ResizeObserver(entries => {
+  for (const entry of entries) {
+    const btn = entry.target;
+    const label = btn.querySelector('.h5p-theme-label');
+    if (!label) continue;
+
+    // Compute line count based on height/lineHeight
+    const style = window.getComputedStyle(label);
+    const lineHeight = parseFloat(style.lineHeight);
+    const labelHeight = label.getBoundingClientRect().height;
+    const lineCount = Math.round(labelHeight / lineHeight);
+    if (lineCount === 0) continue;
+
+    // Check ratio (label width vs. button width)
+    const labelWidth = label.getBoundingClientRect().width;
+    const btnWidth = btn.clientWidth;
+    const ratio = labelWidth / btnWidth;
+
+    // Hide label if multiline OR label takes >85% of button width
+    const shouldHide = lineCount > 1 || ratio > 0.85;
+    btn.classList.toggle('icon-only', shouldHide);
+  }
+});
