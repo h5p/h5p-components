@@ -34,6 +34,8 @@ H5P.Components.utils.createElement = (tag, options, style = {}) => {
   return element;
 };
 
+/** @constant {number} DEFAULT_LINE_HEIGHT Default line height when it is "normal" */ 
+const DEFAULT_LINE_HEIGHT = 1.2;
 /**
  * Compute the number of lines in an element.
  * @param {HTMLElement} element The element to compute lines for.
@@ -44,7 +46,12 @@ H5P.Components.utils.computeLineCount = (element) => {
       return 0; 
   }
   const style = getComputedStyle(element);
-  const lineHeight = parseFloat(style.lineHeight);
+  let lineHeight = parseFloat(style.lineHeight);
+  
+  if (isNaN(lineHeight)) {
+    const fontSize = parseFloat(style.fontSize);
+    lineHeight = fontSize * DEFAULT_LINE_HEIGHT;
+  }
   const elementHeight = element.getBoundingClientRect().height;
   return Math.ceil(elementHeight / lineHeight);
 };

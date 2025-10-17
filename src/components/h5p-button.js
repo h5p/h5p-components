@@ -62,10 +62,12 @@ H5P.Components.Button = (function () {
 
     return button;
   }
+
   return Button;
 })();
 
-
+/** @constant {number} MAX_LABEL_LINE_COUNT Maximum number of lines for label before hiding it */ 
+/** @constant {number} MAX_LABEL_WIDTH_RATIO Maximum width ratio between label and button before hiding label */
 const MAX_LABEL_LINE_COUNT = 1;
 const MAX_LABEL_WIDTH_RATIO = 0.85;
 
@@ -85,7 +87,6 @@ H5P.Components.Button.IconOnlyObserver =
       }
       
       const ratio = H5P.Components.utils.computeWidthRatio(label, button);
-      console.log(`LineCount: ${lineCount}, Label width: ${label.getBoundingClientRect().width}, Button width: ${button.clientWidth},  button.getBoundingClientRect().width: ${button.getBoundingClientRect().width}, Ratio: ${ratio}`);
       const shouldHide = lineCount > MAX_LABEL_LINE_COUNT || ratio > MAX_LABEL_WIDTH_RATIO;
       button.classList.toggle('icon-only', shouldHide);
     }
