@@ -6,6 +6,9 @@ H5P.Components.utils = {};
 /** @constant {number} DEBOUNCE_DELAY_MS Debounce delay to use */
 const DEBOUNCE_DELAY_MS = 40;
 
+/** @constant {number} DEFAULT_LINE_HEIGHT Default line height when it is "normal" */
+const DEFAULT_LINE_HEIGHT = 1.2;
+
 /**
  * Strips html tags and converts special characters.
  * Example: "<div>Me &amp; you</div>" is converted to "Me & you".
@@ -36,9 +39,6 @@ H5P.Components.utils.createElement = (tag, options, style = {}) => {
 
   return element;
 };
-
-/** @constant {number} DEFAULT_LINE_HEIGHT Default line height when it is "normal" */
-const DEFAULT_LINE_HEIGHT = 1.2;
 /**
  * Compute the number of lines in an element.
  * @param {HTMLElement} element The element to compute lines for.
