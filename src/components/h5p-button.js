@@ -88,6 +88,13 @@ H5P.Components.Button.IconOnlyObserver =
       
       const ratio = H5P.Components.utils.computeWidthRatio(label, button);
       const shouldHide = lineCount > MAX_LABEL_LINE_COUNT || ratio > MAX_LABEL_WIDTH_RATIO;
-      button.classList.toggle('icon-only', shouldHide);
+
+      const parent = button.parentElement;
+      for(const child of parent.children) {
+        if (!(child instanceof HTMLButtonElement) || !child.isConnected) {
+          continue;
+        }
+        child.classList.toggle('icon-only', shouldHide);
+      }
     }
   }));
