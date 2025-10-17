@@ -56,6 +56,7 @@
 .h5p-theme .h5p-theme-secondary-cta:disabled,
 .h5p-theme .h5p-theme-primary-cta:disabled {
   opacity: 0.4;
+  cursor: default;
 }
 
 .h5p-theme .h5p-theme-secondary-cta[aria-disabled="true"],
