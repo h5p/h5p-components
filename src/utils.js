@@ -82,8 +82,6 @@ H5P.Components.utils.debounce = (callback, delayMs = DEBOUNCE_DELAY_25FPS_MS) =>
   let timeoutId;
   return function (...args) {
     clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => {
-      callback.apply(this, args)
-    }, delayMs);
+    timeoutId = setTimeout(() => callback.apply(this, args), delayMs);
   };
 };
