@@ -198,15 +198,3 @@
 .h5p-draggable.h5p-draggable--points-and-status.h5p-draggable-correct:after {
   content: "\e903";
 }
-
-/* Show solution answer highlight */
-.h5p-drag-text .h5p-drag-show-solution-container.incorrect {
-  color: var(--h5p-theme-feedback-correct-main);
-  font-weight: bold;
-  border: var(--border-width) var(--h5p-theme-feedback-correct-main) dashed;
-  background-color: var(--h5p-theme-feedback-correct-secondary);
-  border-radius: var(--h5p-theme-border-radius-medium);
-  margin-left: var(--h5p-theme-spacing-xxs);
-  padding: calc(var(--h5p-theme-spacing-xxs) - 3px) var(--h5p-theme-spacing-xs);
-  line-height: 1;
-}
