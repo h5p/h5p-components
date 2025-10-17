@@ -67,13 +67,13 @@ H5P.Components.Button = (function () {
 })();
 
 /** @constant {number} MAX_LABEL_LINE_COUNT Maximum number of lines for label before hiding it */ 
-/** @constant {number} MAX_LABEL_WIDTH_RATIO Maximum width ratio between label and button before hiding label */
 const MAX_LABEL_LINE_COUNT = 1;
+
+/** @constant {number} MAX_LABEL_WIDTH_RATIO Maximum width ratio between label and button before hiding label */
 const MAX_LABEL_WIDTH_RATIO = 0.85;
 
-H5P.Components.Button.IconOnlyObserver = 
-  H5P.Components.Button.IconOnlyObserver || 
-  new ResizeObserver(H5P.Components.utils.debounce((entries) => {
+H5P.Components.Button.IconOnlyObserver = H5P.Components.Button.IconOnlyObserver 
+  || new ResizeObserver(H5P.Components.utils.debounce((entries) => {
     for (const entry of entries) {
       const button = entry.target;
       if (!button.isConnected) {
@@ -90,7 +90,7 @@ H5P.Components.Button.IconOnlyObserver =
       const shouldHide = lineCount > MAX_LABEL_LINE_COUNT || ratio > MAX_LABEL_WIDTH_RATIO;
 
       const parent = button.parentElement;
-      for(const child of parent.children) {
+      for (const child of parent.children) {
         if (!(child instanceof HTMLButtonElement) || !child.isConnected) {
           continue;
         }

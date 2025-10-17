@@ -43,7 +43,7 @@ const DEFAULT_LINE_HEIGHT = 1.2;
  */
 H5P.Components.utils.computeLineCount = (element) => {
   if (!element) {
-      return 0; 
+    return 0; 
   }
   const style = getComputedStyle(element);
   let lineHeight = parseFloat(style.lineHeight);
@@ -75,9 +75,9 @@ H5P.Components.utils.computeWidthRatio = (elementA, elementB) => {
   }
 
   return widthA / widthB;
-}
+};
 
-/** @constant {number} DEBOUNCE_DELAY_MS Debounce delay to use*/ 
+/** @constant {number} DEBOUNCE_DELAY_MS Debounce delay to use */ 
 const DEBOUNCE_DELAY_MS = 40;
 /**
  * Debounce a function call.
