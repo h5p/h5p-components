@@ -56,22 +56,6 @@
 .h5p-theme .h5p-theme-secondary-cta:disabled,
 .h5p-theme .h5p-theme-primary-cta:disabled {
   opacity: 0.4;
-
-  &:hover {
-    padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-l);
-    text-indent: 0;
-
-    &.h5p-theme-primary-cta:disabled {
-      background-color: var(--h5p-theme-main-cta-base);
-      border-color: var(--h5p-theme-main-cta-base);
-    }
-
-    &.h5p-theme-secondary-cta:disabled {
-      background-color: var(--h5p-theme-ui-base);
-      border-color: var(--h5p-theme-contrast-cta-white);
-      color: var(--h5p-theme-contrast-cta-white);
-    }
-  }
 }
 
 .h5p-theme .h5p-theme-secondary-cta[aria-disabled="true"],
