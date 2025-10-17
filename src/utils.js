@@ -46,7 +46,7 @@ const DEFAULT_LINE_HEIGHT = 1.2;
  */
 H5P.Components.utils.computeLineCount = (element) =>{
   if (!element) {
-    return 0; 
+    return 0;
   }
   const style = getComputedStyle(element);
   let lineHeight = parseFloat(style.lineHeight);
