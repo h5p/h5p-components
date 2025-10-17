@@ -3,6 +3,9 @@ var H5P = H5P || {};
 H5P.Components = H5P.Components || {};
 H5P.Components.utils = {};
 
+/** @constant {number} DEBOUNCE_DELAY_MS Debounce delay to use */ 
+const DEBOUNCE_DELAY_MS = 40;
+
 /**
  * Strips html tags and converts special characters.
  * Example: "<div>Me &amp; you</div>" is converted to "Me & you".
@@ -41,7 +44,7 @@ const DEFAULT_LINE_HEIGHT = 1.2;
  * @param {HTMLElement} element The element to compute lines for.
  * @returns {number} The number of lines in the element.
  */
-H5P.Components.utils.computeLineCount = (element) => {
+H5P.Components.utils.computeLineCount = (element) =>{
   if (!element) {
     return 0; 
   }
@@ -77,8 +80,6 @@ H5P.Components.utils.computeWidthRatio = (elementA, elementB) => {
   return widthA / widthB;
 };
 
-/** @constant {number} DEBOUNCE_DELAY_MS Debounce delay to use */ 
-const DEBOUNCE_DELAY_MS = 40;
 /**
  * Debounce a function call.
  * @param {function} callback Function to debounce.

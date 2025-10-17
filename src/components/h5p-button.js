@@ -2,6 +2,12 @@
 var H5P = H5P || {};
 H5P.Components = H5P.Components || {};
 
+/** @constant {number} MAX_LABEL_LINE_COUNT Maximum number of lines for label before hiding it */ 
+const MAX_LABEL_LINE_COUNT = 1;
+
+/** @constant {number} MAX_LABEL_WIDTH_RATIO Maximum width ratio between label and button before hiding label */
+const MAX_LABEL_WIDTH_RATIO = 0.85;
+
 H5P.Components.Button = (function () {
   /**
    * @typedef {'primary' | 'secondary' | 'nav'} ButtonStyleType
@@ -65,12 +71,6 @@ H5P.Components.Button = (function () {
 
   return Button;
 })();
-
-/** @constant {number} MAX_LABEL_LINE_COUNT Maximum number of lines for label before hiding it */ 
-const MAX_LABEL_LINE_COUNT = 1;
-
-/** @constant {number} MAX_LABEL_WIDTH_RATIO Maximum width ratio between label and button before hiding label */
-const MAX_LABEL_WIDTH_RATIO = 0.85;
 
 H5P.Components.Button.IconOnlyObserver = H5P.Components.Button.IconOnlyObserver 
   || new ResizeObserver(H5P.Components.utils.debounce((entries) => {
