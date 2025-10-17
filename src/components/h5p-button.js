@@ -59,9 +59,9 @@ H5P.Components.Button = (function () {
     if (params.icon && H5P.Components.Button.IconOnlyObserver) {
       H5P.Components.Button.IconOnlyObserver.observe(button);
     }
+
     return button;
   }
-
   return Button;
 })();
 
