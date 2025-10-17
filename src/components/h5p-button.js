@@ -89,6 +89,7 @@ H5P.Components.Button.IconOnlyObserver = H5P.Components.Button.IconOnlyObserver
       const ratio = H5P.Components.utils.computeWidthRatio(label, button);
       const shouldHide = lineCount > MAX_LABEL_LINE_COUNT || ratio > MAX_LABEL_WIDTH_RATIO;
 
+      // For visual consistency, label of related buttons should be hidden as well if one is hidden.
       const parent = button.parentElement;
       for (const child of parent.children) {
         if (!(child instanceof HTMLButtonElement) || !child.isConnected) {
