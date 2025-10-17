@@ -13,7 +13,7 @@
 .h5p-theme-primary-cta.icon-only,
 .h5p-theme-secondary-cta.icon-only,
 .h5p-theme-nav-button.icon-only {
-  &:before {
+  &::before {
     margin-right: unset;
   }
   .h5p-theme-label {
