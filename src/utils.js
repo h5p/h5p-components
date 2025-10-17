@@ -67,8 +67,8 @@ H5P.Components.utils.computeWidthRatio = (elementA, elementB) => {
     return 0;
   }
 
-  const widthA = elementA.getBoundingClientRect().width;
-  const widthB = elementB.getBoundingClientRect().width;
+  const widthA = elementA.offsetWidth;
+  const widthB = elementB.clientWidth;
 
   if (!widthA || !widthB) {
     return 0;
