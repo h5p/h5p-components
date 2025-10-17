@@ -33,3 +33,57 @@ H5P.Components.utils.createElement = (tag, options, style = {}) => {
 
   return element;
 };
+
+/**
+ * Compute the number of lines in an element.
+ * @param {HTMLElement} element The element to compute lines for.
+ * @returns {number} The number of lines in the element.
+ */
+H5P.Components.utils.computeLineCount = (element) => {
+  if (!element) {
+      return 0; 
+  }
+  const style = getComputedStyle(element);
+  const lineHeight = parseFloat(style.lineHeight);
+  const elementHeight = element.getBoundingClientRect().height;
+  return Math.ceil(elementHeight / lineHeight);
+};
+
+/**
+ * Compute the width ratio between two elements.
+ * @param {HTMLElement} elementA The first element.
+ * @param {HTMLElement} elementB The second element.
+ * @returns {number} The width ratio (elementA / elementB).
+ */
+H5P.Components.utils.computeWidthRatio = (elementA, elementB) => {
+  if (!elementA || !elementB) {
+    return 0;
+  }
+
+  const widthA = elementA.getBoundingClientRect().width;
+  const widthB = elementB.getBoundingClientRect().width;
+
+  if (!widthA || !widthB) {
+    return 0;
+  }
+
+  return widthA / widthB;
+}
+
+/** @constant {number} DEBOUNCE_DELAY_25FPS_MS Debounce delay to use 25 FPS */ 
+const DEBOUNCE_DELAY_25FPS_MS = 40;
+/**
+ * Debounce a function call.
+ * @param {function} callback Function to debounce.
+ * @param {number} delayMs Debouncing delay.
+ * @returns {function} Debounced function.
+ */
+H5P.Components.utils.debounce = (callback, delayMs = DEBOUNCE_DELAY_25FPS_MS) => {
+  let timeoutId;
+  return function (...args) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      callback.apply(this, args)
+    }, delayMs);
+  };
+};

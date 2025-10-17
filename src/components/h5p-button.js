@@ -56,34 +56,37 @@ H5P.Components.Button = (function () {
       H5P.Tooltip(button, { text: params.tooltip, position: params.tooltipPosition ?? 'top' });
     }
 
-    if (params.icon && H5P.Components.ButtonIconOnlyObserver) {
-      H5P.Components.ButtonIconOnlyObserver.observe(button);
+    if (params.icon && H5P.Components.Button.IconOnlyObserver) {
+      H5P.Components.Button.IconOnlyObserver.observe(button);
     }
     return button;
   }
+
   return Button;
 })();
 
-H5P.Components.ButtonIconOnlyObserver = H5P.Components.ButtonIconOnlyObserver || new ResizeObserver(entries => {
-  for (const entry of entries) {
-    const btn = entry.target;
-    const label = btn.querySelector('.h5p-theme-label');
-    if (!label) continue;
 
-    // Compute line count based on height/lineHeight
-    const style = window.getComputedStyle(label);
-    const lineHeight = parseFloat(style.lineHeight);
-    const labelHeight = label.getBoundingClientRect().height;
-    const lineCount = Math.round(labelHeight / lineHeight);
-    if (lineCount === 0) continue;
+const MAX_LABEL_LINE_COUNT = 1;
+const MAX_LABEL_WIDTH_RATIO = 0.85;
 
-    // Check ratio (label width vs. button width)
-    const labelWidth = label.getBoundingClientRect().width;
-    const btnWidth = btn.clientWidth;
-    const ratio = labelWidth / btnWidth;
+H5P.Components.Button.IconOnlyObserver = 
+  H5P.Components.Button.IconOnlyObserver || 
+  new ResizeObserver(H5P.Components.utils.debounce((entries) => {
+    for (const entry of entries) {
+      const button = entry.target;
+      if (!button.isConnected) {
+        continue;
+      }
 
-    // Hide label if multiline OR label takes >85% of button width
-    const shouldHide = lineCount > 1 || ratio > 0.85;
-    btn.classList.toggle('icon-only', shouldHide);
-  }
-});
+      const label = button.querySelector('.h5p-theme-label');
+      const lineCount = H5P.Components.utils.computeLineCount(label);
+      if (!lineCount) {
+        continue;
+      }
+      
+      const ratio = H5P.Components.utils.computeWidthRatio(label, button);
+      console.log(`LineCount: ${lineCount}, Label width: ${label.getBoundingClientRect().width}, Button width: ${button.clientWidth},  button.getBoundingClientRect().width: ${button.getBoundingClientRect().width}, Ratio: ${ratio}`);
+      const shouldHide = lineCount > MAX_LABEL_LINE_COUNT || ratio > MAX_LABEL_WIDTH_RATIO;
+      button.classList.toggle('icon-only', shouldHide);
+    }
+  }));
