@@ -3,7 +3,7 @@ var H5P = H5P || {};
 H5P.Components = H5P.Components || {};
 H5P.Components.utils = {};
 
-/** @constant {number} DEBOUNCE_DELAY_MS Debounce delay to use */ 
+/** @constant {number} DEBOUNCE_DELAY_MS Debounce delay to use */
 const DEBOUNCE_DELAY_MS = 40;
 
 /**
@@ -24,11 +24,11 @@ H5P.Components.utils.parseString = (text) => {
 
 /**
  * Create an HTML element, and apply potential options/css
- * 
+ *
  * @param {string} tag The HTML tag to create
  * @param {object} options Options like classList, textContent etc.
  * @param {object} style Styles/css to apply to the element
- * @returns 
+ * @returns
  */
 H5P.Components.utils.createElement = (tag, options, style = {}) => {
   const element = Object.assign(document.createElement(tag), options);
@@ -37,7 +37,7 @@ H5P.Components.utils.createElement = (tag, options, style = {}) => {
   return element;
 };
 
-/** @constant {number} DEFAULT_LINE_HEIGHT Default line height when it is "normal" */ 
+/** @constant {number} DEFAULT_LINE_HEIGHT Default line height when it is "normal" */
 const DEFAULT_LINE_HEIGHT = 1.2;
 /**
  * Compute the number of lines in an element.
@@ -50,7 +50,7 @@ H5P.Components.utils.computeLineCount = (element) =>{
   }
   const style = getComputedStyle(element);
   let lineHeight = parseFloat(style.lineHeight);
-  
+
   if (isNaN(lineHeight)) {
     const fontSize = parseFloat(style.fontSize);
     lineHeight = fontSize * DEFAULT_LINE_HEIGHT;
