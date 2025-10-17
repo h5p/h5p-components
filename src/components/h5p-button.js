@@ -2,6 +2,12 @@
 var H5P = H5P || {};
 H5P.Components = H5P.Components || {};
 
+/** @constant {number} MAX_LABEL_LINE_COUNT Maximum number of lines for label before hiding it */
+const MAX_LABEL_LINE_COUNT = 1;
+
+/** @constant {number} MAX_LABEL_WIDTH_RATIO Maximum width ratio between label and button before hiding label */
+const MAX_LABEL_WIDTH_RATIO = 0.85;
+
 H5P.Components.Button = (function () {
   /**
    * @typedef {'primary' | 'secondary' | 'nav'} ButtonStyleType
@@ -56,8 +62,40 @@ H5P.Components.Button = (function () {
       H5P.Tooltip(button, { text: params.tooltip, position: params.tooltipPosition ?? 'top' });
     }
 
+    if (params.icon && H5P.Components.Button.IconOnlyObserver) {
+      H5P.Components.Button.IconOnlyObserver.observe(button);
+    }
+
     return button;
   }
 
   return Button;
 })();
+
+H5P.Components.Button.IconOnlyObserver = H5P.Components.Button.IconOnlyObserver
+  || new ResizeObserver(H5P.Components.utils.debounce((entries) => {
+    for (const entry of entries) {
+      const button = entry.target;
+      if (!button.isConnected) {
+        continue;
+      }
+
+      const label = button.querySelector('.h5p-theme-label');
+      const lineCount = H5P.Components.utils.computeLineCount(label);
+      if (!lineCount) {
+        continue;
+      }
+
+      const ratio = H5P.Components.utils.computeWidthRatio(label, button);
+      const shouldHide = lineCount > MAX_LABEL_LINE_COUNT || ratio > MAX_LABEL_WIDTH_RATIO;
+
+      // For visual consistency, label of related buttons should be hidden as well if one is hidden.
+      const parent = button.parentElement;
+      for (const child of parent.children) {
+        if (!(child instanceof HTMLButtonElement) || !child.isConnected) {
+          continue;
+        }
+        child.classList.toggle('icon-only', shouldHide);
+      }
+    }
+  }));
