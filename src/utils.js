@@ -77,15 +77,15 @@ H5P.Components.utils.computeWidthRatio = (elementA, elementB) => {
   return widthA / widthB;
 }
 
-/** @constant {number} DEBOUNCE_DELAY_25FPS_MS Debounce delay to use 25 FPS */ 
-const DEBOUNCE_DELAY_25FPS_MS = 40;
+/** @constant {number} DEBOUNCE_DELAY_MS Debounce delay to use*/ 
+const DEBOUNCE_DELAY_MS = 40;
 /**
  * Debounce a function call.
  * @param {function} callback Function to debounce.
  * @param {number} delayMs Debouncing delay.
  * @returns {function} Debounced function.
  */
-H5P.Components.utils.debounce = (callback, delayMs = DEBOUNCE_DELAY_25FPS_MS) => {
+H5P.Components.utils.debounce = (callback, delayMs = DEBOUNCE_DELAY_MS) => {
   let timeoutId;
   return function (...args) {
     clearTimeout(timeoutId);
