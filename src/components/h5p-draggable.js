@@ -85,8 +85,14 @@ H5P.Components.Draggable = (function ($) {
       draggable.style.setProperty('--opacity', sanitizedValue);
     };
 
+    const getBorderWidth = () => {
+      const computedStyle = window.getComputedStyle(draggable);
+      return computedStyle.getPropertyValue('--border-width');
+    };
+
     draggable.setContentOpacity = setContentOpacity;
     draggable.setOpacity = setOpacity;
+    draggable.getBorderWidth = getBorderWidth;
 
     return draggable;
   }
