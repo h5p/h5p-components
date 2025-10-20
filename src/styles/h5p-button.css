@@ -263,6 +263,10 @@
 /* NAVIGATION BUTTONS */
 .h5p-theme-nav-button,
 .h5p-theme .h5p-theme-nav-button {
+  /* Default values for icon-only behavior */
+  --nav-label-display: inline-block;
+  --nav-pseudo-margin: var(--h5p-theme-spacing-xxs);
+
   min-width: max-content;
   border: none;
   background-color: var(--h5p-theme-secondary-cta-base);
@@ -272,25 +276,20 @@
   white-space: nowrap;
 }
 
-.h5p-theme .h5p-theme-nav-button:hover {
-  background-color: var(--h5p-theme-secondary-cta-light);
-  color: var(--h5p-theme-secondary-contrast-cta);
-  border-color: var(--h5p-theme-secondary-cta-light);
+.h5p-theme-secondary-cta.icon-only,
+.h5p-theme-nav-button.icon-only {
+  .h5p-theme-label {
+    display: none;
+  }
 }
 
-.h5p-theme .h5p-theme-nav-button:active {
-  background-color: var(--h5p-theme-secondary-cta-dark);
-  color: var(--h5p-theme-secondary-contrast-cta);
-  border-color: var(--h5p-theme-secondary-cta-dark);
-}
-
-.h5p-theme-nav-button[aria-disabled="true"],
-.h5p-theme-nav-button:disabled {
-  opacity: 0.4;
+.h5p-theme-nav-button.icon-only {
+  --nav-label-display: none;
+  --nav-pseudo-margin: 0;
 }
 
 .h5p-theme-nav-button.h5p-theme-label {
-  display: inline-block;
+  display: var(--nav-label-display);
 }
 
 .h5p-theme .h5p-theme-next {
@@ -299,7 +298,7 @@
 
 .h5p-theme-next::after {
   content: "\e901";
-  margin-left: var(--h5p-theme-spacing-xxs);
+  margin-left: var(--nav-pseudo-margin);
   margin-right: 0;
 }
 
@@ -309,17 +308,18 @@
 
 .h5p-theme-previous::before {
   content: "\e900";
+  margin-right: var(--nav-pseudo-margin);
 }
 
 /* If smaller than 700px */
 @container h5p-navigation (max-width: 700px) {
-  .h5p-theme-label {
-    display: none;
+  .h5p-theme-nav-button {
+    --nav-label-display: none;
+    --nav-pseudo-margin: 0;
   }
 
-  .h5p-theme-next::after,
-  .h5p-theme-previous::before {
-    margin: 0;
+  .h5p-theme-label {
+    display: var(--nav-label-display);
   }
 
   /* Primary CTA if inside navigation */
