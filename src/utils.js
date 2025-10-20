@@ -9,6 +9,9 @@ const DEBOUNCE_DELAY_MS = 40;
 /** @constant {number} DEFAULT_LINE_HEIGHT Default line height when it is "normal" */
 const DEFAULT_LINE_HEIGHT = 1.2;
 
+/** @constant {number} CLOSE_TO_INTEGER_EPSILON Epsilon for closeness to integer */
+const CLOSE_TO_INTEGER_EPSILON = 0.01;
+
 /**
  * Strips html tags and converts special characters.
  * Example: "<div>Me &amp; you</div>" is converted to "Me & you".
@@ -55,8 +58,14 @@ H5P.Components.utils.computeLineCount = (element) =>{
     const fontSize = parseFloat(style.fontSize);
     lineHeight = fontSize * DEFAULT_LINE_HEIGHT;
   }
+
   const elementHeight = element.getBoundingClientRect().height;
-  return Math.ceil(elementHeight / lineHeight);
+  const numberOfLinesExact = elementHeight / lineHeight;
+
+  // Element height might be slightly larger only, then assuming one more line is not correct.
+  const isCloseToInteger = Math.abs(Math.round(numberOfLinesExact) - numberOfLinesExact) < CLOSE_TO_INTEGER_EPSILON;
+
+  return (isCloseToInteger) ? Math.round(numberOfLinesExact) : Math.ceil(numberOfLinesExact);
 };
 
 /**
