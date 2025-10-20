@@ -5,7 +5,12 @@
   border: solid 3px var(--h5p-theme-main-cta-base);
   border-radius: var(--h5p-theme-border-radius-medium);
   line-height: 1;
-  transition: all 0.1s linear 0s;
+  transition:
+    transform 0.1s linear 0s,
+    padding 0.1s linear 0s,
+    text-indent 0.1s linear 0s,
+    background-color 0.1s linear 0s,
+    border-color 0.1s linear 0s;
   display: flex;
   align-items: center;
 }
