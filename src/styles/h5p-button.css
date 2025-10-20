@@ -197,7 +197,9 @@
     --hover-icon-transform: translate(0, 0);
   }
 
-  .h5p-theme .h5p-theme-label {
+  .h5p-theme .h5p-theme-primary-cta .h5p-theme-label,
+  .h5p-theme .h5p-theme-secondary-cta .h5p-theme-label,
+  .h5p-theme .h5p-theme-nav-button .h5p-theme-label {
     display: none;
   }
 
