@@ -293,7 +293,7 @@
   --nav-pseudo-margin: 0;
 }
 
-.h5p-theme-nav-button.h5p-theme-label {
+.h5p-theme-nav-button .h5p-theme-label {
   display: var(--nav-label-display);
 }
 
