@@ -10,41 +10,6 @@
   align-items: center;
 }
 
-.h5p-theme .h5p-theme-primary-cta.icon-only {
-  justify-content: center;
-  padding: 0;
-  height: var(--h5p-theme-spacing-xl);
-  min-width: var(--h5p-theme-spacing-xl);
-}
-
-.h5p-theme .h5p-theme-primary-cta.icon-only:hover {
-  text-indent: 0;
-  padding: 0;
-}
-
-.h5p-theme .h5p-theme-primary-cta.icon-only:before {
-    position: unset;
-    opacity: 1;
-    transform: translate(0, 0);
-    text-indent: 0;
-    margin-right: 0;
-  }
-
-.h5p-theme .h5p-theme-primary-cta.icon-only .h5p-theme-label {
-    display: none;
-  }
-
-.h5p-theme .h5p-theme-primary-cta.icon-only[aria-disabled="true"],
-.h5p-theme .h5p-theme-primary-cta.icon-only:disabled {
-  &::before {
-    opacity: 1;
-  }
-  &:hover {
-    text-indent: 0;
-    padding: 0;
-  }
-}
-
 .h5p-theme-secondary-cta.icon-only,
 .h5p-theme-nav-button.icon-only {
   .h5p-theme-label {
@@ -110,8 +75,33 @@
 /* PRIMARY CTA (USED FOR VALIDATION BUTTONS) */
 .h5p-theme-primary-cta,
 .h5p-theme .h5p-theme-primary-cta {
+  /* Default button state */
+  --button-justify: flex-start;
+  --button-padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-l);
+  --button-height: auto;
+  --button-min-width: auto;
+  --button-text-indent: 0;
+  --label-display: block;
+
+  /* Icon properties for normal state */
+  --icon-position: absolute;
+  --icon-opacity: 0;
+  --icon-transform: translate(calc(-1 * var(--h5p-theme-spacing-xxs) - var(--h5p-theme-spacing-m) / 2), 10px);
+  --icon-margin-right: 0;
+
+  /* Hover state properties */
+  --hover-padding: var(--h5p-theme-spacing-xs) calc(var(--h5p-theme-spacing-l) - var(--h5p-theme-spacing-m)/2);
+  --hover-text-indent: var(--h5p-theme-spacing-m);
+  --hover-icon-opacity: 1;
+  --hover-icon-transform: translate(calc(-1 * var(--h5p-theme-spacing-xxs) - var(--h5p-theme-spacing-m)), 0);
+
   --transition-h5p-theme-primary-cta: all 0.1s linear 0s;
-  padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-l);
+
+  justify-content: var(--button-justify);
+  padding: var(--button-padding);
+  height: var(--button-height);
+  min-width: var(--button-min-width);
+  text-indent: var(--button-text-indent);
   background-color: var(--h5p-theme-main-cta-base);
   transition-property: text-indent, padding;
   transition: var(--transition-h5p-theme-primary-cta);
@@ -121,24 +111,57 @@
 
 .h5p-theme-primary-cta:hover,
 .h5p-theme .h5p-theme-primary-cta:hover {
-  padding: var(--h5p-theme-spacing-xs) calc(var(--h5p-theme-spacing-l) - var(--h5p-theme-spacing-m)/2);
+  padding: var(--hover-padding);
   background-color: var(--h5p-theme-main-cta-light);
   border-color: var(--h5p-theme-main-cta-light);
-  text-indent: var(--h5p-theme-spacing-m);
+  text-indent: var(--hover-text-indent);
 }
 
 .h5p-theme-primary-cta:before {
-  position: absolute;
-  opacity: 0;
-  transform: translate(calc(-1 * var(--h5p-theme-spacing-xxs) - var(--h5p-theme-spacing-m) / 2), 10px);
+  position: var(--icon-position);
+  opacity: var(--icon-opacity);
+  transform: var(--icon-transform);
   transition: var(--transition-h5p-theme-primary-cta);
   transition-property: transform, opacity;
-  margin-right: 0;
+  margin-right: var(--icon-margin-right);
 }
 
 .h5p-theme-primary-cta:hover:before {
-  opacity: 1;
-  transform: translate(calc(-1 * var(--h5p-theme-spacing-xxs) - var(--h5p-theme-spacing-m)), 0);
+  opacity: var(--hover-icon-opacity);
+  transform: var(--hover-icon-transform);
+}
+
+.h5p-theme .h5p-theme-primary-cta .h5p-theme-label {
+  display: var(--label-display);
+}
+
+/* Icon only state */
+.h5p-theme .h5p-theme-primary-cta.icon-only {
+  --button-justify: center;
+  --button-padding: 0;
+  --button-height: var(--h5p-theme-spacing-xl);
+  --button-min-width: var(--h5p-theme-spacing-xl);
+  --button-text-indent: 0;
+  --label-display: none;
+  --icon-position: unset;
+  --icon-opacity: 1;
+  --icon-transform: translate(0, 0);
+  --icon-margin-right: 0;
+  --hover-padding: 0;
+  --hover-text-indent: 0;
+  --hover-icon-opacity: 1;
+  --hover-icon-transform: translate(0, 0);
+}
+
+.h5p-theme .h5p-theme-primary-cta.icon-only[aria-disabled="true"],
+.h5p-theme .h5p-theme-primary-cta.icon-only:disabled {
+  &::before {
+    opacity: 1;
+  }
+  &:hover {
+    text-indent: 0;
+    padding: 0;
+  }
 }
 
 /* Will target Safari only which needs this or makes the whole content shift a bit. Applied selectively to prevent performance issues */
@@ -150,28 +173,22 @@
 
 /* If the container is smaller than 200px */
 @container (max-width: 200px) {
+  /* Icon only state */
   .h5p-theme .h5p-theme-primary-cta {
-    justify-content: center;
-    padding: 0;
-    height: var(--h5p-theme-spacing-xl);
-    min-width: var(--h5p-theme-spacing-xl);
-  }
-
-  .h5p-theme-primary-cta .h5p-theme-label {
-    display: none;
-  }
-
-  .h5p-theme .h5p-theme-primary-cta:hover {
-    text-indent: 0;
-    padding: 0;
-  }
-
-  .h5p-theme .h5p-theme-primary-cta:before {
-    position: unset;
-    opacity: 1;
-    transform: translate(0, 0);
-    text-indent: 0;
-    margin-right: 0;
+    --button-justify: center;
+    --button-padding: 0;
+    --button-height: var(--h5p-theme-spacing-xl);
+    --button-min-width: var(--h5p-theme-spacing-xl);
+    --button-text-indent: 0;
+    --label-display: none;
+    --icon-position: unset;
+    --icon-opacity: 1;
+    --icon-transform: translate(0, 0);
+    --icon-margin-right: 0;
+    --hover-padding: 0;
+    --hover-text-indent: 0;
+    --hover-icon-opacity: 1;
+    --hover-icon-transform: translate(0, 0);
   }
 
   .h5p-theme .h5p-theme-label {
