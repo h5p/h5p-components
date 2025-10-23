@@ -77,7 +77,7 @@
   /* Default button state */
   --button-justify: flex-start;
   --button-padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-l);
-  --button-height: auto;
+  --button-height: fit-content;
   --button-min-width: auto;
   --button-text-indent: 0;
   --label-display: block;
@@ -221,6 +221,7 @@
   background-color: var(--h5p-theme-ui-base);
   border-color: var(--h5p-theme-contrast-cta-white);
   color: var(--h5p-theme-contrast-cta-white);
+  height: fit-content;
   width: fit-content;
 }
 
