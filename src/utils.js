@@ -47,7 +47,7 @@ H5P.Components.utils.createElement = (tag, options, style = {}) => {
  * @param {HTMLElement} element The element to compute lines for.
  * @returns {number} The number of lines in the element.
  */
-H5P.Components.utils.computeLineCount = (element) =>{
+H5P.Components.utils.computeLineCount = (element) => {
   if (!element) {
     return 0;
   }
@@ -63,7 +63,8 @@ H5P.Components.utils.computeLineCount = (element) =>{
   const numberOfLinesExact = elementHeight / lineHeight;
 
   // Element height might be slightly larger only, then assuming one more line is not correct.
-  const isCloseToInteger = Math.abs(Math.round(numberOfLinesExact) - numberOfLinesExact) < CLOSE_TO_INTEGER_EPSILON;
+  const floatingValue = Math.abs(Math.round(numberOfLinesExact) - numberOfLinesExact);
+  const isCloseToInteger = floatingValue < CLOSE_TO_INTEGER_EPSILON;
 
   return (isCloseToInteger) ? Math.round(numberOfLinesExact) : Math.ceil(numberOfLinesExact);
 };

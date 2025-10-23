@@ -76,7 +76,7 @@ H5P.Components.Button.IconOnlyObserver = H5P.Components.Button.IconOnlyObserver
   || new ResizeObserver(H5P.Components.utils.debounce((entries) => {
     for (const entry of entries) {
       const button = entry.target;
-      if (!button.isConnected) {
+      if (!button.isConnected || button.matches(':hover')) {
         continue;
       }
 
