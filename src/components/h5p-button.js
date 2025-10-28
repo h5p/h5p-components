@@ -69,7 +69,7 @@ function Button(params) {
 const IconOnlyObserver = new ResizeObserver(Utils.debounce((entries) => {
     for (const entry of entries) {
       const button = entry.target;
-      if (!button.isConnected) {
+      if (!button.isConnected || button.matches(':hover')) {
         continue;
       }
 

@@ -58,7 +58,8 @@ export const computeLineCount = (element) =>{
   const numberOfLinesExact = elementHeight / lineHeight;
 
   // Element height might be slightly larger only, then assuming one more line is not correct.
-  const isCloseToInteger = Math.abs(Math.round(numberOfLinesExact) - numberOfLinesExact) < CLOSE_TO_INTEGER_EPSILON;
+  const floatingValue = Math.abs(Math.round(numberOfLinesExact) - numberOfLinesExact);
+  const isCloseToInteger = floatingValue < CLOSE_TO_INTEGER_EPSILON;
 
   return (isCloseToInteger) ? Math.round(numberOfLinesExact) : Math.ceil(numberOfLinesExact);
 };
