@@ -1,8 +1,3 @@
-// eslint-disable-next-line no-use-before-define, no-var
-var H5P = H5P || {};
-H5P.Components = H5P.Components || {};
-H5P.Components.utils = {};
-
 /** @constant {number} DEBOUNCE_DELAY_MS Debounce delay to use */
 const DEBOUNCE_DELAY_MS = 40;
 
@@ -19,7 +14,7 @@ const CLOSE_TO_INTEGER_EPSILON = 0.01;
  * @param {String} text The text to be parsed
  * @returns {String} The parsed text
  */
-H5P.Components.utils.parseString = (text) => {
+export const parseString = (text) => {
   if (text === null || text === undefined) {
     return '';
   }
@@ -36,7 +31,7 @@ H5P.Components.utils.parseString = (text) => {
  * @param {object} style Styles/css to apply to the element
  * @returns
  */
-H5P.Components.utils.createElement = (tag, options, style = {}) => {
+export const createElement = (tag, options, style = {}) => {
   const element = Object.assign(document.createElement(tag), options);
   Object.assign(element.style, style);
 
@@ -47,7 +42,7 @@ H5P.Components.utils.createElement = (tag, options, style = {}) => {
  * @param {HTMLElement} element The element to compute lines for.
  * @returns {number} The number of lines in the element.
  */
-H5P.Components.utils.computeLineCount = (element) =>{
+export const computeLineCount = (element) =>{
   if (!element) {
     return 0;
   }
@@ -74,7 +69,7 @@ H5P.Components.utils.computeLineCount = (element) =>{
  * @param {HTMLElement} elementB The second element.
  * @returns {number} The width ratio (elementA / elementB).
  */
-H5P.Components.utils.computeWidthRatio = (elementA, elementB) => {
+export const computeWidthRatio = (elementA, elementB) => {
   if (!elementA || !elementB) {
     return 0;
   }
@@ -95,7 +90,7 @@ H5P.Components.utils.computeWidthRatio = (elementA, elementB) => {
  * @param {number} delayMs Debouncing delay.
  * @returns {function} Debounced function.
  */
-H5P.Components.utils.debounce = (callback, delayMs = DEBOUNCE_DELAY_MS) => {
+export const debounce = (callback, delayMs = DEBOUNCE_DELAY_MS) => {
   let timeoutId;
   return function (...args) {
     clearTimeout(timeoutId);
