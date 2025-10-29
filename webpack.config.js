@@ -1,13 +1,20 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const isProd = process.argv.includes('--mode=production');
 module.exports = {
-  entry: "./entries/dist.js",
+  entry: "./src/entries/dist.js",
   devtool: isProd ? undefined : 'inline-source-map',
   output: {
     filename: 'h5p-components.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true
+  },
+  optimization: {
+    minimize: isProd,
+    minimizer: [
+      new CssMinimizerPlugin()
+    ],
   },
   module: {
     rules: [
