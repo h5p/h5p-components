@@ -1,17 +1,26 @@
 {
   "name": "h5p.components-1.0",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "This is the H5P component library",
   "scripts": {
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "build": "webpack --mode=production",
+    "watch": "webpack --watch --mode=development"
   },
   "author": "H5P",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.28.5",
+    "@babel/preset-env": "^7.28.5",
+    "babel-loader": "^10.0.0",
+    "css-loader": "^7.1.2",
+    "css-minimizer-webpack-plugin": "^7.0.2",
     "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-h5p": "^1.0.3"
+    "eslint-config-h5p": "^1.0.3",
+    "mini-css-extract-plugin": "^2.9.4",
+    "webpack": "^5.102.1",
+    "webpack-cli": "^6.0.1"
   }
 }

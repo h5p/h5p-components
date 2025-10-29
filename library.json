@@ -10,66 +10,12 @@
   "machineName": "H5P.Components",
   "preloadedJs": [
     {
-      "path": "src/utils.js"
-    },
-    {
-      "path": "src/components/h5p-cover-page.js"
-    },
-    {
-      "path": "src/components/h5p-result-screen.js"
-    },
-    {
-      "path": "src/components/h5p-button.js"
-    },
-    {
-      "path": "src/components/h5p-placeholder-img.js"
-    },
-    {
-      "path": "src/components/h5p-progress-bar.js"
-    },
-    {
-      "path": "src/components/h5p-progress-dots.js"
-    },
-    {
-      "path": "src/components/h5p-navigation.js"
-    },
-    {
-      "path": "src/components/h5p-draggable.js"
-    },
-    {
-      "path": "src/components/h5p-dropzone.js"
+      "path": "dist/h5p-components.js"
     }
   ],
   "preloadedCss": [
     {
-      "path": "src/styles/h5p-button.css"
-    },
-    {
-      "path": "src/styles/h5p-components.css"
-    },
-    {
-      "path": "src/styles/h5p-cover-page.css"
-    },
-    {
-      "path": "src/styles/h5p-result-screen.css"
-    },
-    {
-      "path": "src/styles/h5p-placeholder-img.css"
-    },
-    {
-      "path": "src/styles/h5p-progress-bar.css"
-    },
-    {
-      "path": "src/styles/h5p-progress-dots.css"
-    },
-    {
-      "path": "src/styles/h5p-navigation.css"
-    },
-    {
-      "path": "src/styles/h5p-draggable.css"
-    },
-    {
-      "path": "src/styles/h5p-dropzone.css"
+      "path": "dist/h5p-components.css"
     }
   ],
   "preloadedDependencies": [
