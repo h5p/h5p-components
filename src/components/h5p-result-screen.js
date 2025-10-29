@@ -1,5 +1,5 @@
 import '../styles/h5p-result-screen.css';
-import {createElement} from "../utils";
+import {createElement} from "../utils.js";
 /**
  * @typedef ResultQuestion
  * @type {object}

@@ -1,5 +1,11 @@
 node_modules
+Documentation
+src
 .idea
+.gitignore
 .h5pignore
+eslint.config.mjs
 package.json
+package-lock.json
+webpack.config.js
 README.md

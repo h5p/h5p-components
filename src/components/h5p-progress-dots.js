@@ -1,5 +1,5 @@
 import '../styles/h5p-progress-dots.css';
-import {createElement} from "../utils";
+import {createElement} from "../utils.js";
 /**
  * @typedef ProgressDots
  * @type {object}

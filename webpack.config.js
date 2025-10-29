@@ -1,8 +1,8 @@
 const path = require('path');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const isProd = process.argv.includes('--mode=production');
 module.exports = {
-  entry: './src/index.js',
+  entry: "./entries/dist.js",
   devtool: isProd ? undefined : 'inline-source-map',
   output: {
     filename: 'h5p-components.js',
@@ -14,7 +14,7 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-        loader: 'babel-loader',
+          loader: 'babel-loader',
           options: {
             targets: "defaults",
             presets: [

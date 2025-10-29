@@ -1,6 +1,6 @@
 import '../styles/h5p-cover-page.css';
-import {createElement} from "../utils";
-import Button from "./h5p-button";
+import {createElement} from "../utils.js";
+import Button from "./h5p-button.js";
 
 /**
  * @typedef {'check' | 'retry' | 'done' | 'show-results' | 'book' | 'flip' | 'next' | 'previous'} CoverPageIcon

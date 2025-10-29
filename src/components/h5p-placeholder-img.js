@@ -1,5 +1,5 @@
 import '../styles/h5p-placeholder-img.css';
-import {createElement} from "../utils";
+import {createElement} from "../utils.js";
   
 /**
  * @typedef PlaceholderImgParams

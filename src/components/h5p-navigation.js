@@ -1,8 +1,8 @@
 import '../styles/h5p-navigation.css';
-import {createElement} from "../utils";
-import Button from "./h5p-button";
-import ProgressBar from "./h5p-progress-bar";
-import ProgressDots from "./h5p-progress-dots";
+import {createElement} from "../utils.js";
+import Button from "./h5p-button.js";
+import ProgressBar from "./h5p-progress-bar.js";
+import ProgressDots from "./h5p-progress-dots.js";
 
 /**
  * @typedef NavigationTexts

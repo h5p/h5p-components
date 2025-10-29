@@ -1,5 +1,5 @@
 import '../styles/h5p-dropzone.css';
-import {createElement} from "../utils";
+import {createElement} from "../utils.js";
 
 /**
  * @typedef {'fit' | 'intersect' | 'pointer' | 'touch'} DropzoneTolerance

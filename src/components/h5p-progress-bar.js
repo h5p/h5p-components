@@ -1,5 +1,5 @@
 import '../styles/h5p-progress-bar.css';
-import {createElement} from "../utils";
+import {createElement} from "../utils.js";
  
 /**
  * @typedef ProgressBarParams
