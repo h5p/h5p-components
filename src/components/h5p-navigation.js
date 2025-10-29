@@ -1,8 +1,8 @@
 import '../styles/h5p-navigation.css';
-import {createElement} from "../utils.js";
-import Button from "./h5p-button.js";
-import ProgressBar from "./h5p-progress-bar.js";
-import ProgressDots from "./h5p-progress-dots.js";
+import { createElement } from '../utils.js';
+import Button from './h5p-button.js';
+import ProgressBar from './h5p-progress-bar.js';
+import ProgressDots from './h5p-progress-dots.js';
 
 /**
  * @typedef NavigationTexts
@@ -59,11 +59,11 @@ import ProgressDots from "./h5p-progress-dots.js";
  */
 function createElementsFromPlaceholders(text, replacements) {
   const placeholders = Object.keys(replacements);
-  const regExp = new RegExp(`(${placeholders.map(p => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`, 'g');
+  const regExp = new RegExp(`(${placeholders.map((p) => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`, 'g');
 
   return text.split(regExp)
-    .filter(part => part !== '')
-    .map((part) => replacements[part] ? replacements[part]() : document.createTextNode(part));
+    .filter((part) => part !== '')
+    .map((part) => (replacements[part] ? replacements[part]() : document.createTextNode(part)));
 }
 
 /**
@@ -103,10 +103,10 @@ function updateProgressText(progressText, textualProgress, currentIndex, navigat
   // Create new content
   const domParts = createElementsFromPlaceholders(textualProgress, {
     '@current': () => createProgressSpan('progress-current', currentIndex + 1, texts.currentTooltip),
-    '@total': () => createProgressSpan('progress-last', navigationLength, texts.totalTooltip)
+    '@total': () => createProgressSpan('progress-last', navigationLength, texts.totalTooltip),
   });
 
-  domParts.forEach(part => progressText.appendChild(part));
+  domParts.forEach((part) => progressText.appendChild(part));
 }
 
 /**
@@ -120,7 +120,9 @@ function updateProgressText(progressText, textualProgress, currentIndex, navigat
  * @param {string} [params.texts.totalTooltip] - Tooltip for total count
  * @returns {HTMLElement} The complete progressText element
  */
-function createProgressText({ textualProgress, currentIndex, navigationLength, texts = {} }) {
+function createProgressText({
+  textualProgress, currentIndex, navigationLength, texts = {},
+}) {
   const progressText = createElement('div', {
     classList: 'progress-text',
   });
@@ -136,13 +138,13 @@ function createProgressText({ textualProgress, currentIndex, navigationLength, t
  * @returns {HTMLElement} The navigation element.
  */
 function Navigation(params = {}) {
-  let progressBar,
-    dotsNavigation,
-    progressText,
-    title,
-    prevButton,
-    nextButton,
-    lastButton;
+  let progressBar;
+  let dotsNavigation;
+  let progressText;
+  let title;
+  let prevButton;
+  let nextButton;
+  let lastButton;
   let canShowLast = false;
   let index = params.index ?? 0;
   let className = 'h5p-navigation';
@@ -213,7 +215,7 @@ function Navigation(params = {}) {
       textualProgress: params.texts.textualProgress,
       currentIndex: index,
       navigationLength: params.navigationLength,
-      texts: params.texts
+      texts: params.texts,
     });
 
     progressContainer.appendChild(progressText);
@@ -235,7 +237,6 @@ function Navigation(params = {}) {
     else {
       container.appendChild(progressContainer);
     }
-
   }
 
   if (params.handleNext) {

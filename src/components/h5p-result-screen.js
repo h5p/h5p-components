@@ -1,5 +1,5 @@
 import '../styles/h5p-result-screen.css';
-import {createElement} from "../utils.js";
+import { createElement } from '../utils.js';
 /**
  * @typedef ResultQuestion
  * @type {object}
@@ -52,14 +52,13 @@ function ResultScreen(params) {
 
   // Create the summary table
   params.questionGroups.forEach((group) => {
-
     const groupContainer = createElement('div', {
       classList: 'h5p-theme-results-list-container',
     });
 
     if (group.listHeaders) {
       const listHeaders = createElement('div', { classList: 'h5p-theme-results-list-heading' });
-      group.listHeaders.forEach(title => {
+      group.listHeaders.forEach((title) => {
         listHeaders.appendChild(createElement('div', { classList: 'heading-item', textContent: title }));
       });
       groupContainer.appendChild(listHeaders);
@@ -107,7 +106,7 @@ const createQuestion = (question) => {
   }));
 
   // UserAnswer might be an empty string
-  if (typeof(question.userAnswer) === 'string') {
+  if (typeof (question.userAnswer) === 'string') {
     const answerContainer = createElement('div', {
       classList: 'h5p-theme-results-answer',
     });
@@ -155,4 +154,3 @@ const createQuestion = (question) => {
 };
 
 export default ResultScreen;
-

@@ -1,5 +1,5 @@
 import '../styles/h5p-draggable.css';
-import {createElement} from "../utils.js";
+import { createElement } from '../utils.js';
 
 /**
  * @typedef DraggableParams
@@ -93,6 +93,5 @@ function Draggable(params) {
 
   return draggable;
 }
-
 
 export default Draggable;

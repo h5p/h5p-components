@@ -42,7 +42,7 @@ export const createElement = (tag, options, style = {}) => {
  * @param {HTMLElement} element The element to compute lines for.
  * @returns {number} The number of lines in the element.
  */
-export const computeLineCount = (element) =>{
+export const computeLineCount = (element) => {
   if (!element) {
     return 0;
   }

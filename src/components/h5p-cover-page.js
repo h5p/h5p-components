@@ -1,6 +1,6 @@
 import '../styles/h5p-cover-page.css';
-import {createElement} from "../utils.js";
-import Button from "./h5p-button.js";
+import { createElement } from '../utils.js';
+import Button from './h5p-button.js';
 
 /**
  * @typedef {'check' | 'retry' | 'done' | 'show-results' | 'book' | 'flip' | 'next' | 'previous'} CoverPageIcon
@@ -57,7 +57,7 @@ function CoverPage(params) {
 
   if (params.icon) {
     detailContainer.appendChild(createElement('span', {
-      classList: 'h5p-theme-cover-icon h5p-theme-' + params.icon,
+      classList: `h5p-theme-cover-icon h5p-theme-${params.icon}`,
       ariaHidden: true,
     }));
   }

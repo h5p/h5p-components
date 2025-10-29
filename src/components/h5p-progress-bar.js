@@ -1,6 +1,6 @@
 import '../styles/h5p-progress-bar.css';
-import {createElement} from "../utils.js";
- 
+import { createElement } from '../utils.js';
+
 /**
  * @typedef ProgressBarParams
  * @type {object}
@@ -18,7 +18,7 @@ import {createElement} from "../utils.js";
  */
 function ProgressBar(params = {}) {
   const progressLength = params.progressLength ?? 1;
-  
+
   let index = params.index ?? 0;
 
   const progressBar = createElement('div', {
@@ -34,11 +34,11 @@ function ProgressBar(params = {}) {
   });
 
   progressBar.appendChild(progressBarInner);
-  
+
   const updateProgressBar = (newIndex) => {
     index = newIndex;
     progressBar.setAttribute('aria-valuenow', (newIndex + 1 / progressLength * 100).toFixed(2));
-    progressBarInner.style.width = (newIndex + 1) / progressLength * 100 + '%';
+    progressBarInner.style.width = `${(newIndex + 1) / progressLength * 100}%`;
   };
 
   updateProgressBar(index);

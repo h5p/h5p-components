@@ -1,5 +1,5 @@
 import '../styles/h5p-dropzone.css';
-import {createElement} from "../utils.js";
+import { createElement } from '../utils.js';
 
 /**
  * @typedef {'fit' | 'intersect' | 'pointer' | 'touch'} DropzoneTolerance
@@ -33,7 +33,7 @@ import {createElement} from "../utils.js";
  */
 function Dropzone(params) {
   const classList = ['h5p-dropzone',
-    params.variant === 'area' ? 'h5p-dropzone--area' : 'h5p-dropzone--inline'
+    params.variant === 'area' ? 'h5p-dropzone--area' : 'h5p-dropzone--inline',
   ];
 
   if (typeof params.containerClasses === 'string') {
@@ -47,7 +47,7 @@ function Dropzone(params) {
   const options = {
     classList: classList.join(' '),
     role: params.role,
-    ariaDisabled: params.ariaDisabled
+    ariaDisabled: params.ariaDisabled,
   };
 
   const dropzoneContainer = createElement('div', options);
@@ -57,11 +57,11 @@ function Dropzone(params) {
     areaLabel.innerHTML = params.areaLabel;
     dropzoneContainer.appendChild(areaLabel);
   }
-  
+
   const $dropzone = H5P.jQuery('<div/>', {
     'aria-dropeffect': 'none',
-    'aria-label':  params.ariaLabel,
-    'tabindex': params.tabIndex ?? -1,
+    'aria-label': params.ariaLabel,
+    tabindex: params.tabIndex ?? -1,
     class: params.classes ? params.classes : '',
   }).appendTo(dropzoneContainer)
     .droppable({
@@ -79,7 +79,7 @@ function Dropzone(params) {
       drop: (event, ui) => {
         dropzone.classList.remove('h5p-dropzone--hover');
         params.handleDropEvent?.(event, ui, params.index ?? -1);
-      }
+      },
     });
   const dropzone = $dropzone.get(0);
 
