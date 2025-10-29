@@ -13,6 +13,7 @@ module.exports = {
   optimization: {
     minimize: isProd,
     minimizer: [
+      '...',
       new CssMinimizerPlugin()
     ],
   },
