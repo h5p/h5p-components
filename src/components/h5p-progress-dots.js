@@ -1,5 +1,5 @@
 import '../styles/h5p-progress-dots.css';
-import {createElement} from "../utils.js";
+import { createElement } from '../utils.js';
 /**
  * @typedef ProgressDots
  * @type {object}
@@ -10,7 +10,7 @@ import {createElement} from "../utils.js";
 /**
  * @typedef ProgressDotsTexts
  * @type {object}
- * @property {string} jumpToQuestion 
+ * @property {string} jumpToQuestion
  * @property {string} answeredText
  * @property {string} unansweredText
  * @property {string} currentQuestionText
@@ -35,7 +35,7 @@ function ProgressDots(params = {}) {
 
   let activeIndex = params.index ?? 0;
   let selectedIndex = params.index ?? 0;
-  let progressDotElements = [];
+  const progressDotElements = [];
 
   const dotsContainer = createElement('ul', {
     className: 'h5p-progress-dots-container',
@@ -72,13 +72,13 @@ function ProgressDots(params = {}) {
   };
 
   const hasOneFocusableDot = params.dots.some((dot) => dot.tabIndex >= 0);
-  
+
   params.dots.forEach((dot, i) => {
     const item = createElement('li', {
       className: 'h5p-progress-item',
     });
     // We need to ensure that we can keyboard navigate to at least one of the dots.
-    let tabIndex = hasOneFocusableDot
+    const tabIndex = hasOneFocusableDot
       ? dot.tabIndex ?? -1
       : i === 0 ? 0 : -1;
     const progressDot = createElement('a', {
@@ -112,14 +112,14 @@ function ProgressDots(params = {}) {
 
   const toggleCurrentDot = (newIndex) => {
     selectedIndex = newIndex;
-    const texts = params.texts;
+    const { texts } = params;
     progressDotElements.forEach((el, i) => {
       el.setAttribute('tabIndex', activeIndex === i ? 0 : -1);
       const isCurrent = i === newIndex;
       let label = texts.jumpToQuestion
         .replace('%d', (newIndex + 1).toString())
         .replace('%total', progressDotElements.length);
-    
+
       if (!isCurrent) {
         const isAnswered = el.classList.contains('answered');
         label += `, ${(isAnswered ? texts.answeredText : texts.unansweredText)}`;
@@ -134,11 +134,11 @@ function ProgressDots(params = {}) {
   };
 
   const toggleFilledDot = (filledIndex, isFilled) => {
-    const label = params.texts.jumpToQuestion
+    const label = `${params.texts.jumpToQuestion
       .replace('%d', (filledIndex + 1).toString())
-      .replace('%total', progressDotElements.length) +
-      ', ' +
-      (isFilled ? params.texts.answeredText : params.texts.unansweredText);
+      .replace('%total', progressDotElements.length)
+    }, ${
+      isFilled ? params.texts.answeredText : params.texts.unansweredText}`;
 
     progressDotElements[filledIndex].classList.toggle('unanswered', !isFilled);
     progressDotElements[filledIndex].classList.toggle('answered', isFilled);
