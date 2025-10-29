@@ -7,6 +7,7 @@ module.exports = {
   output: {
     filename: 'h5p-components.js',
     path: path.resolve(__dirname, 'dist'),
+    clean: true
   },
   module: {
     rules: [
