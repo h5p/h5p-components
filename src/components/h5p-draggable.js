@@ -87,9 +87,21 @@ function Draggable(params) {
     return computedStyle.getPropertyValue('--border-width');
   };
 
+  const setContent = ({dom, label}) => {
+    draggable.innerHTML = "";
+    if (dom) {
+      draggable.append(dom);
+    }
+    else {
+      draggable.innerHTML = `<span>${label}</span><span class="h5p-hidden-read"></span>`;
+    }
+  };
+
+
   draggable.setContentOpacity = setContentOpacity;
   draggable.setOpacity = setOpacity;
   draggable.getBorderWidth = getBorderWidth;
+  draggable.setContent = setContent;
 
   return draggable;
 }
