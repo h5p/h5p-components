@@ -35,18 +35,23 @@ function Draggable(params) {
     classes += ' h5p-draggable--points-and-status';
   }
 
+  const setContent = ({dom, label}) => {
+    draggable.innerHTML = "";
+    if (dom) {
+      draggable.append(dom);
+    }
+    else {
+      draggable.innerHTML = `<span>${label}</span><span class="h5p-hidden-read"></span>`;
+    }
+  };
+
   const draggable = createElement('div', {
     classList: classes,
     role: 'button',
     tabIndex: params.tabIndex ?? 0,
   });
 
-  if (params.dom) {
-    draggable.append(params.dom);
-  }
-  else {
-    draggable.innerHTML = `<span>${params.label}</span><span class="h5p-hidden-read"></span>`;
-  }
+  setContent({ dom: params.dom, label: params.label });
 
   // Have to set it like this, because it cannot be set with createElement.
   draggable.setAttribute('aria-grabbed', params.ariaGrabbed ?? false);
@@ -90,6 +95,7 @@ function Draggable(params) {
   draggable.setContentOpacity = setContentOpacity;
   draggable.setOpacity = setOpacity;
   draggable.getBorderWidth = getBorderWidth;
+  draggable.setContent = setContent;
 
   return draggable;
 }

@@ -20,6 +20,7 @@
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+  box-sizing: border-box;
 }
 
 .h5p-draggable.h5p-draggable--points-and-status {
