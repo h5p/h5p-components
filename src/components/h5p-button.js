@@ -47,7 +47,7 @@ function Button(params) {
   }
 
   const button = Utils.createElement('button', {
-    innerHTML: params.label ? `<span class="h5p-theme-label">${params.label}</span>` : '',
+    innerHTML: params.label ? `<span class="h5p-theme-label">${Utils.sanitizeHTML(params.label)}</span>` : '',
     ariaLabel: Utils.parseString(params.ariaLabel ?? params.label),
     classList: params.classes ? `${buttonStyleType} ${params.classes}` : buttonStyleType,
     onclick: params.onClick,

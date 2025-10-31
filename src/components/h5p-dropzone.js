@@ -1,5 +1,5 @@
 import '../styles/h5p-dropzone.css';
-import { createElement } from '../utils.js';
+import { createElement, sanitizeHTML } from '../utils.js';
 
 /**
  * @typedef {'fit' | 'intersect' | 'pointer' | 'touch'} DropzoneTolerance
@@ -54,7 +54,7 @@ function Dropzone(params) {
 
   if (params.variant === 'area' && params.areaLabel) {
     const areaLabel = createElement('div', { classList: 'h5p-dropzone_label' });
-    areaLabel.innerHTML = params.areaLabel;
+    areaLabel.innerHTML = sanitizeHTML(params.areaLabel);
     dropzoneContainer.appendChild(areaLabel);
   }
 

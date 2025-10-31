@@ -10,6 +10,9 @@
   },
   "author": "H5P",
   "license": "MIT",
+  "dependencies": {
+    "dompurify": "^3.3.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.28.5",
     "@babel/preset-env": "^7.28.5",

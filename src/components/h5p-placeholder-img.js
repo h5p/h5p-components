@@ -1,5 +1,5 @@
 import '../styles/h5p-placeholder-img.css';
-import { createElement } from '../utils.js';
+import { createElement, sanitizeHTML } from '../utils.js';
 
 /**
  * @typedef PlaceholderImgParams
@@ -15,7 +15,7 @@ import { createElement } from '../utils.js';
 function PlaceholderImg(svg) {
   return createElement('div', {
     classList: 'h5p-theme-placeholder-img',
-    innerHTML: svg ?? placeholder,
+    innerHTML: sanitizeHTML(svg ?? placeholder),
   });
 }
 
