@@ -1,5 +1,5 @@
 import '../styles/h5p-draggable.css';
-import { createElement } from '../utils.js';
+import { createElement, sanitizeHTML } from '../utils.js';
 
 /**
  * @typedef DraggableParams
@@ -45,7 +45,7 @@ function Draggable(params) {
     draggable.append(params.dom);
   }
   else {
-    draggable.innerHTML = `<span>${params.label}</span><span class="h5p-hidden-read"></span>`;
+    draggable.innerHTML = `<span>${sanitizeHTML(params.label)}</span><span class="h5p-hidden-read"></span>`;
   }
 
   // Have to set it like this, because it cannot be set with createElement.

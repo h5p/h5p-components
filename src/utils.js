@@ -1,3 +1,5 @@
+import DOMPurify from 'dompurify';
+
 /** @constant {number} DEBOUNCE_DELAY_MS Debounce delay to use */
 const DEBOUNCE_DELAY_MS = 40;
 
@@ -19,7 +21,7 @@ export const parseString = (text) => {
     return '';
   }
   const div = document.createElement('div');
-  div.innerHTML = text;
+  div.innerHTML = sanitizeHTML(text);
   return div.textContent;
 };
 
@@ -97,4 +99,13 @@ export const debounce = (callback, delayMs = DEBOUNCE_DELAY_MS) => {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => callback.apply(this, args), delayMs);
   };
+};
+
+/**
+ * Sanitize HTML string to prevent XSS attacks.
+ * @param {string} dirty The dirty HTML string.
+ * @returns {string} The sanitized HTML string.
+ */
+export const sanitizeHTML = (dirty) => {
+  return DOMPurify.sanitize(dirty, { USE_PROFILES: { html: true } });
 };

@@ -1,5 +1,5 @@
 import '../styles/h5p-cover-page.css';
-import { createElement } from '../utils.js';
+import { createElement, sanitizeHTML } from '../utils.js';
 import Button from './h5p-button.js';
 
 /**
@@ -69,7 +69,7 @@ function CoverPage(params) {
   if (params.description) {
     detailContainer.appendChild(createElement('p', {
       classList: 'h5p-theme-cover-description',
-      innerHTML: params.description,
+      innerHTML: sanitizeHTML(params.description),
     }));
   }
 

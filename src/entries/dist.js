@@ -8,10 +8,13 @@ import PlaceholderImg from '../components/h5p-placeholder-img.js';
 import ProgressBar from '../components/h5p-progress-bar.js';
 import ProgressDots from '../components/h5p-progress-dots.js';
 import ResultScreen from '../components/h5p-result-screen.js';
-
+import * as Utils from '../utils.js';
+    
+// Expose utils
 H5P = H5P || {};
 H5P.Components = H5P.Components || {};
 
+H5P.Components.Utils = Utils;
 H5P.Components.CoverPage = CoverPage;
 H5P.Components.Button = Button;
 H5P.Components.Draggable = Draggable;

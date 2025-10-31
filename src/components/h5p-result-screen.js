@@ -1,5 +1,5 @@
 import '../styles/h5p-result-screen.css';
-import { createElement } from '../utils.js';
+import { createElement, sanitizeHTML } from '../utils.js';
 /**
  * @typedef ResultQuestion
  * @type {object}
@@ -46,7 +46,7 @@ function ResultScreen(params) {
   }));
   header.appendChild(createElement('div', {
     classList: 'h5p-theme-results-score',
-    innerHTML: params.scoreHeader,
+    innerHTML: sanitizeHTML(params.scoreHeader),
   }));
   resultScreen.append(header);
 
@@ -102,7 +102,7 @@ const createQuestion = (question) => {
 
   questionContainer.appendChild(createElement('div', {
     classList: 'h5p-theme-results-question',
-    innerHTML: question.title,
+    innerHTML: sanitizeHTML(question.title),
   }));
 
   // UserAnswer might be an empty string
@@ -134,7 +134,7 @@ const createQuestion = (question) => {
           }));
         }
 
-        solutionContainer.innerHTML += question.correctAnswer;
+        solutionContainer.innerHTML += sanitizeHTML(question.correctAnswer);
 
         answerContainer.appendChild(solutionContainer);
       }
@@ -147,7 +147,7 @@ const createQuestion = (question) => {
 
   listItem.appendChild(createElement('div', {
     classList: 'h5p-theme-results-points',
-    innerHTML: question.points,
+    innerHTML: sanitizeHTML(question.points),
   }));
 
   return listItem;
