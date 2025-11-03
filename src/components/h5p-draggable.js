@@ -6,9 +6,9 @@ import { createElement } from '../utils.js';
  * @type {object}
  * @property {string} label A label for the draggable element.
  * @property {HTMLElement} [dom] A DOM element to use as the draggable element. Label will be used as fallback.
- * @property {[number]} tabIndex Tabindex to use on the draggable element (default 0).
- * @property {[boolean]} ariaGrabbed Initialize the grabbed state on the draggable (default false).
- * @property {[boolean]} hasHandle A boolean determining if the draggable has visual handles or not.
+ * @property {number} [tabIndex] Tabindex to use on the draggable element (default 0).
+ * @property {boolean} [ariaGrabbed] Initialize the grabbed state on the draggable (default false).
+ * @property {boolean} [hasHandle] A boolean determining if the draggable has visual handles or not.
  * @property {function} handleRevert A callback function to handle revert.
  * @property {function} handleDragEvent A callback function for the drag event.
  * @property {function} handleDragStartEvent A callback function for the dragstart event.
