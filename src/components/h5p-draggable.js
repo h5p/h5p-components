@@ -6,9 +6,9 @@ import { createElement } from '../utils.js';
  * @type {object}
  * @property {string} label A label for the draggable element.
  * @property {HTMLElement} [dom] A DOM element to use as the draggable element. Label will be used as fallback.
- * @property {[number]} tabIndex Tabindex to use on the draggable element (default 0).
- * @property {[boolean]} ariaGrabbed Initialize the grabbed state on the draggable (default false).
- * @property {[boolean]} hasHandle A boolean determining if the draggable has visual handles or not.
+ * @property {number} [tabIndex] Tabindex to use on the draggable element (default 0).
+ * @property {boolean} [ariaGrabbed] Initialize the grabbed state on the draggable (default false).
+ * @property {boolean} [hasHandle] A boolean determining if the draggable has visual handles or not.
  * @property {function} handleRevert A callback function to handle revert.
  * @property {function} handleDragEvent A callback function for the drag event.
  * @property {function} handleDragStartEvent A callback function for the dragstart event.
@@ -35,18 +35,23 @@ function Draggable(params) {
     classes += ' h5p-draggable--points-and-status';
   }
 
+  const setContent = ({dom, label}) => {
+    draggable.innerHTML = "";
+    if (dom) {
+      draggable.append(dom);
+    }
+    else {
+      draggable.innerHTML = `<span>${label}</span><span class="h5p-hidden-read"></span>`;
+    }
+  };
+
   const draggable = createElement('div', {
     classList: classes,
     role: 'button',
     tabIndex: params.tabIndex ?? 0,
   });
 
-  if (params.dom) {
-    draggable.append(params.dom);
-  }
-  else {
-    draggable.innerHTML = `<span>${params.label}</span><span class="h5p-hidden-read"></span>`;
-  }
+  setContent({ dom: params.dom, label: params.label });
 
   // Have to set it like this, because it cannot be set with createElement.
   draggable.setAttribute('aria-grabbed', params.ariaGrabbed ?? false);
@@ -82,6 +87,10 @@ function Draggable(params) {
     draggable.style.setProperty('--opacity', sanitizedValue);
   };
 
+  const setDragHandleVisibility = (value) => {
+    draggable.classList.toggle('h5p-draggable--has-handle', value);
+  };
+
   const getBorderWidth = () => {
     const computedStyle = window.getComputedStyle(draggable);
     return computedStyle.getPropertyValue('--border-width');
@@ -90,6 +99,8 @@ function Draggable(params) {
   draggable.setContentOpacity = setContentOpacity;
   draggable.setOpacity = setOpacity;
   draggable.getBorderWidth = getBorderWidth;
+  draggable.setContent = setContent;
+  draggable.setDragHandleVisibility = setDragHandleVisibility;
 
   return draggable;
 }
