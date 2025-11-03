@@ -87,6 +87,10 @@ function Draggable(params) {
     draggable.style.setProperty('--opacity', sanitizedValue);
   };
 
+  const setDragHandleVisibility = (value) => {
+    draggable.classList.toggle('h5p-draggable--has-handle', value);
+  };
+
   const getBorderWidth = () => {
     const computedStyle = window.getComputedStyle(draggable);
     return computedStyle.getPropertyValue('--border-width');
@@ -96,6 +100,7 @@ function Draggable(params) {
   draggable.setOpacity = setOpacity;
   draggable.getBorderWidth = getBorderWidth;
   draggable.setContent = setContent;
+  draggable.setDragHandleVisibility = setDragHandleVisibility;
 
   return draggable;
 }
