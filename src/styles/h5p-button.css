@@ -105,6 +105,7 @@
   transition-property: text-indent, padding;
   transition: var(--transition-h5p-theme-primary-cta);
   color: var(--h5p-theme-contrast-cta);
+  border: solid 3px var(--h5p-theme-contrast-cta-white);
   max-width: 100%;
 }
 
