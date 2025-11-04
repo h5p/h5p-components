@@ -58,8 +58,10 @@
 
 .h5p-theme .h5p-theme-secondary-cta[aria-disabled="true"],
 .h5p-theme .h5p-theme-primary-cta[aria-disabled="true"],
+.h5p-theme .h5p-theme-nav-button[aria-disabled="true"],
 .h5p-theme .h5p-theme-secondary-cta:disabled,
-.h5p-theme .h5p-theme-primary-cta:disabled {
+.h5p-theme .h5p-theme-primary-cta:disabled,
+.h5p-theme .h5p-theme-nav-button:disabled {
   opacity: 0.4;
   cursor: default;
 }
@@ -275,6 +277,11 @@
   font-weight: bold;
   color: var(--h5p-theme-secondary-contrast-cta);
   white-space: nowrap;
+}
+
+.h5p-theme-nav-button:hover:not(:disabled):not([aria-disabled="true"]),
+.h5p-theme .h5p-theme-nav-button:hover:not(:disabled):not([aria-disabled="true"]) {
+  background-color: var(--h5p-theme-secondary-cta-light);
 }
 
 .h5p-theme-secondary-cta.icon-only,
