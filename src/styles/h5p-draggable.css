@@ -17,7 +17,6 @@
   text-align: center;
   vertical-align: top;
   z-index: 3;
-  box-sizing: border-box;
 }
 
 .h5p-draggable.h5p-draggable--points-and-status {
