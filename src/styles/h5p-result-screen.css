@@ -222,7 +222,7 @@
 .h5p-theme-results-answer {
   margin-right: 4.5em;
   font-size: var(--h5p-theme-font-size-m);
-  overflow-wrap: break-word;
+  word-break: break-all;
   color: var(--h5p-theme-text-third);
 }
 
