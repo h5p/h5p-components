@@ -93,8 +93,8 @@ export const computeWidthRatio = (elementA, elementB) => {
  */
 export const debounce = (callback, delayMs = DEBOUNCE_DELAY_MS) => {
   let timeoutId;
-  return function (...args) {
+  return (...args) => {
     clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => callback.apply(this, args), delayMs);
+    timeoutId = setTimeout(() => callback(...args), delayMs);
   };
 };

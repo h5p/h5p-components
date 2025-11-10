@@ -3,8 +3,8 @@ import { createElement } from '../utils.js';
 /**
  * @typedef ProgressDots
  * @type {object}
- * @property {string} ariaLabel A label for screen reader users when navigating to a dot.
- * @property {[number]} tabIndex Initial tabIndex for a dot.
+ * @property {string} ariaLabel A label for screen reader users when navigating to a dot
+ * @property {[number]} tabIndex Initial tabIndex for a dot
  */
 
 /**
@@ -19,22 +19,21 @@ import { createElement } from '../utils.js';
 /**
  * @typedef ProgressDotsParams
  * @type {object}
- * @property {[number]} index The current position in the navigation.
- * @property {ProgressDots[]} dots Array of dots to process.
- * @property {ProgressDotsTexts} texts A collection of translatable strings.
- * @property {[function]} handleProgressDotClick A callback function when a dot is clicked.
+ * @property {[number]} index The current position in the navigation
+ * @property {ProgressDots[]} dots Array of dots to process
+ * @property {ProgressDotsTexts} texts A collection of translatable strings
+ * @property {[function]} handleProgressDotClick A callback function when a dot is clicked
  */
 
 /**
- * Creates navigational dots.
+ * Creates navigational dots
  * @param {ProgressDotsParams} params A set of parameters to configure ProgressDots
- * @returns {HTMLElement} The ProgressDots element.
+ * @returns {HTMLElement} The ProgressDots element
  */
 function ProgressDots(params = {}) {
   const progressLength = params.dots.length;
 
   let activeIndex = params.index ?? 0;
-  let selectedIndex = params.index ?? 0;
   const progressDotElements = [];
 
   const dotsContainer = createElement('ul', {
@@ -68,6 +67,9 @@ function ProgressDots(params = {}) {
         // Go to next dot
         setActiveDot(activeIndex + 1);
         break;
+
+      default:
+        break;
     }
   };
 
@@ -77,10 +79,17 @@ function ProgressDots(params = {}) {
     const item = createElement('li', {
       className: 'h5p-progress-item',
     });
-    // We need to ensure that we can keyboard navigate to at least one of the dots.
-    const tabIndex = hasOneFocusableDot
-      ? dot.tabIndex ?? -1
-      : i === 0 ? 0 : -1;
+    // We need to ensure that we can keyboard navigate to at least one of the dots
+    let tabIndex;
+    if (hasOneFocusableDot) {
+      tabIndex = dot.tabIndex ?? -1;
+    }
+    else if (i === 0) {
+      tabIndex = 0;
+    }
+    else {
+      tabIndex = -1;
+    }
     const progressDot = createElement('a', {
       href: '#',
       className: `h5p-progress-dot unanswered ${tabIndex >= 0 ? 'current' : ''}`,
@@ -111,7 +120,6 @@ function ProgressDots(params = {}) {
   };
 
   const toggleCurrentDot = (newIndex) => {
-    selectedIndex = newIndex;
     const { texts } = params;
     progressDotElements.forEach((el, i) => {
       el.setAttribute('tabIndex', activeIndex === i ? 0 : -1);
