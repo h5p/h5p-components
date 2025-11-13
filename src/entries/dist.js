@@ -9,6 +9,7 @@ import ProgressBar from '../components/h5p-progress-bar.js';
 import ProgressDots from '../components/h5p-progress-dots.js';
 import ResultScreen from '../components/h5p-result-screen.js';
 
+// eslint-disable-next-line no-global-assign
 H5P = H5P || {};
 H5P.Components = H5P.Components || {};
 

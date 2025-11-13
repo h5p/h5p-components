@@ -7,7 +7,7 @@ import { createElement } from '../utils.js';
  * @property {[boolean]} useDefaultImg Use a default image. Will be overwritten by imgUrl
  * @property {string} title The textual description of the question
  * @property {string} points The score of the question
- * @property {[boolean]} isCorrect If the answer is considered correct (Some content types are more lenient)
+ * @property {[boolean]} isCorrect If the answer is correct (Some content types are more lenient)
  * @property {[string]} userAnswer What the user answered
  * @property {[string]} correctAnswer The correct answer
  * @property {[string]} correctAnswerPrepend The label before the correct answer
@@ -30,8 +30,8 @@ import { createElement } from '../utils.js';
 
 /**
  * Create a result screen, summing up the tasks of the content and the scores achieved
- * @param {ResultScreenParams} params A set of parameters to configure the ResultScreen component.
- * @returns {HTMLElement} The result screen element.
+ * @param {ResultScreenParams} params A set of parameters to configure the ResultScreen component
+ * @returns {HTMLElement} The result screen element
  */
 function ResultScreen(params) {
   // Create main wrapper

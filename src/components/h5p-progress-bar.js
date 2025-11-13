@@ -4,8 +4,8 @@ import { createElement } from '../utils.js';
 /**
  * @typedef ProgressBarParams
  * @type {object}
- * @property {number} [index] The current position in the navigation (default: 0).
- * @property {number} [progressLength] The number of "items" we can navigate through (default: 1).
+ * @property {number} [index] The current position in the navigation (default: 0)
+ * @property {number} [progressLength] The number of "items" we can navigate through (default: 1)
  * @property {number} [ariaValueMax] The max value of the slider (default: 100)
  * @property {number} [ariaValueMin] The min value of the slider (default: 0)
  * @property {number} [ariaValueNow] The current/initial value of the slider (default: 0)
@@ -37,8 +37,8 @@ function ProgressBar(params = {}) {
 
   const updateProgressBar = (newIndex) => {
     index = newIndex;
-    progressBar.setAttribute('aria-valuenow', (newIndex + 1 / progressLength * 100).toFixed(2));
-    progressBarInner.style.width = `${(newIndex + 1) / progressLength * 100}%`;
+    progressBar.setAttribute('aria-valuenow', ((newIndex + 1) / (progressLength * 100)).toFixed(2));
+    progressBarInner.style.width = `${(newIndex + 1) / (progressLength * 100)}%`;
   };
 
   updateProgressBar(index);

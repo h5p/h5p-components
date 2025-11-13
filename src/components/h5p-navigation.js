@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-nested-ternary */
 import '../styles/h5p-navigation.css';
 import { createElement } from '../utils.js';
 import Button from './h5p-button.js';
@@ -34,21 +36,34 @@ import ProgressDots from './h5p-progress-dots.js';
 /**
  * @typedef NavigationParams
  * @type {object}
- * @property {number} index The current position in the navigation.
- * @property {number} navigationLength The number of "items" we can navigate through.
- * @property {[NavigationVariant]} variant The type of grid layout for the navigation (3split is default).
- * @property {[NavigationTexts]} texts Translations stuff. @todo, should H5P.Component maintain own translations?
+ * @property {number} index The current position in the navigation
+ * @property {number} navigationLength The number of "items" we can navigate through
+ * @property {[NavigationVariant]} variant
+ *    The type of grid layout for the navigation (3split is default)
+ * @property {[NavigationTexts]} texts
+ *    Translations stuff. @todo, should H5P.Component maintain own translations?
  * @property {[string]} className Extra css classes to be applied on the navigation element
- * @property {[function]} handlePrevious A function that enables the previous button and triggers when it has been clicked.
- * @property {[function]} handleNext A function that enables the next button and triggers when it has been clicked.
- * @property {[function]} handleLast A function that enables the "last" button and triggers when it has been clicked. Typically a "submit" or "show results" button.
- * @property {[NavigationProgressType]} progressType Can show a progress bar, dot navigation or textual progress.
- * @property {[Array]} dots If progessType==='dots', the dots array is required. Each dot has tabIndex and ariaLabel property.
- * @property {[function]} handleProgressDotClick A function that is called when the user clicks the on a "dot". Optional.
+ * @property {[function]} handlePrevious
+ *    A function that enables the previous button and triggers when it has been clicked
+ * @property {[function]} handleNext
+ *    A function that enables the next button and triggers when it has been clicked
+ * @property {[function]} handleLast
+ *    A function that enables the "last" button and triggers when it has been clicked
+ *    Typically a "submit" or "show results" button
+ * @property {[NavigationProgressType]} progressType
+ *    Can show a progress bar, dot navigation or textual progress
+ * @property {[Array]} dots
+ *    If progressType==='dots', the dots array is required
+ *    Each dot has tabIndex and ariaLabel property
+ * @property {[function]} handleProgressDotClick
+ *    A function that is called when the user clicks the on a "dot". Optional
  * @property {[object]} options
- * @property {[boolean]} options.disableBackwardsNavigation If backwards navigation should be disabled or not.
- * @property {[boolean]} showDisabledButtons If true, buttons will be disabled instead of hidden when not usable.
- *  @property {[Array]} titles Array of titles for each page/chapter, used when progressType is 'text'.
+ * @property {[boolean]} options.disableBackwardsNavigation
+ *    If backwards navigation should be disabled or not
+ * @property {[boolean]} showDisabledButtons
+ *    If true, buttons will be disabled instead of hidden when not usable
+ *  @property {[Array]} titles
+ *    Array of titles for each page/chapter, used when progressType is 'text'
  */
 
 /**
@@ -96,6 +111,7 @@ function createProgressSpan(className, content, tooltipText) {
  * @param {string} [params.texts.currentTooltip] - Tooltip for current index
  * @param {string} [params.texts.totalTooltip] - Tooltip for total count*
  */
+// eslint-disable-next-line max-len
 function updateProgressText(progressText, textualProgress, currentIndex, navigationLength, texts = {}) {
   // Clear existing content
   progressText.innerHTML = '';
@@ -134,8 +150,8 @@ function createProgressText({
 
 /**
  * Create a navigation component, with optional progress components.
- * @param {NavigationParams} params A set of parameters to configure the Navigation component.
- * @returns {HTMLElement} The navigation element.
+ * @param {NavigationParams} params A set of parameters to configure the Navigation component
+ * @returns {HTMLElement} The navigation element
  */
 function Navigation(params = {}) {
   let progressBar;
@@ -173,6 +189,7 @@ function Navigation(params = {}) {
       tooltip: params?.texts.previousTooltip,
       icon: 'previous',
       classes:
+        // eslint-disable-next-line no-nested-ternary
         index === 0
           ? params.showDisabledButtons
             ? `${prevClassList} h5p-disabled`

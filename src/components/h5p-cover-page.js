@@ -3,7 +3,16 @@ import { createElement } from '../utils.js';
 import Button from './h5p-button.js';
 
 /**
- * @typedef {'check' | 'retry' | 'done' | 'show-results' | 'book' | 'flip' | 'next' | 'previous'} CoverPageIcon
+ * @typedef {
+ *   'check' |
+ *   'retry' |
+ *   'done' |
+ *   'show-results' |
+ *   'book' |
+ *   'flip' |
+ *   'next' |
+ *   'previous'
+ * } CoverPageIcon
  */
 
 /**
@@ -13,7 +22,8 @@ import Button from './h5p-button.js';
  * @property {[string]} description The description or sub-title of the content
  * @property {[string]} img The url to the image
  * @property {[string]} imgAlt The alt text for the image
- * @property {[boolean]} useMediaContainer Add a container instead of an img, so the consumer can attach it themselves
+ * @property {[boolean]} useMediaContainer Add a container instead of an img
+ *    so the consumer can attach it themselves
  * @property {string} buttonLabel The label of the button
  * @property {function} buttonOnClick The function to trigger when clicking the button
  * @property {[CoverPageIcon]} icon The name of the icon to use for the button and above the title
@@ -21,8 +31,8 @@ import Button from './h5p-button.js';
 
 /**
  * Create a themed, responsive cover page
- * @param {CoverPageParams} params A set of parameters to configure the CoverPage component.
- * @returns {HTMLElement} The cover page element.
+ * @param {CoverPageParams} params A set of parameters to configure the CoverPage component
+ * @returns {HTMLElement} The cover page element
  */
 function CoverPage(params) {
   let coverPageClasses = 'h5p-theme-cover-page';
