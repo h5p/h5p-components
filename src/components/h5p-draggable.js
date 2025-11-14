@@ -71,12 +71,12 @@ function Draggable(params) {
    * @param {number} value Opacity value between 0 and 100
    */
   const setContentOpacity = (value) => {
-    const sanitizedValue = Math.max(0, Math.min(Number(value) || 100, 100)) / 100;
+    const sanitizedValue = Math.max(0, Math.min(Number(value) ?? 100, 100)) / 100;
     draggable.style.setProperty('--content-opacity', sanitizedValue);
   };
 
   const setOpacity = (value) => {
-    const sanitizedValue = Math.max(0, Math.min(Number(value) || 100, 100)) / 100;
+    const sanitizedValue = Math.max(0, Math.min(Number(value) ?? 100, 100)) / 100;
     draggable.style.setProperty('--opacity', sanitizedValue);
   };
 
