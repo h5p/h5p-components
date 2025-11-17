@@ -126,8 +126,9 @@
   font-family: "h5p-theme";
 }
 
-.h5p-theme :is(.h5p-advanced-text, .h5p-text, .h5p-link) a:focus-visible{
-  outline: solid 2px var(--h5p-theme-contrast-cta-white);
+/* Focus Indicator */
+.h5p-theme :is(.h5p-advanced-text, .h5p-text, .h5p-link) a:focus-visible {
+  outline: 2px solid var(--h5p-theme-contrast-cta-white);
   outline-offset: -1px;
 }
 
