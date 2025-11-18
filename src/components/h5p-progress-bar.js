@@ -37,8 +37,8 @@ function ProgressBar(params = {}) {
 
   const updateProgressBar = (newIndex) => {
     index = newIndex;
-    progressBar.setAttribute('aria-valuenow', (newIndex + (1 / progressLength) * 100).toFixed(2));
-    progressBarInner.style.width = `${newIndex + (1 / progressLength) * 100}%`;
+    progressBar.setAttribute('aria-valuenow', (((newIndex + 1) / progressLength) * 100).toFixed(2));
+    progressBarInner.style.width = `${((newIndex + 1) / progressLength) * 100}%`;
   };
 
   updateProgressBar(index);
