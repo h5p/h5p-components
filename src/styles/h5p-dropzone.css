@@ -62,7 +62,7 @@
 }
 
 .h5p-dropzone.h5p-dropzone--area > .h5p-inner.h5p-over {
-  background: var(--h5p-theme-contrast-cta-light);
+  background: var(--h5p-theme-alternative-base);
 }
 
 .h5p-dropzone.h5p-dropzone--area .joubel-tip-container {
@@ -97,7 +97,7 @@
 
 /* General */
 .h5p-dropzone.h5p-dropzone--inline .h5p-dropzone--hover {
-  background-color: var(--h5p-theme-contrast-cta-light);
+  background-color: var(--h5p-theme-alternative-base);
   border-style: dashed;
   border-color: var(--h5p-theme-main-cta-dark);
   cursor: pointer;
