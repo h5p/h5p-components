@@ -217,14 +217,13 @@
 .h5p-theme .h5p-theme-secondary-cta {
   /* Default values for icon-only behavior */
   --secondary-label-display: block;
-  --secondary-before-width: auto;
   --secondary-before-margin-right: var(--h5p-theme-spacing-xxs);
 
   background-color: var(--h5p-theme-ui-base);
   border-color: var(--h5p-theme-contrast-cta-white);
   color: var(--h5p-theme-contrast-cta-white);
-  height: fit-content;
-  width: fit-content;
+  height: auto;
+  width: auto;
 }
 
 .h5p-theme-secondary-cta:hover,
@@ -241,7 +240,6 @@
 
 .h5p-theme-secondary-cta.icon-only {
   --secondary-label-display: none;
-  --secondary-before-width: 100%;
   --secondary-before-margin-right: unset;
 }
 
@@ -258,7 +256,6 @@
 @container (max-width: 350px) {
   .h5p-theme-secondary-cta {
     --secondary-label-display: none;
-    --secondary-before-width: 100%;
     --secondary-before-margin-right: unset;
   }
 }
