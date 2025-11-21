@@ -10,7 +10,8 @@
     padding 0.1s linear 0s,
     text-indent 0.1s linear 0s,
     background-color 0.1s linear 0s,
-    border-color 0.1s linear 0s;
+    border-color 0.1s linear 0s,
+    width 1s linear 0s;
   display: flex;
   align-items: center;
 }
@@ -140,7 +141,7 @@
 .h5p-theme .h5p-theme-primary-cta.icon-only {
   --button-justify: center;
   --button-padding: 0;
-  --button-height: auto;
+  --button-height: var(--h5p-theme-spacing-xl);
   --button-min-width: var(--h5p-theme-spacing-xl);
   --button-text-indent: 0;
   --label-display: none;
@@ -178,7 +179,7 @@
   .h5p-theme .h5p-theme-primary-cta {
     --button-justify: center;
     --button-padding: 0;
-    --button-height: auto;
+    --button-height: var(--h5p-theme-spacing-xl);
     --button-min-width: var(--h5p-theme-spacing-xl);
     --button-text-indent: 0;
     --label-display: none;
@@ -222,8 +223,8 @@
   background-color: var(--h5p-theme-ui-base);
   border-color: var(--h5p-theme-contrast-cta-white);
   color: var(--h5p-theme-contrast-cta-white);
-  height: fit-content;
-  width: fit-content;
+  height: auto;
+  width: auto;
 }
 
 .h5p-theme-secondary-cta:hover,
