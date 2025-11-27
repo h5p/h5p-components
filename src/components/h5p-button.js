@@ -30,16 +30,16 @@ const MAX_LABEL_WIDTH_RATIO = 0.85;
 /**
  * @typedef ButtonParams
  * @type {object}
- * @property {[string]} label The button text
- * @property {[string]} ariaLabel The screenreader friendly text. Default is label
- * @property {[string]} tooltip The tooltip to show on hover/focus. Default is label if icon enabled
+ * @property {string} [label] The button text
+ * @property {string} [ariaLabel] The screenreader friendly text. Default is label
+ * @property {string} [tooltip] The tooltip to show on hover/focus. Default is label if icon enabled
  *    Needed since icon only button on small screens
- * @property {[ButtonStyleType]} styleType Which (visual) type of button it is
- * @property {[ButtonIcon]} icon Which icon to show on the button
- * @property {[string]} classes Additional classes to add to the button
- * @property {[function]} onClick The function to perform once the button is clicked
- * @property {[string]} buttonType Which html type the button should be. Default is button
- * @property {[boolean]} disabled Whether the button should be enabled/disabled. Default is enabled
+ * @property {ButtonStyleType} [styleType] Which (visual) type of button it is
+ * @property {ButtonIcon} [icon] Which icon to show on the button
+ * @property {string} [classes] Additional classes to add to the button
+ * @property {function} [onClick] The function to perform once the button is clicked
+ * @property {string} [buttonType] Which html type the button should be. Default is button
+ * @property {boolean} [disabled] Whether the button should be enabled/disabled. Default is enabled
  */
 
 /**

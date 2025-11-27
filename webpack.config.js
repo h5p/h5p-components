@@ -17,6 +17,9 @@ module.exports = {
       new CssMinimizerPlugin()
     ],
   },
+  resolve: {
+		extensions: [ '.ts', '.js' ]
+	},
   module: {
     rules: [
       {
@@ -32,6 +35,19 @@ module.exports = {
           }
         }
       },
+      {
+			test: /\.ts$/,
+			 use: [
+            {
+              loader: 'ts-loader',
+              options: {
+                transpileOnly: true, // Skip type checking for faster builds
+                allowTsInNodeModules: true
+              }
+            }
+          ],
+          exclude: /node_modules/
+		 },
       {
         test: /\.css$/,
         use: [
