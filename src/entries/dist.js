@@ -1,6 +1,6 @@
 import '../styles/h5p-components.css';
-import NewCoverPage from '../components/h5p-cover-page.ts';
-import Button from '../components/h5p-button.js';
+import H5PCoverPage from '../components/h5p-cover-page.ts';
+import H5PButton from '../components/h5p-button.ts';
 import Draggable from '../components/h5p-draggable.js';
 import Dropzone from '../components/h5p-dropzone.js';
 import Navigation from '../components/h5p-navigation.js';
@@ -13,8 +13,8 @@ import ResultScreen from '../components/h5p-result-screen.js';
 H5P = H5P || {};
 H5P.Components = H5P.Components || {};
 
-H5P.Components.CoverPage = NewCoverPage;
-H5P.Components.Button = Button;
+H5P.Components.CoverPage = H5PCoverPage;
+H5P.Components.Button = H5PButton;
 H5P.Components.Draggable = Draggable;
 H5P.Components.Dropzone = Dropzone;
 H5P.Components.Navigation = Navigation;

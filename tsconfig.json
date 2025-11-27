@@ -28,8 +28,10 @@
     "noUnusedParameters": false,
 
     "allowSyntheticDefaultImports": true,
+    "allowImportingTsExtensions": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": false
+    "forceConsistentCasingInFileNames": false,
+    "noEmit": true
   },
   "include": [
     "src/**/*"

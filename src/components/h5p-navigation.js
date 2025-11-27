@@ -2,7 +2,7 @@
 /* eslint-disable no-nested-ternary */
 import '../styles/h5p-navigation.css';
 import { createElement } from '../utils.js';
-import Button from './h5p-button.js';
+import Button from './h5p-button.ts';
 import ProgressBar from './h5p-progress-bar.js';
 import ProgressDots from './h5p-progress-dots.js';
 

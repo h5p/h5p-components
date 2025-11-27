@@ -1,6 +1,6 @@
 import "../styles/h5p-cover-page.css";
 import { createElement } from "../utils.js";
-import Button from "./h5p-button.js";
+import H5PButton, { ButtonIcon } from "./h5p-button.ts";
 
 /**
  * Parameters for cover page configuration
@@ -12,29 +12,14 @@ interface CoverPageParams {
   imgAlt: string;
   useMediaContainer: boolean;
   buttonLabel: string;
-  icon: string | null;
+  icon: ButtonIcon | null;
   buttonOnClick?: (event: MouseEvent) => void;
 }
 /**
- * Web Component for H5P Cover Page (no Shadow DOM)
+ * Web Component for H5P Cover Page
  */
 class H5PCoverPageComponent extends HTMLElement {
-  _coverPage: HTMLElement | null = null;
-
-  static get observedAttributes() {
-    return [
-      "title",
-      "description",
-      "img",
-      "img-alt",
-      "use-media-container",
-      "button-label",
-      "icon",
-    ];
-  }
-  constructor() {
-    super();
-  }
+  
   connectedCallback() {
     this.render();
   }
@@ -47,7 +32,8 @@ class H5PCoverPageComponent extends HTMLElement {
       imgAlt: this.getAttribute("img-alt") || "",
       useMediaContainer: this.hasAttribute("use-media-container"),
       buttonLabel: this.getAttribute("button-label") || "Start",
-      icon: this.getAttribute("icon") || null,
+      icon: this.getAttribute("icon") as ButtonIcon | null,
+      //for future fullproof implementation need to do something to handle the evennt listener
     };
   }
 
@@ -58,10 +44,10 @@ class H5PCoverPageComponent extends HTMLElement {
   }
 
   createCoverPage(params: CoverPageParams): HTMLElement {
-   let coverPageClasses = 'h5p-theme-new-cover-page';
+   let coverPageClasses = 'h5p-theme-cover-page';
 
   if (params.useMediaContainer || params.img) {
-    coverPageClasses += ' h5p-theme-new-cover-page-with-image';
+    coverPageClasses += ' h5p-theme-cover-page-with-image';
   }
 
   const coverPage = createElement('div', {
@@ -106,16 +92,15 @@ class H5PCoverPageComponent extends HTMLElement {
     }));
   }
 
-  detailContainer.appendChild(Button({
+  detailContainer.appendChild(H5PButton({
     label: params.buttonLabel,
     icon: params.icon,
-    onClick: params.buttonOnClick,
+    onClick: params.buttonOnClick
   }));
 
   coverPage.appendChild(detailContainer);
 
   return coverPage;
-
   }
 }
 
@@ -124,8 +109,8 @@ customElements.define('h5p-cover-page', H5PCoverPageComponent);
 /**
  * Original function for backwards compatibility
  */
-function NewCoverPage(params: CoverPageParams): HTMLElement {
+function H5PCoverPage(params: CoverPageParams): HTMLElement {
   const element = new H5PCoverPageComponent().createCoverPage(params);
   return element;
 }
-export default NewCoverPage;
+export default H5PCoverPage;

@@ -35,10 +35,10 @@ import Button from './h5p-button.js';
  * @returns {HTMLElement} The cover page element
  */
 function CoverPage(params) {
-  let coverPageClasses = 'h5p-theme-new-cover-page';
+  let coverPageClasses = 'h5p-theme-cover-page';
 
   if (params.useMediaContainer || params.img) {
-    coverPageClasses += ' h5p-theme-new-cover-page-with-image';
+    coverPageClasses += ' h5p-theme-cover-page-with-image';
   }
 
   const coverPage = createElement('div', {
