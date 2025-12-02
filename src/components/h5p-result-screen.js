@@ -1,4 +1,5 @@
 import '../styles/h5p-result-screen.css';
+import PlaceholderImg from './h5p-placeholder-img.js';
 import { createElement } from '../utils.js';
 /**
  * @typedef ResultQuestion
@@ -90,10 +91,13 @@ const createQuestion = (question) => {
     ));
   }
   else if (question.useDefaultImg) {
-    listItem.appendChild(createElement(
-      'div',
-      { classList: 'h5p-theme-results-image default-image' },
-    ));
+    const imageContainer = createElement('div', {
+      classList: 'h5p-theme-results-image',
+    });
+
+    imageContainer.appendChild(PlaceholderImg());
+
+    listItem.appendChild(imageContainer);
   }
 
   const questionContainer = createElement('div', {

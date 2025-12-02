@@ -195,26 +195,13 @@
   height: calc(var(--h5p-theme-spacing-xl)* 1.5);
   width: calc(var(--h5p-theme-spacing-xl)* 2);
   background-size: contain;
-  background-position: center center;
+  background-position: center;
   background-color: var(--h5p-theme-ui-base);
   background-repeat: no-repeat;
   background-origin: content-box;
   border-radius: var(--h5p-theme-border-radius-large);
   border: solid 4px var(--h5p-theme-ui-base);
   margin: auto var(--h5p-theme-spacing-m) auto 0;
-}
-
-.h5p-theme-results-image.default-image {
-  background-color: var(--h5p-theme-alternative-base);
-  text-align: center;
-}
-
-.h5p-theme-results-image.default-image:after {
-  font-family: 'H5PFontAwesome4';
-  content: "\f03e";
-  font-size: 2rem;
-  line-height: 2.2;
-  color: var(--h5p-theme-text-third);
 }
 
 /* Answers */
