@@ -1,5 +1,4 @@
 import '../styles/h5p-result-screen.css';
-import PlaceholderImg from './h5p-placeholder-img.js';
 import { createElement } from '../utils.js';
 /**
  * @typedef ResultQuestion
@@ -95,7 +94,7 @@ const createQuestion = (question) => {
       classList: 'h5p-theme-results-image',
     });
 
-    imageContainer.appendChild(PlaceholderImg());
+    imageContainer.appendChild(H5P.Components.PlaceholderImg());
 
     listItem.appendChild(imageContainer);
   }
