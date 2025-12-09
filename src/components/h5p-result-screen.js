@@ -90,10 +90,13 @@ const createQuestion = (question) => {
     ));
   }
   else if (question.useDefaultImg) {
-    listItem.appendChild(createElement(
-      'div',
-      { classList: 'h5p-theme-results-image default-image' },
-    ));
+    const imageContainer = createElement('div', {
+      classList: 'h5p-theme-results-image',
+    });
+
+    imageContainer.appendChild(H5P.Components.PlaceholderImg('h5pImageDefault'));
+
+    listItem.appendChild(imageContainer);
   }
 
   const questionContainer = createElement('div', {
