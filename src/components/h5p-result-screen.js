@@ -94,7 +94,7 @@ const createQuestion = (question) => {
       classList: 'h5p-theme-results-image',
     });
 
-    imageContainer.appendChild(H5P.Components.PlaceholderImg());
+    imageContainer.appendChild(H5P.Components.PlaceholderImg('h5pImageDefault'));
 
     listItem.appendChild(imageContainer);
   }
