@@ -1,0 +1,353 @@
+/* GENERAL */
+.h5p-theme-primary-cta,
+.h5p-theme-secondary-cta,
+.h5p-theme-nav-button {
+  border: solid 3px var(--h5p-theme-main-cta-base);
+  border-radius: var(--h5p-theme-border-radius-medium);
+  line-height: 1;
+  transition:
+    transform 0.1s linear 0s,
+    padding 0.1s linear 0s,
+    text-indent 0.1s linear 0s,
+    background-color 0.1s linear 0s,
+    border-color 0.1s linear 0s;
+  display: flex;
+  align-items: center;
+}
+
+.h5p-theme-primary-cta:not([disabled]):not([aria-disabled="true"]),
+.h5p-theme-secondary-cta:not([disabled]):not([aria-disabled="true"]),
+.h5p-theme-nav-button:not([disabled]):not([aria-disabled="true"]) {
+  cursor: pointer;
+}
+
+.h5p-theme-primary-cta,
+.h5p-theme-secondary-cta {
+  font-size: var(--h5p-theme-font-size-m);
+  font-weight: 600;
+}
+
+.h5p-theme-secondary-cta,
+.h5p-theme-nav-button {
+  padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-s);
+}
+
+.h5p-theme-primary-cta:active,
+.h5p-theme-secondary-cta:active {
+  background-color: var(--h5p-theme-main-cta-dark);
+  border-color: var(--h5p-theme-main-cta-dark);
+}
+
+.h5p-theme-primary-cta::before,
+.h5p-theme-secondary-cta::before,
+.h5p-theme-next::after,
+.h5p-theme-previous::before {
+  display: inline-block;
+  font-family: 'h5p-theme';
+  margin-right: var(--h5p-theme-spacing-xxs);
+  font-weight: normal;
+}
+
+.h5p-theme-secondary-cta:focus-visible,
+.h5p-theme-primary-cta:focus-visible,
+.h5p-theme-nav-button:focus-visible {
+  outline: 2px ridge var(--h5p-theme-contrast-cta-white);
+  border-radius: 4px;
+  outline-offset: 2px;
+}
+
+.h5p-theme-secondary-cta[aria-disabled="true"],
+.h5p-theme-primary-cta[aria-disabled="true"],
+.h5p-theme-nav-button[aria-disabled="true"],
+.h5p-theme-secondary-cta:disabled,
+.h5p-theme-primary-cta:disabled,
+.h5p-theme-nav-button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.h5p-theme-secondary-cta[aria-disabled="true"],
+.h5p-theme-primary-cta:disabled {
+  &::before {
+    opacity: 0;
+  }
+}
+
+/* PRIMARY CTA (USED FOR VALIDATION BUTTONS) */
+.h5p-theme-primary-cta {
+  /* Default button state */
+  --button-justify: flex-start;
+  --button-padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-l);
+  --button-height: fit-content;
+  --button-min-width: auto;
+  --button-text-indent: 0;
+  --label-display: block;
+
+  /* Icon properties for normal state */
+  --icon-position: absolute;
+  --icon-opacity: 0;
+  --icon-transform: translate(calc(-1 * var(--h5p-theme-spacing-xxs) - var(--h5p-theme-spacing-m) / 2), 10px);
+  --icon-margin-right: 0;
+
+  /* Hover state properties */
+  --hover-padding: var(--h5p-theme-spacing-xs) calc(var(--h5p-theme-spacing-l) - var(--h5p-theme-spacing-m)/2);
+  --hover-text-indent: var(--h5p-theme-spacing-m);
+  --hover-icon-opacity: 1;
+  --hover-icon-transform: translate(calc(-1 * var(--h5p-theme-spacing-xxs) - var(--h5p-theme-spacing-m)), 0);
+
+  --transition-h5p-theme-primary-cta: all 0.1s linear 0s;
+
+  justify-content: var(--button-justify);
+  padding: var(--button-padding);
+  height: var(--button-height);
+  min-width: var(--button-min-width);
+  text-indent: var(--button-text-indent);
+  background-color: var(--h5p-theme-main-cta-base);
+  transition-property: text-indent, padding;
+  transition: var(--transition-h5p-theme-primary-cta);
+  color: var(--h5p-theme-contrast-cta);
+  max-width: 100%;
+}
+
+.h5p-theme-primary-cta:hover {
+  padding: var(--hover-padding);
+  background-color: var(--h5p-theme-main-cta-light);
+  border-color: var(--h5p-theme-main-cta-light);
+  text-indent: var(--hover-text-indent);
+}
+
+.h5p-theme-primary-cta::before {
+  position: var(--icon-position);
+  opacity: var(--icon-opacity);
+  transform: var(--icon-transform);
+  transition: var(--transition-h5p-theme-primary-cta);
+  transition-property: transform, opacity;
+  margin-right: var(--icon-margin-right);
+}
+
+.h5p-theme-primary-cta:hover::before {
+  opacity: var(--hover-icon-opacity);
+  transform: var(--hover-icon-transform);
+}
+
+.h5p-theme-primary-cta .h5p-theme-label {
+  display: var(--label-display);
+}
+
+/* Icon only state */
+.h5p-theme-primary-cta.icon-only {
+  --button-justify: center;
+  --button-padding: 0;
+  --button-height: var(--h5p-theme-spacing-xl);
+  --button-min-width: var(--h5p-theme-spacing-xl);
+  --button-text-indent: 0;
+  --label-display: none;
+  --icon-position: unset;
+  --icon-opacity: 1;
+  --icon-transform: translate(0, 0);
+  --icon-margin-right: 0;
+  --hover-padding: 0;
+  --hover-text-indent: 0;
+  --hover-icon-opacity: 1;
+  --hover-icon-transform: translate(0, 0);
+}
+
+.h5p-theme-primary-cta.icon-only[aria-disabled="true"],
+.h5p-theme-primary-cta.icon-only:disabled {
+  &::before {
+    opacity: 1;
+  }
+  &:hover {
+    text-indent: 0;
+    padding: 0;
+  }
+}
+
+/* Will target Safari only which needs this or makes the whole content shift a bit. Applied selectively to prevent performance issues */
+@supports (-webkit-hyphens: none) and (not (-moz-appearance: none)) {
+  .h5p-theme-primary-cta::before {
+    will-change: transform;
+  }
+}
+
+/* If the container is smaller than 200px */
+@container (max-width: 200px) {
+  /* Icon only state */
+  .h5p-theme-primary-cta {
+    --button-justify: center;
+    --button-padding: 0;
+    --button-height: var(--h5p-theme-spacing-xl);
+    --button-min-width: var(--h5p-theme-spacing-xl);
+    --button-text-indent: 0;
+    --label-display: none;
+    --icon-position: unset;
+    --icon-opacity: 1;
+    --icon-transform: translate(0, 0);
+    --icon-margin-right: 0;
+    --hover-padding: 0;
+    --hover-text-indent: 0;
+    --hover-icon-opacity: 1;
+    --hover-icon-transform: translate(0, 0);
+  }
+
+  .h5p-theme-primary-cta .h5p-theme-label,
+  .h5p-theme-secondary-cta .h5p-theme-label,
+  .h5p-theme-nav-button .h5p-theme-label {
+    display: none;
+  }
+
+  .h5p-theme-primary-cta[aria-disabled="true"],
+  .h5p-theme-primary-cta:disabled,
+  .h5p-theme-secondary-cta[aria-disabled="true"],
+  .h5p-theme-secondary-cta:disabled {
+    &::before {
+      opacity: 1;
+    }
+    &:hover {
+      text-indent: 0;
+      padding: 0;
+    }
+  }
+}
+
+/* SECONDARY CTA (USED FOR SHOW SOLUTIONS, RETRY AND SIMILAR BUTTONS) */
+.h5p-theme-secondary-cta {
+  /* Default values for icon-only behavior */
+  --secondary-label-display: block;
+  --secondary-before-margin-right: var(--h5p-theme-spacing-xxs);
+
+  background-color: var(--h5p-theme-ui-base);
+  border-color: var(--h5p-theme-contrast-cta-white);
+  color: var(--h5p-theme-contrast-cta-white);
+  height: auto;
+  width: auto;
+}
+
+.h5p-theme-secondary-cta:hover {
+  background-color: var(--h5p-theme-contrast-cta-white);
+  border-color: var(--h5p-theme-contrast-cta-white);
+  color: var(--h5p-theme-secondary-contrast-cta-hover);
+}
+
+.h5p-theme-secondary-cta:active {
+  color: var(--h5p-theme-contrast-cta);
+}
+
+.h5p-theme-secondary-cta.icon-only {
+  --secondary-label-display: none;
+  --secondary-before-margin-right: unset;
+}
+
+.h5p-theme-secondary-cta .h5p-theme-label {
+  display: var(--secondary-label-display);
+}
+
+.h5p-theme-secondary-cta::before {
+  width: var(--secondary-before-width);
+  margin-right: var(--secondary-before-margin-right);
+}
+
+/* If the container is smaller than 350px */
+@container (max-width: 350px) {
+  .h5p-theme-secondary-cta {
+    --secondary-label-display: none;
+    --secondary-before-margin-right: unset;
+  }
+}
+
+/* NAVIGATION BUTTONS */
+.h5p-theme-nav-button {
+  /* Default values for icon-only behavior */
+  --nav-label-display: inline-block;
+  --nav-pseudo-margin: var(--h5p-theme-spacing-xxs);
+
+  min-width: max-content;
+  border: none;
+  background-color: var(--h5p-theme-secondary-cta-base);
+  font-size: var(--h5p-theme-font-size-s);
+  font-weight: bold;
+  color: var(--h5p-theme-secondary-contrast-cta);
+  white-space: nowrap;
+}
+
+.h5p-theme-nav-button:hover:not(:disabled):not([aria-disabled="true"]) {
+  background-color: var(--h5p-theme-secondary-cta-light);
+}
+
+.h5p-theme-secondary-cta.icon-only,
+.h5p-theme-nav-button.icon-only {
+  .h5p-theme-label {
+    display: none;
+  }
+}
+
+.h5p-theme-nav-button.icon-only {
+  --nav-label-display: none;
+  --nav-pseudo-margin: 0;
+}
+
+.h5p-theme-nav-button .h5p-theme-label {
+  display: var(--nav-label-display);
+}
+
+.h5p-theme-next {
+  justify-self: flex-end;
+}
+
+.h5p-theme-next::after {
+  content: "\e901";
+  margin-left: var(--nav-pseudo-margin);
+  margin-right: 0;
+}
+
+.h5p-theme-previous {
+  justify-self: flex-start;
+}
+
+.h5p-theme-previous::before {
+  content: "\e900";
+  margin-right: var(--nav-pseudo-margin);
+}
+
+/* If smaller than 700px */
+@container h5p-navigation (max-width: 700px) {
+  .h5p-theme-nav-button {
+    --nav-label-display: none;
+    --nav-pseudo-margin: 0;
+  }
+
+  .h5p-theme-label {
+    display: var(--nav-label-display);
+  }
+
+  /* Primary CTA if inside navigation */
+  .h5p-theme .h5p-navigation .h5p-theme-primary-cta {
+    height: var(--h5p-theme-spacing-xl);
+    width: var(--h5p-theme-spacing-xl);
+    padding: 0;
+    text-indent: 0;
+  }
+
+  .h5p-theme .h5p-navigation .h5p-theme-primary-cta:hover {
+    height: var(--h5p-theme-spacing-xl);
+    width: var(--h5p-theme-spacing-xl);
+    padding: 0;
+  }
+
+  .h5p-navigation .h5p-theme-primary-cta span {
+    display: none;
+  }
+
+  .h5p-navigation .h5p-theme-primary-cta::before {
+    text-indent: 0;
+    position: unset;
+    width: 100%;
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  .h5p-navigation .h5p-theme-primary-cta:hover::before {
+    text-indent: 0;
+    transform: translate(0, 0);
+  }
+}
