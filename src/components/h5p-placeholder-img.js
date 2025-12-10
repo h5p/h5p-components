@@ -1,24 +1,37 @@
 import '../styles/h5p-placeholder-img.css';
 import { createElement } from '../utils.js';
 
-function isSvgString(value) {
-  return typeof value === 'string' && value.trim().startsWith('<svg');
+/**
+ * Returns true if the string parses and contains at least one valid <svg> element
+ * @param {string} value
+ */
+
+function containsSvgElement(value) {
+  if (typeof value !== 'string') return false;
+  const input = value.trim();
+  if (!input.includes('<svg')) return false;
+
+  const xmlDoc = new DOMParser().parseFromString(input, 'image/svg+xml');
+  const hasParserError = xmlDoc.getElementsByTagName('parsererror').length > 0;
+  if (hasParserError) return false;
+
+  return xmlDoc.getElementsByTagName('svg').length > 0;
 }
 
 /**
- * Create a themed placeholder svg
+ *  Create a themed placeholder svg
  *
  *  The function accepts either:
- *  - A raw SVG string (starting with '<svg'), which will be used directly
+ *  - A string containing an <svg> element (raw SVG or XML that includes SVG)
  *  - A key that matches one of the predefined placeholder SVGs in 'placeholderSVGs'
  *  - If no valid SVG or key is provided, the 'default' placeholder is used.
  *
  * @param {string} [arg]
- * Custom SVG content or a key referring to an entry in 'placeholderSVGs'
+ * A string containing an <svg> element or a key referring to an entry in 'placeholderSVGs'
  * @returns {HTMLElement} The placeholder image element
  */
 function PlaceholderImg(arg) {
-  const svg = isSvgString(arg) ? arg
+  const svg = containsSvgElement(arg) ? arg
     : placeholderSVGs[arg] ?? placeholderSVGs.default;
   return createElement('div', {
     classList: 'h5p-theme-placeholder-img',
