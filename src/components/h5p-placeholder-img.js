@@ -6,13 +6,22 @@ import { createElement } from '../utils.js';
  * @param {string} value
  */
 function containsSvgElement(value) {
-  if (typeof value !== 'string') return false;
+  if (typeof value !== 'string') {
+    return false;
+  }
+
   const input = value.trim();
-  if (!input.includes('<svg')) return false;
+
+  if (!input.includes('<svg')) {
+    return false;
+  }
 
   const xmlDoc = new DOMParser().parseFromString(input, 'image/svg+xml');
   const hasParserError = xmlDoc.getElementsByTagName('parsererror').length > 0;
-  if (hasParserError) return false;
+
+  if (hasParserError) {
+    return false;
+  }
 
   return xmlDoc.getElementsByTagName('svg').length > 0;
 }
@@ -30,8 +39,10 @@ function containsSvgElement(value) {
  * @returns {HTMLElement} The placeholder image element
  */
 function PlaceholderImg(arg) {
-  const svg = containsSvgElement(arg) ? arg
+  const svg = containsSvgElement(arg)
+    ? arg
     : placeholderSVGs[arg] ?? placeholderSVGs.default;
+
   return createElement('div', {
     classList: 'h5p-theme-placeholder-img',
     innerHTML: svg,
