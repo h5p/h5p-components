@@ -13,11 +13,6 @@
     border-color 0.1s linear 0s;
   display: flex;
   align-items: center;
-}
-
-.h5p-theme-primary-cta:not([disabled]),
-.h5p-theme-secondary-cta:not([disabled]),
-.h5p-theme-nav-button:not([disabled]) {
   cursor: pointer;
 }
 
