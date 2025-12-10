@@ -5,7 +5,6 @@ import { createElement } from '../utils.js';
  * Returns true if the string parses and contains at least one valid <svg> element
  * @param {string} value
  */
-
 function containsSvgElement(value) {
   if (typeof value !== 'string') return false;
   const input = value.trim();
