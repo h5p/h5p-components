@@ -1,5 +1,5 @@
 /* GENERAL */
-button {
+.h5p-theme-button {
   --label-display: inline-block;
   padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-s);
   border: solid 3px var(--h5p-theme-main-cta-base);
@@ -18,23 +18,23 @@ button {
   cursor: pointer;
 }
 
-button:focus-visible {
+.h5p-theme-button:focus-visible {
   outline: 2px ridge var(--h5p-theme-contrast-cta-white);
   border-radius: 4px;
   outline-offset: 2px;
 }
 
-button:disabled {
+.h5p-theme-button:disabled {
   opacity: 0.4;
   cursor: default;
 }
 
-button .h5p-theme-label {
+.h5p-theme-button .h5p-theme-label {
   display: var(--label-display);
 }
 
-button::before,
-button::after {
+.h5p-theme-button::before,
+.h5p-theme-button::after {
   display: inline-block;
   font-family: 'h5p-theme';
   margin-right: var(--h5p-theme-spacing-xxs);
@@ -236,7 +236,7 @@ button::after {
     --hover-icon-transform: translate(0, 0);
   }
 
-  button {
+  .h5p-theme-button {
     --label-display: none;
   }
 
