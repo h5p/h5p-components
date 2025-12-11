@@ -62,16 +62,12 @@
   --hover-icon-opacity: 1;
   --hover-icon-transform: translate(calc(-1 * var(--h5p-theme-spacing-xxs) - var(--h5p-theme-spacing-m)), 0);
 
-  --transition-h5p-theme-primary-cta: all 0.1s linear 0s;
-
   justify-content: var(--button-justify);
   padding: var(--button-padding);
   height: var(--button-height);
   min-width: var(--button-min-width);
   text-indent: var(--button-text-indent);
   background-color: var(--h5p-theme-main-cta-base);
-  transition-property: text-indent, padding;
-  transition: var(label);
   color: var(--h5p-theme-contrast-cta);
   max-width: 100%;
 }
@@ -87,8 +83,7 @@
   position: var(--icon-position);
   opacity: var(--icon-opacity);
   transform: var(--icon-transform);
-  transition: var(--transition-h5p-theme-primary-cta);
-  transition-property: transform, opacity;
+  transition:  transform 0.1s linear, opacity 0.1s linear;
   margin-right: var(--icon-margin-right);
 }
 
