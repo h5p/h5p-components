@@ -48,13 +48,13 @@ const MAX_LABEL_WIDTH_RATIO = 0.85;
  * @returns {HTMLElement} The button element
  */
 function Button(params) {
-  let buttonStyleType = 'h5p-theme-button h5p-theme-primary-cta';
+  let buttonStyleType = 'h5p-theme-primary-cta';
 
   if (params.styleType === 'secondary') {
-    buttonStyleType = 'h5p-theme-button h5p-theme-secondary-cta';
+    buttonStyleType = 'h5p-theme-secondary-cta';
   }
   else if (params.styleType === 'nav') {
-    buttonStyleType = 'h5p-theme-button h5p-theme-nav-button';
+    buttonStyleType = 'h5p-theme-nav-button';
   }
 
   let tooltip;
