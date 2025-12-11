@@ -71,7 +71,7 @@
   text-indent: var(--button-text-indent);
   background-color: var(--h5p-theme-main-cta-base);
   transition-property: text-indent, padding;
-  transition: var(--transition-h5p-theme-primary-cta);
+  transition: var(label);
   color: var(--h5p-theme-contrast-cta);
   max-width: 100%;
 }
