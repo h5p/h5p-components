@@ -33,6 +33,13 @@
   display: var(--label-display);
 }
 
+.h5p-theme-button.icon-only {
+  --label-display: none;
+  &::before {
+    margin-right: 0;
+  }
+}
+
 .h5p-theme-button::before,
 .h5p-theme-button::after {
   display: inline-block;
@@ -43,30 +50,24 @@
 
 /* PRIMARY CTA (USED FOR VALIDATION BUTTONS) */
 .h5p-theme-primary-cta {
-  /* Default button state */
-  --button-justify: flex-start;
-  --button-text-indent: 0;
-
   /* Icon properties for normal state */
   --icon-position: absolute;
   --icon-opacity: 0;
   --icon-transform: translate(calc(-1 * var(--h5p-theme-spacing-xxs) - var(--h5p-theme-spacing-m) / 2), 10px);
-  --icon-margin-right: 0;
 
   /* Hover state properties */
-  --hover-text-indent: var(--h5p-theme-spacing-m);
-  --hover-icon-opacity: 1;
-  --hover-icon-transform: translate(calc(-1 * var(--h5p-theme-spacing-xxs) - var(--h5p-theme-spacing-m)), 0);
+  --hover-text-indent: var(--h5p-theme-spacing-m); 
 
-  justify-content: var(--button-justify);
   padding-inline: var(--h5p-theme-spacing-l);
-  text-indent: var(--button-text-indent);
   background-color: var(--h5p-theme-main-cta-base);
   color: var(--h5p-theme-contrast-cta);
   
 }
 
 .h5p-theme-primary-cta:hover {
+  --icon-opacity: 1;
+  --icon-transform: translate(calc(-1 * var(--h5p-theme-spacing-xxs) - var(--h5p-theme-spacing-m)), 0);
+
   padding-inline: calc(var(--h5p-theme-spacing-l) - var(--h5p-theme-spacing-m)/2);
   background-color: var(--h5p-theme-main-cta-light);
   border-color: var(--h5p-theme-main-cta-light);
@@ -78,45 +79,24 @@
   opacity: var(--icon-opacity);
   transform: var(--icon-transform);
   transition:  transform 0.1s linear, opacity 0.1s linear;
-  margin-right: var(--icon-margin-right);
+  margin-right: 0;
 }
 
-.h5p-theme-primary-cta:hover::before {
-  opacity: var(--hover-icon-opacity);
-  transform: var(--hover-icon-transform);
-}
-
-.h5p-theme-primary-cta:disabled::before {
-  opacity: 0; 
+.h5p-theme-primary-cta:disabled {
+  --icon-opacity: 0;
+  --hover-text-indent: 0;
 }
 
 /* Icon only state */
 .h5p-theme-primary-cta.icon-only {
-  --button-justify: center;
-  --button-text-indent: 0;
-  --label-display: none;
   --icon-position: unset;
   --icon-opacity: 1;
   --icon-transform: translate(0, 0);
-  --icon-margin-right: 0;
   --hover-text-indent: 0;
-  --hover-icon-opacity: 1;
-  --hover-icon-transform: translate(0, 0);
 
   padding-inline: var(--h5p-theme-spacing-s);
 
 }
-
-.h5p-theme-primary-cta.icon-only:disabled {
-  &::before {
-    opacity: 1;
-  }
-  /* &:hover {
-    text-indent: 0;
-    padding: 0;
-  } */
-}
-
 
 /* Will target Safari only which needs this or makes the whole content shift a bit. Applied selectively to prevent performance issues */
 @supports (-webkit-hyphens: none) and (not (-moz-appearance: none)) {
@@ -127,9 +107,6 @@
 
 /* SECONDARY CTA (USED FOR SHOW SOLUTIONS, RETRY AND SIMILAR BUTTONS) */
 .h5p-theme-secondary-cta {
-  /* Default values for icon-only behavior */
-  --secondary-before-margin-right: var(--h5p-theme-spacing-xxs);
-
   background-color: var(--h5p-theme-ui-base);
   border-color: var(--h5p-theme-contrast-cta-white);
   color: var(--h5p-theme-contrast-cta-white);
@@ -137,21 +114,11 @@
 
 .h5p-theme-secondary-cta:hover {
   background-color: var(--h5p-theme-contrast-cta-white);
-  border-color: var(--h5p-theme-contrast-cta-white);
   color: var(--h5p-theme-secondary-contrast-cta-hover);
 }
 
 .h5p-theme-secondary-cta:active {
   color: var(--h5p-theme-contrast-cta);
-}
-
-.h5p-theme-secondary-cta.icon-only {
-  --label-display: none;
-  --secondary-before-margin-right: unset;
-}
-
-.h5p-theme-secondary-cta::before {
-  margin-right: var(--secondary-before-margin-right);
 }
 
 .h5p-theme-primary-cta:active,
@@ -162,9 +129,6 @@
 
 /* NAVIGATION BUTTONS */
 .h5p-theme-nav-button {
-  /* Default values for icon-only behavior */
-  --nav-pseudo-margin: var(--h5p-theme-spacing-xxs);
-
   border: none;
   background-color: var(--h5p-theme-secondary-cta-base);
   font-size: var(--h5p-theme-font-size-s);
@@ -177,101 +141,28 @@
   background-color: var(--h5p-theme-secondary-cta-light);
 }
 
-.h5p-theme-nav-button.icon-only {
-  --label-display: none;
-  --nav-pseudo-margin: 0;
-}
-
-.h5p-theme-next {
-  justify-self: flex-end;
-}
-
-.h5p-theme-next::after {
-  content: "\e901";
-  margin-left: var(--nav-pseudo-margin);
-  margin-right: 0;
-}
-
-.h5p-theme-previous {
-  justify-self: flex-start;
-}
-
-.h5p-theme-previous::before {
-  content: "\e900";
-  margin-right: var(--nav-pseudo-margin);
-}
-
-/* If the container is smaller than 200px */
-@container (max-width: 200px) {
-  /* Icon only state */
-  .h5p-theme-primary-cta {
-    --button-justify: center;
-    --button-text-indent: 0;
-    --icon-position: unset;
-    --icon-opacity: 1;
-    --icon-transform: translate(0, 0);
-    --icon-margin-right: 0;
-    --hover-text-indent: 0;
-    --hover-icon-opacity: 1;
-    --hover-icon-transform: translate(0, 0);
-    padding-inline: var(--h5p-theme-spacing-s);
-
-  }
-
-  .h5p-theme-button {
-    --label-display: none;
-  }
-
-  .h5p-theme-primary-cta:disabled,
-  .h5p-theme-secondary-cta:disabled {
-    &::before {
-      opacity: 1;
-    }
-    /* &:hover {
-      text-indent: 0;
-      padding: 0;
-    } */
-  }
-}
-
-/* If the container is smaller than 350px */
-@container (max-width: 350px) {
-  .h5p-theme-secondary-cta {
-    --label-display: none;
-    --secondary-before-margin-right: unset;
-  }
-}
-
 /* If smaller than 700px */
 @container h5p-navigation (max-width: 700px) {
   .h5p-theme-nav-button {
     --label-display: none;
-    --nav-pseudo-margin: 0;
   }
 
   /* Primary CTA if inside navigation */
   .h5p-navigation .h5p-theme-primary-cta {
     padding-inline: var(--h5p-theme-spacing-s);
-    text-indent: 0;
   }
 
   .h5p-navigation .h5p-theme-primary-cta:hover {
     padding-inline: var(--h5p-theme-spacing-s);
   }
 
-  .h5p-navigation .h5p-theme-primary-cta span {
-    display: none;
-  }
-
   .h5p-navigation .h5p-theme-primary-cta::before {
-    text-indent: 0;
     position: unset;
     opacity: 1;
-    transform: translate(0, 0);
   }
 
-  .h5p-navigation .h5p-theme-primary-cta:hover::before {
-    text-indent: 0;
-    transform: translate(0, 0);
+  .h5p-navigation .h5p-theme-primary-cta:hover {
+    --icon-transform: translate(0, 0);
+    --hover-text-indent: 0;
   }
 }
