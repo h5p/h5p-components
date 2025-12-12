@@ -45,9 +45,6 @@
 .h5p-theme-primary-cta {
   /* Default button state */
   --button-justify: flex-start;
-  --button-padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-l);
-  --button-height: fit-content;
-  --button-min-width: auto;
   --button-text-indent: 0;
 
   /* Icon properties for normal state */
@@ -57,23 +54,20 @@
   --icon-margin-right: 0;
 
   /* Hover state properties */
-  --hover-padding: var(--h5p-theme-spacing-xs) calc(var(--h5p-theme-spacing-l) - var(--h5p-theme-spacing-m)/2);
   --hover-text-indent: var(--h5p-theme-spacing-m);
   --hover-icon-opacity: 1;
   --hover-icon-transform: translate(calc(-1 * var(--h5p-theme-spacing-xxs) - var(--h5p-theme-spacing-m)), 0);
 
   justify-content: var(--button-justify);
-  padding: var(--button-padding);
-  height: var(--button-height);
-  min-width: var(--button-min-width);
+  padding-inline: var(--h5p-theme-spacing-l);
   text-indent: var(--button-text-indent);
   background-color: var(--h5p-theme-main-cta-base);
   color: var(--h5p-theme-contrast-cta);
-  max-width: 100%;
+  
 }
 
 .h5p-theme-primary-cta:hover {
-  padding: var(--hover-padding);
+  padding-inline: calc(var(--h5p-theme-spacing-l) - var(--h5p-theme-spacing-m)/2);
   background-color: var(--h5p-theme-main-cta-light);
   border-color: var(--h5p-theme-main-cta-light);
   text-indent: var(--hover-text-indent);
@@ -99,29 +93,28 @@
 /* Icon only state */
 .h5p-theme-primary-cta.icon-only {
   --button-justify: center;
-  --button-padding: 0;
-  --button-height: var(--h5p-theme-spacing-xl);
-  --button-min-width: var(--h5p-theme-spacing-xl);
   --button-text-indent: 0;
   --label-display: none;
   --icon-position: unset;
   --icon-opacity: 1;
   --icon-transform: translate(0, 0);
   --icon-margin-right: 0;
-  --hover-padding: 0;
   --hover-text-indent: 0;
   --hover-icon-opacity: 1;
   --hover-icon-transform: translate(0, 0);
+
+  padding-inline: var(--h5p-theme-spacing-s);
+
 }
 
 .h5p-theme-primary-cta.icon-only:disabled {
   &::before {
     opacity: 1;
   }
-  &:hover {
+  /* &:hover {
     text-indent: 0;
     padding: 0;
-  }
+  } */
 }
 
 
@@ -140,8 +133,6 @@
   background-color: var(--h5p-theme-ui-base);
   border-color: var(--h5p-theme-contrast-cta-white);
   color: var(--h5p-theme-contrast-cta-white);
-  height: auto;
-  width: auto;
 }
 
 .h5p-theme-secondary-cta:hover {
@@ -160,7 +151,6 @@
 }
 
 .h5p-theme-secondary-cta::before {
-  width: var(--secondary-before-width);
   margin-right: var(--secondary-before-margin-right);
 }
 
@@ -175,7 +165,6 @@
   /* Default values for icon-only behavior */
   --nav-pseudo-margin: var(--h5p-theme-spacing-xxs);
 
-  min-width: max-content;
   border: none;
   background-color: var(--h5p-theme-secondary-cta-base);
   font-size: var(--h5p-theme-font-size-s);
@@ -217,18 +206,16 @@
   /* Icon only state */
   .h5p-theme-primary-cta {
     --button-justify: center;
-    --button-padding: 0;
-    --button-height: var(--h5p-theme-spacing-xl);
-    --button-min-width: var(--h5p-theme-spacing-xl);
     --button-text-indent: 0;
     --icon-position: unset;
     --icon-opacity: 1;
     --icon-transform: translate(0, 0);
     --icon-margin-right: 0;
-    --hover-padding: 0;
     --hover-text-indent: 0;
     --hover-icon-opacity: 1;
     --hover-icon-transform: translate(0, 0);
+    padding-inline: var(--h5p-theme-spacing-s);
+
   }
 
   .h5p-theme-button {
@@ -240,10 +227,10 @@
     &::before {
       opacity: 1;
     }
-    &:hover {
+    /* &:hover {
       text-indent: 0;
       padding: 0;
-    }
+    } */
   }
 }
 
@@ -264,16 +251,12 @@
 
   /* Primary CTA if inside navigation */
   .h5p-navigation .h5p-theme-primary-cta {
-    height: var(--h5p-theme-spacing-xl);
-    width: var(--h5p-theme-spacing-xl);
-    padding: 0;
+    padding-inline: var(--h5p-theme-spacing-s);
     text-indent: 0;
   }
 
   .h5p-navigation .h5p-theme-primary-cta:hover {
-    height: var(--h5p-theme-spacing-xl);
-    width: var(--h5p-theme-spacing-xl);
-    padding: 0;
+    padding-inline: var(--h5p-theme-spacing-s);
   }
 
   .h5p-navigation .h5p-theme-primary-cta span {
@@ -283,7 +266,6 @@
   .h5p-navigation .h5p-theme-primary-cta::before {
     text-indent: 0;
     position: unset;
-    width: 100%;
     opacity: 1;
     transform: translate(0, 0);
   }
