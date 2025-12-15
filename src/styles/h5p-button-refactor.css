@@ -104,7 +104,7 @@
   color: var(--h5p-theme-contrast-cta-white);
 }
 
-.h5p-theme-secondary-cta:hover {
+.h5p-theme-secondary-cta:hover:not(:disabled) {
   background-color: var(--h5p-theme-contrast-cta-white);
   color: var(--h5p-theme-secondary-contrast-cta-hover);
 }
