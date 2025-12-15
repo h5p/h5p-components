@@ -2,6 +2,11 @@
 .h5p-theme-button {
   --label-display: inline-block;
   --button-justify: flex-start;
+  
+  display: flex;
+  align-items: center;
+  justify-content: var(--button-justify);
+  cursor: pointer;
   padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-s);
   border: solid 3px var(--h5p-theme-main-cta-base);
   border-radius: var(--h5p-theme-border-radius-medium);
@@ -15,10 +20,6 @@
     background-color 0.1s linear,
     border-color 0.1s linear,
     width 0.1s linear;
-  display: flex;
-  align-items: center;
-  justify-content: var(--button-justify);
-  cursor: pointer;
 }
 
 .h5p-theme-button:focus-visible {
@@ -67,9 +68,9 @@
 }
 
 .h5p-theme-primary-cta:hover:not(:disabled) {
+  --padding-inline: calc(var(--h5p-theme-spacing-l) - var(--h5p-theme-spacing-m)/2);
   --icon-opacity: 1;
   --icon-transform: translate(calc(-1 * var(--h5p-theme-spacing-xxs) - var(--h5p-theme-spacing-m)), 0);
-  --padding-inline: calc(var(--h5p-theme-spacing-l) - var(--h5p-theme-spacing-m)/2);
 
   background-color: var(--h5p-theme-main-cta-light);
   border-color: var(--h5p-theme-main-cta-light);
@@ -92,6 +93,7 @@
 }
 
 .h5p-theme-primary-cta.icon-only:hover {
+  --padding-inline: var(--h5p-theme-spacing-s);
   --icon-transform: translate(0, 0);
   --hover-text-indent: 0;
 }
@@ -149,7 +151,8 @@
     --icon-transform: translate(0, 0);
   }
 
-  .h5p-theme-primary-cta:hover {
+  .h5p-theme-primary-cta:hover:not(:disabled) {
+    --padding-inline: var(--h5p-theme-spacing-s);
     --icon-transform: translate(0, 0);
     --hover-text-indent: 0;
   }
