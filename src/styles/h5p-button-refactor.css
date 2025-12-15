@@ -139,6 +139,29 @@
   background-color: var(--h5p-theme-secondary-cta-light);
 }
 
+/* If the container is smaller than 200px */
+@container (max-width: 200px) {
+ /* Icon only state */
+  .h5p-theme-primary-cta {
+    --padding-inline: var(--h5p-theme-spacing-s);
+    --icon-position: unset;
+    --icon-opacity: 1;
+    --icon-transform: translate(0, 0);
+  }
+
+  .h5p-theme-primary-cta:hover {
+    --icon-transform: translate(0, 0);
+    --hover-text-indent: 0;
+  }
+}
+
+/* If the container is smaller than 350px */
+@container (max-width: 350px) {
+  .h5p-theme-secondary-cta {
+    --label-display: none;
+  }
+}
+
 /* If smaller than 700px */
 @container h5p-navigation (max-width: 700px) {
   .h5p-theme-nav-button {
