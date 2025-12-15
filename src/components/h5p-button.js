@@ -83,31 +83,33 @@ function Button(params) {
   return button;
 }
 
-const IconOnlyObserver = new ResizeObserver(Utils.debounce((entries) => {
-  for (const entry of entries) {
-    const button = entry.target;
-    if (!button.isConnected || button.matches(':hover')) {
-      continue;
-    }
-
-    const label = button.querySelector('.h5p-theme-label');
-    const lineCount = Utils.computeLineCount(label);
-    if (!lineCount) {
-      continue;
-    }
-
-    const ratio = Utils.computeWidthRatio(label, button);
-    const shouldHide = lineCount > MAX_LABEL_LINE_COUNT || ratio > MAX_LABEL_WIDTH_RATIO;
-
-    // For visual consistency, label of related buttons should be hidden as well if one is hidden
-    const parent = button.parentElement;
-    for (const child of parent.children) {
-      if (!(child instanceof HTMLButtonElement) || !child.isConnected) {
+const IconOnlyObserver = new ResizeObserver((entries) => {
+  Utils.debounce(() => {
+    for (const entry of entries) {
+      const button = entry.target;
+      if (!button.isConnected || button.matches(':hover')) {
         continue;
       }
-      child.classList.toggle('icon-only', shouldHide);
+
+      const label = button.querySelector('.h5p-theme-label');
+      const lineCount = Utils.computeLineCount(label);
+      if (!lineCount) {
+        continue;
+      }
+
+      const ratio = Utils.computeWidthRatio(label, button);
+      const shouldHide = lineCount > MAX_LABEL_LINE_COUNT || ratio > MAX_LABEL_WIDTH_RATIO;
+
+      // For visual consistency, label of related buttons should be hidden as well if one is hidden
+      const parent = button.parentElement;
+      for (const child of parent.children) {
+        if (!(child instanceof HTMLButtonElement) || !child.isConnected) {
+          continue;
+        }
+        child.classList.toggle('icon-only', shouldHide);
+      }
     }
-  }
-}));
+  });
+});
 
 export default Button;
