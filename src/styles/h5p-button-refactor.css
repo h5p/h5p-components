@@ -1,6 +1,7 @@
 /* GENERAL */
 .h5p-theme-button {
   --label-display: inline-block;
+  --button-justify: flex-start;
   padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-s);
   border: solid 3px var(--h5p-theme-main-cta-base);
   border-radius: var(--h5p-theme-border-radius-medium);
@@ -16,6 +17,7 @@
     width 0.1s linear;
   display: flex;
   align-items: center;
+  justify-content: var(--button-justify);
   cursor: pointer;
 }
 
@@ -36,9 +38,11 @@
 
 .h5p-theme-button.icon-only {
   --label-display: none;
-  &::before {
-    margin-right: 0;
-  }
+  --button-justify: center;
+}
+
+.h5p-theme-button.icon-only::before {
+  margin-right: 0;
 }
 
 .h5p-theme-button::before,
@@ -60,7 +64,6 @@
   padding-inline: var(--padding-inline);
   background-color: var(--h5p-theme-main-cta-base);
   color: var(--h5p-theme-contrast-cta);
-  
 }
 
 .h5p-theme-primary-cta:hover:not(:disabled) {
@@ -78,7 +81,6 @@
   opacity: var(--icon-opacity);
   transform: var(--icon-transform);
   transition:  transform 0.1s linear, opacity 0.1s linear;
-  margin-right: 0;
 }
 
 /* Icon only state */
@@ -86,6 +88,10 @@
   --padding-inline: var(--h5p-theme-spacing-s);
   --icon-position: unset;
   --icon-opacity: 1;
+  --icon-transform: translate(0, 0);
+}
+
+.h5p-theme-primary-cta.icon-only:hover {
   --icon-transform: translate(0, 0);
   --hover-text-indent: 0;
 }
