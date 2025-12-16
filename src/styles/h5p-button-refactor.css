@@ -2,10 +2,11 @@
 .h5p-theme-button {
   --label-display: inline-block;
   --button-justify: flex-start;
-  
+
   display: flex;
   align-items: center;
   justify-content: var(--button-justify);
+  gap: var(--h5p-theme-spacing-xxs);
   cursor: pointer;
   padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-s);
   border: solid 3px var(--h5p-theme-main-cta-base);
@@ -42,15 +43,9 @@
   --button-justify: center;
 }
 
-.h5p-theme-button.icon-only::before {
-  margin-right: 0;
-}
-
 .h5p-theme-button::before,
 .h5p-theme-button::after {
-  display: inline-block;
   font-family: 'h5p-theme';
-  margin-right: var(--h5p-theme-spacing-xxs);
   font-weight: normal;
 }
 
