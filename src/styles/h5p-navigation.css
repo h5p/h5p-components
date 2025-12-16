@@ -28,7 +28,6 @@
   justify-self: flex-start;
   &::before {
     content: "\e900";
-    margin-right:  var(--h5p-theme-spacing-xxs);
   }
 }
 .h5p-theme .h5p-navigation.h5p-navigation--3-split .h5p-theme-progress {
@@ -41,8 +40,6 @@
   justify-self: flex-end;
   &::after {
     content: "\e901";
-    margin-left:  var(--h5p-theme-spacing-xxs);
-    margin-right: 0;
   }
 }
 .h5p-theme .h5p-navigation.h5p-navigation--2-split-spread {

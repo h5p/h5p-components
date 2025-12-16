@@ -1,4 +1,4 @@
-import '../styles/h5p-button-refactor.css';
+import '../styles/h5p-button.css';
 import * as Utils from '../utils.js';
 
 /** @constant {number} MAX_LABEL_LINE_COUNT Maximum number of lines for label before hiding it */
