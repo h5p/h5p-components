@@ -10,7 +10,7 @@
   border-radius: var(--h5p-theme-border-radius-medium);
   box-shadow: 0px 1px 0em 0px hsl(from var(--h5p-theme-alternative-dark) h s l / var(--content-opacity, 1));
   display: flex;
-  font-weight: bold;
+  font-weight: 600;
   line-height: var(--h5p-theme-spacing-s);
   opacity: var(--opacity);
   padding: 0;
