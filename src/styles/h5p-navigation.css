@@ -26,9 +26,6 @@
 }
 .h5p-theme-previous {
   justify-self: flex-start;
-  &::before {
-    content: "\e900";
-  }
 }
 .h5p-theme .h5p-navigation.h5p-navigation--3-split .h5p-theme-progress {
   grid-column: 2;
@@ -38,9 +35,6 @@
 }
 .h5p-theme-next {
   justify-self: flex-end;
-  &::after {
-    content: "\e901";
-  }
 }
 .h5p-theme .h5p-navigation.h5p-navigation--2-split-spread {
   grid-template-columns: 1fr 1fr;
