@@ -140,10 +140,11 @@
  background-color: var(--h5p-theme-secondary-cta-dark);
 }
 
-/* If the container is smaller than 200px */
-@container (max-width: 200px) {
+/* If the container is smaller than 250px */
+@container (max-width: 250px) {
  /* Icon only state */
   .h5p-theme-primary-cta {
+     --label-display: none;
     --padding-inline: var(--h5p-theme-spacing-s);
     --icon-position: unset;
     --icon-opacity: 1;
