@@ -14,7 +14,6 @@
   line-height: var(--h5p-theme-spacing-s);
   opacity: var(--opacity);
   padding: 0;
-  text-align: center;
   vertical-align: top;
   z-index: 3;
 }
