@@ -45,12 +45,7 @@
 }
 
 .h5p-navigation .h5p-theme-primary-cta {
-  padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-l);
   min-width: max-content;
-}
-
-.h5p-navigation .h5p-theme-primary-cta:hover {
-  padding: var(--h5p-theme-spacing-xs) calc(var(--h5p-theme-spacing-l) - 0.75em);
 }
 
 .h5p-navigation .h5p-visibility-hidden {

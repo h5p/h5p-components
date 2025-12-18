@@ -52,12 +52,14 @@
 /* PRIMARY CTA (USED FOR VALIDATION BUTTONS) */
 .h5p-theme-primary-cta {
   --padding-inline: var(--h5p-theme-spacing-l);
+  --is-icon-only: 0;
   --icon-position: absolute;
-  --icon-opacity: 0;
+  --icon-opacity: var(--is-icon-only);
   --icon-transform: translate(calc(-1 * var(--h5p-theme-spacing-xxs) - var(--h5p-theme-spacing-m) / 2), 10px);
   --hover-text-indent: var(--h5p-theme-spacing-m); 
+  --label-display: calc(1 - var(--is-icon-only));
 
-  padding-inline: var(--padding-inline);
+  padding-inline: calc((var( --padding-inline) * (1 - var(--is-icon-only))) + (var(--h5p-theme-spacing-s) * var(--is-icon-only)));
   background-color: var(--h5p-theme-main-cta-base);
   color: var(--h5p-theme-contrast-cta);
 }
@@ -81,14 +83,12 @@
 
 /* Icon only state */
 .h5p-theme-primary-cta.icon-only {
-  --padding-inline: var(--h5p-theme-spacing-s);
+  --is-icon-only: 1;
   --icon-position: unset;
-  --icon-opacity: 1;
   --icon-transform: translate(0, 0);
 }
 
 .h5p-theme-primary-cta.icon-only:hover {
-  --padding-inline: var(--h5p-theme-spacing-s);
   --icon-transform: translate(0, 0);
   --hover-text-indent: 0;
 }
@@ -144,15 +144,13 @@
 @container (max-width: 250px) {
  /* Icon only state */
   .h5p-theme-primary-cta {
-     --label-display: none;
-    --padding-inline: var(--h5p-theme-spacing-s);
+    --label-display: none;
+    --is-icon-only: 1;
     --icon-position: unset;
-    --icon-opacity: 1;
     --icon-transform: translate(0, 0);
   }
 
   .h5p-theme-primary-cta:hover:not(:disabled) {
-    --padding-inline: var(--h5p-theme-spacing-s);
     --icon-transform: translate(0, 0);
     --hover-text-indent: 0;
   }
@@ -173,13 +171,14 @@
 
   /* Primary CTA if inside navigation */
   .h5p-navigation .h5p-theme-primary-cta {
-    --padding-inline: var(--h5p-theme-spacing-s);
+    --label-display: none;
+    --is-icon-only: 1;
+    --icon-position: unset;
+    --icon-transform: translate(0, 0);
+    
   }
 
   .h5p-navigation .h5p-theme-primary-cta:hover:not(:disabled) {
-    --padding-inline: var(--h5p-theme-spacing-s);
-    --icon-position: unset;
-    --icon-opacity: 1;
     --icon-transform: translate(0, 0);
     --hover-text-indent: 0;
   }
