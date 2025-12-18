@@ -48,6 +48,7 @@ const MAX_LABEL_WIDTH_RATIO = 0.85;
  * @returns {HTMLElement} The button element
  */
 function Button(params) {
+  debugger;
   const baseClass = 'h5p-theme-button';
   let buttonStyleType = 'h5p-theme-primary-cta';
 
@@ -87,6 +88,7 @@ function Button(params) {
 }
 
 const IconOnlyObserver = new ResizeObserver(Utils.debounce((entries) => {
+  debugger;
   for (const entry of entries) {
     const button = entry.target;
     if (!button.isConnected || button.matches(':hover')) {
