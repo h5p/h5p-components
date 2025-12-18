@@ -56,10 +56,9 @@
   --icon-position: absolute;
   --icon-opacity: var(--is-icon-only);
   --icon-transform: translate(calc(-1 * var(--h5p-theme-spacing-xxs) - var(--h5p-theme-spacing-m) / 2), 10px);
-  --hover-text-indent: var(--h5p-theme-spacing-m); 
   --label-display: calc(1 - var(--is-icon-only));
 
-  padding-inline: calc((var( --padding-inline) * (1 - var(--is-icon-only))) + (var(--h5p-theme-spacing-s) * var(--is-icon-only)));
+  padding-inline: calc((var(--padding-inline) * (1 - var(--is-icon-only))) + (var(--h5p-theme-spacing-s) * var(--is-icon-only)));
   background-color: var(--h5p-theme-main-cta-base);
   color: var(--h5p-theme-contrast-cta);
 }
@@ -71,7 +70,7 @@
 
   background-color: var(--h5p-theme-main-cta-light);
   border-color: var(--h5p-theme-main-cta-light);
-  text-indent: var(--hover-text-indent);
+  text-indent: calc((var(--h5p-theme-spacing-m) * (1 - var(--is-icon-only))));
 }
 
 .h5p-theme-primary-cta::before {
@@ -90,7 +89,6 @@
 
 .h5p-theme-primary-cta.icon-only:hover {
   --icon-transform: translate(0, 0);
-  --hover-text-indent: 0;
 }
 
 /* Will target Safari only which needs this or makes the whole content shift a bit. Applied selectively to prevent performance issues */
@@ -152,7 +150,6 @@
 
   .h5p-theme-primary-cta:hover:not(:disabled) {
     --icon-transform: translate(0, 0);
-    --hover-text-indent: 0;
   }
 }
 
@@ -180,6 +177,5 @@
 
   .h5p-navigation .h5p-theme-primary-cta:hover:not(:disabled) {
     --icon-transform: translate(0, 0);
-    --hover-text-indent: 0;
   }
 }
