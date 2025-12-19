@@ -8,6 +8,7 @@
   justify-content: var(--button-justify);
   gap: var(--h5p-theme-spacing-xxs);
   cursor: pointer;
+  height: fit-content;
   padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-s);
   border: solid 3px var(--h5p-theme-main-cta-base);
   border-radius: var(--h5p-theme-border-radius-medium);
@@ -55,18 +56,29 @@
   --is-icon-only: 0;
   --icon-position: absolute;
   --icon-opacity: var(--is-icon-only);
-  --icon-transform-x: calc((-1 * var(--h5p-theme-spacing-xxs) - var(--h5p-theme-spacing-m) / 2  ) * (1 - var(--is-icon-only)));
+  --icon-transform-x: calc(
+    (-1 * var(--h5p-theme-spacing-xxs) - var(--h5p-theme-spacing-m) / 2) *
+      (1 - var(--is-icon-only))
+  );
   --icon-transform-y: calc(10px * (1 - var(--is-icon-only)));
 
-  padding-inline: calc((var(--padding-inline) * (1 - var(--is-icon-only))) + (var(--h5p-theme-spacing-s) * var(--is-icon-only)));
+  padding-inline: calc(
+    (var(--padding-inline) * (1 - var(--is-icon-only))) +
+      (var(--h5p-theme-spacing-s) * var(--is-icon-only))
+  );
   background-color: var(--h5p-theme-main-cta-base);
   color: var(--h5p-theme-contrast-cta);
 }
 
 .h5p-theme-primary-cta:hover:not(:disabled) {
-  --padding-inline: calc(var(--h5p-theme-spacing-l) - var(--h5p-theme-spacing-m)/2);
+  --padding-inline: calc(
+    var(--h5p-theme-spacing-l) - var(--h5p-theme-spacing-m) / 2
+  );
   --icon-opacity: 1;
-  --icon-transform-x: calc((-1 * var(--h5p-theme-spacing-xxs) - var(--h5p-theme-spacing-m)) * (1 - var(--is-icon-only)));
+  --icon-transform-x: calc(
+    (-1 * var(--h5p-theme-spacing-xxs) - var(--h5p-theme-spacing-m)) *
+      (1 - var(--is-icon-only))
+  );
   --icon-transform-y: 0;
 
   background-color: var(--h5p-theme-main-cta-light);
@@ -78,7 +90,7 @@
   position: var(--icon-position);
   opacity: var(--icon-opacity);
   transform: translate(var(--icon-transform-x), var(--icon-transform-y));
-  transition:  transform 0.1s linear, opacity 0.1s linear;
+  transition: transform 0.1s linear, opacity 0.1s linear;
 }
 
 /* Icon only state */
@@ -131,12 +143,12 @@
 }
 
 .h5p-theme-nav-button:active:not(:disabled) {
- background-color: var(--h5p-theme-secondary-cta-dark);
+  background-color: var(--h5p-theme-secondary-cta-dark);
 }
 
 /* If the container is smaller than 250px */
 @container (max-width: 250px) {
- /* Icon only state */
+  /* Icon only state */
   .h5p-theme-primary-cta {
     --label-display: none;
     --is-icon-only: 1;
@@ -161,6 +173,6 @@
   .h5p-navigation .h5p-theme-primary-cta {
     --label-display: none;
     --is-icon-only: 1;
-    --icon-position: unset;   
+    --icon-position: unset;
   }
 }
