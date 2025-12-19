@@ -24,13 +24,18 @@
 .h5p-theme .h5p-navigation.h5p-navigation--3-split .h5p-theme-previous {
   grid-column: 1;
 }
+.h5p-theme-previous {
+  justify-self: flex-start;
+}
 .h5p-theme .h5p-navigation.h5p-navigation--3-split .h5p-theme-progress {
   grid-column: 2;
 }
 .h5p-theme .h5p-navigation.h5p-navigation--3-split .h5p-theme-next {
   grid-column: 3;
 }
-
+.h5p-theme-next {
+  justify-self: flex-end;
+}
 .h5p-theme .h5p-navigation.h5p-navigation--2-split-spread {
   grid-template-columns: 1fr 1fr;
 }
@@ -40,12 +45,7 @@
 }
 
 .h5p-navigation .h5p-theme-primary-cta {
-  padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-l);
   min-width: max-content;
-}
-
-.h5p-navigation .h5p-theme-primary-cta:hover {
-  padding: var(--h5p-theme-spacing-xs) calc(var(--h5p-theme-spacing-l) - 0.75em);
 }
 
 .h5p-navigation .h5p-visibility-hidden {
