@@ -34,7 +34,7 @@
 }
 
 .h5p-progress-dot.answered {
-  background: var(--h5p-theme-main-cta-base);
+  background: var(--h5p-theme-contrast-cta-white);
 }
 
 .h5p-progress-dot:before {
@@ -52,7 +52,7 @@
 }
 
 .h5p-progress-dot.current:before {
-  border-color: var(--h5p-theme-main-cta-base);
+  border-color: var(--h5p-theme-contrast-cta-white);
 }
 
 .h5p-progress-dot.disabled:focus-visible {
