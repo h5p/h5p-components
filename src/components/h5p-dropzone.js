@@ -17,7 +17,7 @@ import { createElement } from '../utils.js';
  * @property {string} [classes] Extra classes to be added to the dropzone
  * @property {string} [containerClasses] Extra classes to be added to the container of the dropzone
  * @property {number} [tabIndex] Tabindex to use on the dropzone element (default -1)
- * @property {boolean} [hasOpaqueBackground] If the dropzone background is opaque
+ * @property {boolean} [backgroundOpacity] The level of opacity on the dropzone (0-100)
  * @property {DropzoneVariant} [variant] The type of dropzone to use. Default is 'inline'
  * @property {DropzoneTolerance} tolerance
  *    Specifies which mode to use for testing whether draggable is hovering over a droppable
@@ -42,7 +42,10 @@ function Dropzone(params) {
     classList.push(params.containerClasses);
   }
 
-  if (!params.hasOpaqueBackground) {
+  if (params.backgroundOpacity === 0) {
+    classList.push('h5p-dropzone--transparent-background');
+  }
+  else if (params.backgroundOpacity === 100) {
     classList.push('h5p-dropzone--opaque-background');
   }
 

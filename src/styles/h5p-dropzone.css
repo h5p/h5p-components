@@ -56,7 +56,7 @@
   background-color: var(--h5p-theme-alternative-dark);
 }
 
-.h5p-dropzone.h5p-dropzone--area.h5p-dropzone--opaque-background:has(
+.h5p-dropzone.h5p-dropzone--area:not(.h5p-dropzone--transparent-background):has(
     .h5p-dropzone_label
   )
   > .h5p-inner {
