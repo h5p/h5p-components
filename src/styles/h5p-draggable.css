@@ -38,6 +38,11 @@
   font-size: var(--h5p-theme-font-size-m);
 }
 
+.h5p-fullscreen .h5p-draggable span:not(.h5p-hidden-read),
+.h5p-fullscreen .h5p-draggable p:not(.h5p-hidden-read) {
+  padding: var(--h5p-theme-spacing-xxs) var(--h5p-theme-spacing-s);
+}
+
 .h5p-draggable > img {
   -webkit-user-drag: none;
   pointer-events: none;
