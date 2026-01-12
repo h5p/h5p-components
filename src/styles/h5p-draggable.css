@@ -1,6 +1,6 @@
 .h5p-draggable {
   --opacity: 1;
-  --handle-width: 16px; /* May be used by component parent */
+  --handle-width: calc(var(--h5p-theme-spacing-s)); /* May be used by component parent */
   --border-width: 2px; /* May be used by component parent */
 
   align-items: center;
