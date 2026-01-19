@@ -8,6 +8,10 @@
   "author": "H5P Group",
   "license": "MIT",
   "machineName": "H5P.Components",
+  "coreApi": {
+    "majorVersion": 1,
+    "minorVersion": 28
+  },
   "preloadedJs": [
     {
       "path": "dist/h5p-components.js"
