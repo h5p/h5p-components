@@ -120,64 +120,64 @@
   box-shadow: 0 0 0 9px var(--h5p-theme-ui-base);
 }
 
-/* ICONS */
-.h5p-theme-check:before {
-  content: "\e908";
-  font-family: "h5p-theme";
-}
-
 /* Focus Indicator */
 .h5p-theme :is(.h5p-advanced-text, .h5p-text, .h5p-link) a:focus-visible {
   outline: 2px ridge var(--h5p-theme-contrast-cta-white);
   outline-offset: -1px;
 }
 
-.h5p-theme-show-solutions:before {
-  content: "\e905";
-  font-family: "h5p-theme";
-}
-
-.h5p-theme-show-results:before {
-  content: "\e904";
-  font-family: 'h5p-theme';
-}
-
-.h5p-theme-retry:before {
-  content: "\e906";
-  font-family: "h5p-theme";
-}
-
-.h5p-theme-book:before {
-  content: "\e909";
-  font-family: "h5p-theme";
-}
-
-.h5p-theme-flip:before {
-  content: "\e907";
-  font-family: "h5p-theme";
-}
-
-.h5p-theme-continue:before {
-  content: "\e901";
-  font-family: "h5p-theme";
-}
-
-.h5p-theme-go-to-start:before {
-  content: "\e916";
-  font-family: "h5p-theme";
-}
-
-.h5p-theme-quiz:before {
-  content: "\e935";
-  font-family: "h5p-theme";
-}
-
-.h5p-theme-done:before {
+/* ICONS */
+.h5p-theme-check::before {
   content: "\e908";
   font-family: "h5p-theme";
 }
 
-.h5p-theme-download:before {
+.h5p-theme-show-solutions::before {
+  content: "\e905";
+  font-family: "h5p-theme";
+}
+
+.h5p-theme-show-results::before {
+  content: "\e904";
+  font-family: 'h5p-theme';
+}
+
+.h5p-theme-retry::before {
+  content: "\e906";
+  font-family: "h5p-theme";
+}
+
+.h5p-theme-book::before {
+  content: "\e909";
+  font-family: "h5p-theme";
+}
+
+.h5p-theme-flip::before {
+  content: "\e907";
+  font-family: "h5p-theme";
+}
+
+.h5p-theme-continue::before {
+  content: "\e901";
+  font-family: "h5p-theme";
+}
+
+.h5p-theme-go-to-start::before {
+  content: "\e916";
+  font-family: "h5p-theme";
+}
+
+.h5p-theme-quiz::before {
+  content: "\e935";
+  font-family: "h5p-theme";
+}
+
+.h5p-theme-done::before {
+  content: "\e908";
+  font-family: "h5p-theme";
+}
+
+.h5p-theme-download::before {
   content: "\e911";
   font-family: "h5p-theme";
 }
@@ -205,4 +205,19 @@
 .h5p-theme-next::after {
   content: "\e901";
   font-family: 'h5p-theme';
+}
+
+.h5p-theme-record::before {
+    content: '\e928';
+    font-family: "h5p-theme";
+}
+
+.h5p-theme-pause::before {
+  content: '\e929';
+  font-family: "h5p-theme";
+}
+
+.h5p-theme-circle::before {
+  content: '\e928';
+  font-family: "h5p-theme";
 }
