@@ -1,6 +1,7 @@
 # Table of contents
 
 * [Components](README.md)
+  * [Placeholder Image](components/placeholder-image.md)
   * [Button](components/button.md)
   * [Navigation](components/navigation.md)
   * [Result Screen](components/result-screen.md)

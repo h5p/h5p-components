@@ -12,7 +12,8 @@ The button component has three variants: Primary, Secondary and Navigation
 
 * When there is available space to show the label, the label and icon are shown
 * For limited space, we show only the icon, while the label is hidden
-* Due to technical restrictions, tooltips are enabled regardeless of if the button is in full or icon-only mode. This is to make it easier for users to understand the buttons when in icon-only. A drawback is that the tooltip text might be the same as the label, and thus redundant
+* If the label wraps into new line, we show only the icon and hide the label
+* Due to technical restrictions, tooltips are enabled regardless of if the button is in full or icon-only mode. This is to make it easier for users to understand the buttons when in icon-only. A drawback is that the tooltip text might be the same as the label, and thus redundant
 * Proper icon usage for each scenario is described in the Icons section
 
 ## Primary
@@ -23,7 +24,7 @@ Primary buttons have a filled in background, contrasting text, and an icon that 
 
 * Used as the primary action for each individual question
   * Buttons like Check, Submit, Show Results
-* Used on start pages as the main point of entry (“Interactive Book” start page, “Question Set” start page, etc)
+* Used on start pages as the main point of entry (“Interactive Book” start page, “Question Set” start page, etc.)
 * Used in confirmation dialogs as the primary call-to-action button (Check button for validating answers)
 
 ### States
@@ -38,7 +39,7 @@ Primary buttons have a filled in background, contrasting text, and an icon that 
   * **Example 1**: “Interactive Book” Summary page. Submit report should be before Restart, as it is the action we want to encourage users to take after completing the book; restarting is a secondary action. \
     &#x20;![](<../.gitbook/assets/unknown (13).png>)
   * **Example 2:** Popups inside “Interactive Video”: Here, secondary buttons come first because they are related to the question you just answered. Logically, you would want to decide whether to retry the question or view the solutions before moving on to the next question.\
-    ![](<../.gitbook/assets/unknown (14).png>)
+    ![](<../.gitbook/assets/for gitbook.png>)
   * **Example 3:** Popups. The main action is typically shown on the right side of a pop-up.\
     ![](<../.gitbook/assets/unknown (15).png>)
 

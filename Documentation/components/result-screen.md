@@ -50,8 +50,7 @@ Elements above can vary significantly across different content types. These diff
   * **NOTE**: Interactive Video and Course Presentation do not use variables like other content types. They don’t have Density settings (large, medium, small) but instead they use EMS and content scales up/down depending on available space. This is why the Summary Screen can appear bigger/smaller in Interactive Video and Course Presentation. This is something we are unlikely to be able to fix as scaling is a big part of how these 2 content types work today.
 * The Interactive Book Result Screen differs a lot, as it includes much more information
 * Some content types have a button to Submit results on the Result Screen, while in others, this happens automatically when the user reaches the Result Screen.&#x20;
-  * **NOTE**: This is due to how content types work. In Interactive video, for instance, the user can be presented with a Result Screen at any point in the video. It can also happen that Interactive Video has multiple Result Screens. Because of this, user needs to make an active choice when they want to submit their answers and not submit every time the Result Screen pops up.\
-
+  * **NOTE**: This is due to how content types work. In Interactive video, for instance, the user can be presented with a Result Screen at any point in the video. It can also happen that Interactive Video has multiple Result Screens. Because of this, user needs to make an active choice when they want to submit their answers and not submit every time the Result Screen pops up.<br>
 
 ## Properties
 
