@@ -1,4 +1,4 @@
-import '../styles/h5p-button.css';
+import styles from '!!raw-loader!../styles/h5p-button.css';
 import * as Utils from '../utils.js';
 
 /** @constant {number} MAX_LABEL_LINE_COUNT Maximum number of lines for label before hiding it */
@@ -66,7 +66,7 @@ function Button(params) {
     tooltip = params.tooltip ?? params.label;
   }
 
-  const button = Utils.createElement('button', {
+  let button = Utils.createElement('button', {
     innerHTML: params.label ? `<span class="h5p-theme-label">${params.label}</span>` : '',
     ariaLabel: Utils.parseString(params.ariaLabel ?? params.label),
     classList: params.classes ? `${buttonStyleType} ${params.classes}` : buttonStyleType,
@@ -74,6 +74,7 @@ function Button(params) {
     type: params.buttonType ?? 'button',
     disabled: params.disabled ?? false,
   });
+  let wrapper;
 
   if (tooltip) {
     H5P.Tooltip(button, { text: tooltip, position: params.tooltipPosition ?? 'top' });
@@ -83,7 +84,19 @@ function Button(params) {
     IconOnlyObserver.observe(button);
   }
 
-  return button;
+  if (params.encapsulated) {
+    Utils.addHostStyling();
+    const sheet = new CSSStyleSheet();
+    sheet.replaceSync(styles);
+
+    wrapper = document.createElement('div');
+    const shadow = wrapper.attachShadow({mode: 'open'});
+    shadow.adoptedStyleSheets = [sheet];
+
+    shadow.appendChild(button);
+  }
+
+  return wrapper ?? button;
 }
 
 const IconOnlyObserver = new ResizeObserver(Utils.debounce((entries) => {
