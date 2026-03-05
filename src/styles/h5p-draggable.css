@@ -1,4 +1,5 @@
-.h5p-draggable {
+/* Needs .h5p-theme prefix to avoid overriding legacy design */
+.h5p-theme .h5p-draggable {
   --opacity: 1;
   --handle-width: calc(var(--h5p-theme-spacing-s)); /* May be used by component parent */
   --border-width: 2px; /* May be used by component parent */
@@ -19,17 +20,17 @@
   z-index: 3;
 }
 
-.h5p-draggable.h5p-draggable--points-and-status {
+.h5p-theme .h5p-draggable.h5p-draggable--points-and-status {
   flex-flow: column;
 }
 
-.h5p-draggable.h5p-draggable--has-handle:not(.h5p-draggable-correct):not(.h5p-draggable-wrong) {
+.h5p-theme .h5p-draggable.h5p-draggable--has-handle:not(.h5p-draggable-correct):not(.h5p-draggable-wrong) {
   /* Matching the size of the handle */
   padding-left: var(--handle-width);
 }
 
-.h5p-draggable span:not(.h5p-hidden-read),
-.h5p-draggable p:not(.h5p-hidden-read) {
+.h5p-theme .h5p-draggable span:not(.h5p-hidden-read),
+.h5p-theme .h5p-draggable p:not(.h5p-hidden-read) {
   display: block;
   width: fit-content;
   margin: auto;
@@ -38,34 +39,34 @@
   font-size: var(--h5p-theme-font-size-m);
 }
 
-.h5p-draggable > img {
+.h5p-theme .h5p-draggable > img {
   -webkit-user-drag: none;
   pointer-events: none;
 }
 
-.h5p-draggable > ul {
+.h5p-theme .h5p-draggable > ul {
   text-align: left;
   margin: 0.5em 0.5em 0.5em 2.25em;
   padding: 0;
 }
 
-.h5p-draggable > ul > li {
+.h5p-theme .h5p-draggable > ul > li {
   background: transparent;
   list-style: disc outside none;
   padding: 0;
   margin: 0;
 }
 
-.h5p-draggable .h5p-hidden-read {
+.h5p-theme .h5p-draggable .h5p-hidden-read {
   opacity: 0;
 }
 
-.h5p-draggable:not(.ui-draggable-disabled) {
+.h5p-theme .h5p-draggable:not(.ui-draggable-disabled) {
   cursor: pointer;
 }
 
 
-.h5p-draggable.h5p-draggable--has-handle.ui-draggable-handle:not(.ui-draggable-disabled):before {
+.h5p-theme .h5p-draggable.h5p-draggable--has-handle.ui-draggable-handle:not(.ui-draggable-disabled):before {
   font-family: 'h5p-theme';
   content: "\e90f";
   position: absolute;
@@ -81,26 +82,26 @@
   border-radius: var(--h5p-theme-border-radius-small) 0 0 var(--h5p-theme-border-radius-small);
 }
 
-.h5p-draggable[aria-grabbed='true'],
-.h5p-draggable.h5p-draggable--dropped:not(.ui-draggable-disabled):hover,
-.h5p-draggable.h5p-draggable--dropped:not(.ui-draggable-disabled).hover,
-.h5p-draggable:not(.ui-draggable-disabled):hover {
+.h5p-theme .h5p-draggable[aria-grabbed='true'],
+.h5p-theme .h5p-draggable.h5p-draggable--dropped:not(.ui-draggable-disabled):hover,
+.h5p-theme .h5p-draggable.h5p-draggable--dropped:not(.ui-draggable-disabled).hover,
+.h5p-theme .h5p-draggable:not(.ui-draggable-disabled):hover {
   color: var(--h5p-theme-text-primary);
   background: hsl(from var(--h5p-theme-alternative-dark) h s l / var(--content-opacity, 1));
   box-shadow: 0px 3px 0.3em 0px hsl(from var(--h5p-theme-alternative-darker) h s l / var(--content-opacity, 1));
   border-color: var(--h5p-theme-contrast-cta-white);
 }
 
-.h5p-draggable.h5p-draggable--has-handle[aria-grabbed='true'].ui-draggable-handle:before,
-.h5p-draggable.h5p-draggable--has-handle.h5p-draggable--dropped:not(.ui-draggable-disabled):hover:before,
-.h5p-draggable.h5p-draggable--has-handle.h5p-draggable--dropped:not(.ui-draggable-disabled).hover:before,
-.h5p-draggable[aria-grabbed]:not(.ui-draggable-disabled):hover:before {
+.h5p-theme .h5p-draggable.h5p-draggable--has-handle[aria-grabbed='true'].ui-draggable-handle:before,
+.h5p-theme .h5p-draggable.h5p-draggable--has-handle.h5p-draggable--dropped:not(.ui-draggable-disabled):hover:before,
+.h5p-theme .h5p-draggable.h5p-draggable--has-handle.h5p-draggable--dropped:not(.ui-draggable-disabled).hover:before,
+.h5p-theme .h5p-draggable[aria-grabbed]:not(.ui-draggable-disabled):hover:before {
   color: var(--h5p-theme-secondary-contrast-cta-hover);
   background-color: var(--h5p-theme-contrast-cta-white);
   box-shadow: 0 0 0 2px var(--h5p-theme-contrast-cta-white);
 }
 
-.h5p-draggable.h5p-draggable--dropped {
+.h5p-theme .h5p-draggable.h5p-draggable--dropped {
   width: 100%;
   margin: 0 calc(-1 * var(--border-width));
   white-space: nowrap;
@@ -108,71 +109,71 @@
   border-color: var(--h5p-theme-alternative-darker);
 }
 
-.h5p-draggable[aria-grabbed='true'] {
+.h5p-theme .h5p-draggable[aria-grabbed='true'] {
   z-index: 5;
   box-shadow: 0 0 0.5em 0 var(--h5p-theme-contrast-cta-white);
   border-color: var(--h5p-theme-contrast-cta-white);
 }
 
-.h5p-draggable.h5p-draggable--dropped.h5p-drag-draggable-correct {
+.h5p-theme .h5p-draggable.h5p-draggable--dropped.h5p-drag-draggable-correct {
   box-shadow: none;
   border: solid var(--border-width) var(--h5p-theme-feedback-correct-third);
   color: var(--h5p-theme-feedback-correct-main);
   background-color: var(--h5p-theme-feedback-correct-secondary);
 }
 
-.h5p-draggable.h5p-draggable--dropped.h5p-drag-draggable-wrong {
+.h5p-theme .h5p-draggable.h5p-draggable--dropped.h5p-drag-draggable-wrong {
   box-shadow: none;
   border: solid var(--border-width) var(--h5p-theme-feedback-incorrect-third);
   background-color: var(--h5p-theme-feedback-incorrect-secondary);
 }
 
-.h5p-draggable.h5p-draggable--dropped.h5p-drag-draggable-wrong > span {
+.h5p-theme .h5p-draggable.h5p-draggable--dropped.h5p-drag-draggable-wrong > span {
   color: var(--h5p-theme-feedback-incorrect-main) !important;
 }
 
-.h5p-draggable.h5p-draggable--dropped.h5p-drag-draggable-correct > span {
+.h5p-theme .h5p-draggable.h5p-draggable--dropped.h5p-drag-draggable-correct > span {
   color: var(--h5p-theme-feedback-correct-main) !important;
 }
 
-.h5p-draggable.h5p-draggable--has-handle.h5p-draggable--dropped.h5p-drag-draggable-wrong::before {
+.h5p-theme .h5p-draggable.h5p-draggable--has-handle.h5p-draggable--dropped.h5p-drag-draggable-wrong::before {
   color: var(--h5p-theme-feedback-incorrect-main);
   background-color: var(--h5p-theme-feedback-incorrect-third);
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--h5p-theme-feedback-incorrect-third), transparent 30%);
 }
 
-.h5p-draggable.h5p-draggable-correct {
+.h5p-theme .h5p-draggable.h5p-draggable-correct {
   background: var(--h5p-theme-feedback-correct-secondary);
   border: 0.1em solid var(--h5p-theme-feedback-correct-third);
   color: var(--h5p-theme-feedback-correct-main);
 }
 
-.h5p-draggable.h5p-draggable-wrong {
+.h5p-theme .h5p-draggable.h5p-draggable-wrong {
   background: var(--h5p-theme-feedback-incorrect-secondary);
   border: 0.1em solid var(--h5p-theme-feedback-incorrect-third);
   color: var(--h5p-theme-feedback-incorrect-main);
 }
 
 /* Feedback icon */
-.h5p-draggable:not(.h5p-draggable--points-and-status).h5p-draggable-correct:after,
-.h5p-draggable:not(.h5p-draggable--points-and-status).h5p-draggable-wrong:after {
+.h5p-theme .h5p-draggable:not(.h5p-draggable--points-and-status).h5p-draggable-correct:after,
+.h5p-theme .h5p-draggable:not(.h5p-draggable--points-and-status).h5p-draggable-wrong:after {
   display: inline-grid;
   align-items: center;
   font-family: 'h5p-theme';
   margin-right: var(--h5p-theme-spacing-xxs);
 }
 
-.h5p-draggable:not(.h5p-draggable--points-and-status).h5p-draggable-correct:after {
+.h5p-theme .h5p-draggable:not(.h5p-draggable--points-and-status).h5p-draggable-correct:after {
   content: "\e903";
   color: var(--h5p-theme-feedback-correct-main);
 }
 
-.h5p-draggable:not(.h5p-draggable--points-and-status).h5p-draggable-wrong:after {
+.h5p-theme .h5p-draggable:not(.h5p-draggable--points-and-status).h5p-draggable-wrong:after {
   content: "\e902";
 }
 
-.h5p-draggable.h5p-draggable--points-and-status.h5p-draggable-correct:after,
-.h5p-draggable.h5p-draggable--points-and-status.h5p-draggable-wrong:after {
+.h5p-theme .h5p-draggable.h5p-draggable--points-and-status.h5p-draggable-correct:after,
+.h5p-theme .h5p-draggable.h5p-draggable--points-and-status.h5p-draggable-wrong:after {
   font-family: 'h5p-theme';
   font-size: 0.65em;
   font-weight: normal;
@@ -185,10 +186,10 @@
   padding: 0.15em 0 0 0.2em;
 }
 
-.h5p-draggable.h5p-draggable--points-and-status.h5p-draggable-wrong:after {
+.h5p-theme .h5p-draggable.h5p-draggable--points-and-status.h5p-draggable-wrong:after {
   content: "\e902";
 }
 
-.h5p-draggable.h5p-draggable--points-and-status.h5p-draggable-correct:after {
+.h5p-theme .h5p-draggable.h5p-draggable--points-and-status.h5p-draggable-correct:after {
   content: "\e903";
 }
