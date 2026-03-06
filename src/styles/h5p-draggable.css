@@ -1,7 +1,7 @@
 /* Needs .h5p-theme prefix to avoid overriding legacy design */
 .h5p-theme .h5p-draggable {
   --opacity: 1;
-  --handle-width: calc(var(--h5p-theme-spacing-s)); /* May be used by component parent */
+  --handle-width: var(--h5p-theme-spacing-s); /* May be used by component parent */
   --border-width: 2px; /* May be used by component parent */
 
   align-items: center;
@@ -37,6 +37,11 @@
   padding: var(--h5p-theme-spacing-xxs) var(--h5p-theme-spacing-xs);
   line-height: 1;
   font-size: var(--h5p-theme-font-size-m);
+}
+
+.h5p-theme .h5p-draggable.h5p-draggable--has-handle span:not(.h5p-hidden-read),
+.h5p-theme .h5p-draggable.h5p-draggable--has-handle p:not(.h5p-hidden-read) {
+  padding: var(--h5p-theme-spacing-xxs) 0;
 }
 
 .h5p-theme .h5p-draggable > img {
