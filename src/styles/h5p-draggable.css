@@ -1,6 +1,7 @@
 /* Needs .h5p-theme prefix to avoid overriding legacy design */
 .h5p-theme .h5p-draggable {
   --opacity: 1;
+  --padding: 0px;
   --handle-width: var(--h5p-theme-spacing-s); /* May be used by component parent */
   --border-width: 2px; /* May be used by component parent */
 
@@ -14,7 +15,7 @@
   font-weight: 600;
   line-height: var(--h5p-theme-spacing-s);
   opacity: var(--opacity);
-  padding: 0;
+  padding: var(--padding);
   text-align: center;
   vertical-align: top;
   z-index: 3;
@@ -24,9 +25,9 @@
   flex-flow: column;
 }
 
-.h5p-theme .h5p-draggable.h5p-draggable--has-handle:not(.h5p-draggable-correct):not(.h5p-draggable-wrong) {
+.h5p-theme .h5p-draggable.h5p-draggable--has-handle:not(.h5p-draggable-correct):not(.h5p-draggable-wrong):not(.ui-draggable-disabled):not(:has(.h5p-image)) {
   /* Matching the size of the handle */
-  padding-left: var(--handle-width);
+  padding-left: calc(var(--padding) + var(--handle-width));
 }
 
 .h5p-theme .h5p-draggable span:not(.h5p-hidden-read),
@@ -65,16 +66,18 @@
   cursor: pointer;
 }
 
-
 .h5p-theme .h5p-draggable.h5p-draggable--has-handle.ui-draggable-handle:not(.ui-draggable-disabled):before {
   font-family: 'h5p-theme';
+  font-size: inherit;
   content: "\e90f";
   position: absolute;
   left: 0;
   top: 0;
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 100%;
+  width: var(--handle-width);
   line-height: calc(var(--h5p-theme-spacing-s) + 2 * var(--h5p-theme-spacing-xxs) + 4px);
   color: var(--h5p-theme-text-third);
   background-color: color-mix(in srgb, var(--h5p-theme-alternative-dark), transparent 30%);
