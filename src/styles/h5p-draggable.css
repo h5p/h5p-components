@@ -116,6 +116,7 @@
   z-index: 5;
   box-shadow: 0 0 0.5em 0 var(--h5p-theme-contrast-cta-white);
   border-color: var(--h5p-theme-contrast-cta-white);
+  user-select: none;
 }
 
 .h5p-theme .h5p-draggable.h5p-draggable--dropped.h5p-drag-draggable-correct {
