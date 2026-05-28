@@ -5,6 +5,10 @@
   grid-template-columns: min-content 1fr;
   padding: var(--h5p-theme-spacing-xl) 0;
   background-color: var(--h5p-theme-ui-base);
+
+  .h5p-video > video {
+    max-width: 100%;
+  }
 }
 
 .h5p-theme-cover-page.h5p-theme-cover-page-with-image {
