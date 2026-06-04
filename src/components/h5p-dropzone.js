@@ -22,7 +22,6 @@ import { createElement } from '../utils.js';
  * @property {DropzoneTolerance} tolerance
  *    Specifies which mode to use for testing whether draggable is hovering over a droppable
  * @property {string} [areaLabel] A label used for a dropzone area
- * @property {function} handleAcceptEvent A function for jquery-droppable accept option
  * @property {function} handleDropEvent A callback function for the drop event
  * @property {function} handleDropOutEvent A callback function for the out event
  * @property {function} handleDropOverEvent A callback function for the over event
