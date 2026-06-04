@@ -25,6 +25,7 @@ import { createElement } from '../utils.js';
  */
 function Draggable(params) {
   let classes = 'h5p-draggable';
+  let disabled = false;
 
   if (params.hasHandle) {
     classes += ' h5p-draggable--has-handle';
@@ -80,6 +81,12 @@ function Draggable(params) {
   const setOpacity = (value) => {
     const sanitizedValue = Math.max(0, Math.min(Number(value) ?? 100, 100)) / 100;
     draggable.style.setProperty('--opacity', sanitizedValue);
+  };
+
+  const setDisabled = (value) => {
+    disabled = !!value;
+    draggable.setAttribute('aria-disabled', disabled ? 'true' : 'false');
+    draggable.classList.toggle('h5p-draggable--disabled', disabled);
   };
 
   const setDragHandleVisibility = (value) => {
@@ -227,6 +234,7 @@ function Draggable(params) {
 
   draggable.setContentOpacity = setContentOpacity;
   draggable.setOpacity = setOpacity;
+  draggable.setDisabled = setDisabled;
   draggable.getBorderWidth = getBorderWidth;
   draggable.setContent = setContent;
   draggable.setDragHandleVisibility = setDragHandleVisibility;
