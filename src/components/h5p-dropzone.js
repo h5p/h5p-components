@@ -63,30 +63,54 @@ function Dropzone(params) {
     dropzoneContainer.appendChild(areaLabel);
   }
 
-  const $dropzone = H5P.jQuery('<div/>', {
-    'aria-dropeffect': 'none',
-    'aria-label': params.ariaLabel,
-    tabindex: params.tabIndex ?? -1,
-    class: params.classes ? params.classes : '',
-  }).appendTo(dropzoneContainer)
-    .droppable({
-      activeClass: 'h5p-dropzone--active',
-      tolerance: params.tolerance,
-      accept: params.handleAcceptEvent,
-      over: (event, ui) => {
-        dropzone.classList.add('h5p-dropzone--hover');
-        params.handleDropOverEvent?.(event, ui);
-      },
-      out: (event, ui) => {
-        dropzone.classList.remove('h5p-dropzone--hover');
-        params.handleDropOutEvent?.(event, ui);
-      },
-      drop: (event, ui) => {
-        dropzone.classList.remove('h5p-dropzone--hover');
-        params.handleDropEvent?.(event, ui, params.index ?? -1);
-      },
-    });
-  const dropzone = $dropzone.get(0);
+  const dropzone = createElement('div', {
+    className: params.classes ?? '',
+    tabIndex: params.tabIndex ?? -1,
+  });
+
+  dropzone.setAttribute('aria-dropeffect', 'none');
+  dropzone.setAttribute('aria-label', params.ariaLabel);
+  dropzoneContainer.appendChild(dropzone);
+
+  // H5P.jQuery(dropzone).droppable({
+  //   activeClass: 'h5p-dropzone--active',
+  //   tolerance: params.tolerance,
+  //   accept: params.handleAcceptEvent,
+  //   over: (event, ui) => {
+  //     dropzone.classList.add('h5p-dropzone--hover');
+  //     params.handleDropOverEvent?.(event, ui);
+  //   },
+  //   out: (event, ui) => {
+  //     dropzone.classList.remove('h5p-dropzone--hover');
+  //     params.handleDropOutEvent?.(event, ui);
+  //   },
+  //   drop: (event, ui) => {
+  //     dropzone.classList.remove('h5p-dropzone--hover');
+  //     params.handleDropEvent?.(event, ui, params.index ?? -1);
+  //   },
+  // });
+
+  dropzoneContainer.tolerance = params.tolerance ?? 'intersect';
+
+  const setHoverState = (active) => {
+    dropzone.classList.toggle('h5p-dropzone--hover', active);
+    dropzoneContainer.classList.toggle('h5p-dropzone--active', active);
+  };
+
+  dropzoneContainer.handleDropOver = () => {
+    setHoverState(true);
+    params.handleDropOverEvent?.();
+  };
+
+  dropzoneContainer.handleDropOut = () => {
+    setHoverState(false);
+    params.handleDropOutEvent?.();
+  };
+
+  dropzoneContainer.handleDrop = (draggable) => {
+    setHoverState(false);
+    params.handleDropEvent?.(draggable, params.index ?? -1);
+  };
 
   return dropzoneContainer;
 }
