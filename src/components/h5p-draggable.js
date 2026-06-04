@@ -213,14 +213,14 @@ function Draggable(params) {
         params.handleDragStopEvent(e);
       }
 
-      // if (params.handleRevert && params.handleRevert(overlappedDropzone)) {
-      //   // draggable.style.transform = 'translate(0, 0)';
-      //   draggable.style.left = `${draggableStartLeft}px`;
+      if (params.handleRevert && params.handleRevert(overlappedDropzone)) {
+        // draggable.style.transform = 'translate(0, 0)';
+        draggable.style.left = `${draggableStartLeft}px`;
 
-      //   draggable.style.top = `${draggableStartTop}px`;
-      //   pointerCurrentX = 0;
-      //   pointerCurrentY = 0;
-      // }
+        draggable.style.top = `${draggableStartTop}px`;
+        pointerCurrentX = 0;
+        pointerCurrentY = 0;
+      }
       currentDropzone = null;
     };
 
