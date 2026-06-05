@@ -33,6 +33,7 @@ import { createElement } from '../utils.js';
  * @returns {HTMLElement} The dropzone element
  */
 function Dropzone(params) {
+  let disabled = false;
   const classList = ['h5p-dropzone',
     params.variant === 'area' ? 'h5p-dropzone--area' : 'h5p-dropzone--inline',
   ];
@@ -71,30 +72,19 @@ function Dropzone(params) {
   dropzone.setAttribute('aria-label', params.ariaLabel);
   dropzoneContainer.appendChild(dropzone);
 
-  // H5P.jQuery(dropzone).droppable({
-  //   activeClass: 'h5p-dropzone--active',
-  //   tolerance: params.tolerance,
-  //   accept: params.handleAcceptEvent,
-  //   over: (event, ui) => {
-  //     dropzone.classList.add('h5p-dropzone--hover');
-  //     params.handleDropOverEvent?.(event, ui);
-  //   },
-  //   out: (event, ui) => {
-  //     dropzone.classList.remove('h5p-dropzone--hover');
-  //     params.handleDropOutEvent?.(event, ui);
-  //   },
-  //   drop: (event, ui) => {
-  //     dropzone.classList.remove('h5p-dropzone--hover');
-  //     params.handleDropEvent?.(event, ui, params.index ?? -1);
-  //   },
-  // });
-
   dropzoneContainer.tolerance = params.tolerance ?? 'intersect';
 
   const setHoverState = (active) => {
     dropzone.classList.toggle('h5p-dropzone--hover', active);
     dropzoneContainer.classList.toggle('h5p-dropzone--active', active);
   };
+
+  const setDisabled = (value) => {
+    disabled = !!value;
+    dropzoneContainer.setAttribute('aria-disabled', disabled ? 'true' : 'false');
+  };
+
+  dropzoneContainer.setDisabled = setDisabled;
 
   dropzoneContainer.handleDropOver = () => {
     setHoverState(true);

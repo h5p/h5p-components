@@ -60,15 +60,6 @@ function Draggable(params) {
   // Have to set it like this, because it cannot be set with createElement
   draggable.setAttribute('aria-grabbed', params.ariaGrabbed ?? false);
 
-  // Use jQuery draggable (for now)
-  // H5P.jQuery(draggable).draggable({
-  //   revert: params.handleRevert,
-  //   drag: params.handleDragEvent,
-  //   start: params.handleDragStartEvent,
-  //   stop: params.handleDragStopEvent,
-  //   containment: params.containment,
-  // });
-
   /**
    * Set opacity of element content
    * @param {number} value Opacity value between 0 and 100
@@ -206,7 +197,6 @@ function Draggable(params) {
       draggable.releasePointerCapture(e.pointerId);
 
       const overlappedDropzone = cancelled ? null : currentDropzone;
-
       overlappedDropzone?.handleDrop?.(draggable);
 
       if (params.handleDragStopEvent) {
