@@ -19,6 +19,7 @@
   text-align: center;
   vertical-align: top;
   z-index: 3;
+  user-select: none;
 }
 
 .h5p-theme .h5p-draggable.h5p-draggable--points-and-status {
