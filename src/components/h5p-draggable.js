@@ -165,6 +165,7 @@ function Draggable(params) {
 
       draggable.style.left = `${draggableStartLeft}px`;
       draggable.style.top = `${draggableStartTop}px`;
+      draggable.style.willChange = 'transform';
 
       if (params.handleDragStartEvent) {
         params.handleDragStartEvent(e);
@@ -180,10 +181,7 @@ function Draggable(params) {
       pointerCurrentX = e.clientX - pointerStartX;
       pointerCurrentY = e.clientY - pointerStartY;
 
-      // To-do (will try to use transform later to enhance performance)
-      // draggable.style.transform = `translate(${pointerCurrentX}px, ${pointerCurrentY}px)`;
-      draggable.style.left = `${draggableStartLeft + pointerCurrentX}px`;
-      draggable.style.top = `${draggableStartTop + pointerCurrentY}px`;
+      draggable.style.transform = `translate(${pointerCurrentX}px, ${pointerCurrentY}px)`;
 
       const overlappedDropzone = findDropzone();
       if (overlappedDropzone !== currentDropzone) {
@@ -203,6 +201,10 @@ function Draggable(params) {
       isDragging = false;
       draggable.releasePointerCapture(activePointerId);
 
+      draggable.style.transform = 'translate(0, 0)';
+      draggable.style.left = `${draggableStartLeft + pointerCurrentX}px`;
+      draggable.style.top = `${draggableStartTop + pointerCurrentY}px`;
+
       const overlappedDropzone = cancelled ? null : currentDropzone;
       overlappedDropzone?.handleDrop?.(draggable);
 
@@ -211,7 +213,6 @@ function Draggable(params) {
       }
 
       if (params.handleRevert && params.handleRevert(overlappedDropzone)) {
-        // draggable.style.transform = 'translate(0, 0)';
         draggable.style.left = `${draggableStartLeft}px`;
         draggable.style.top = `${draggableStartTop}px`;
         pointerCurrentX = 0;
@@ -219,6 +220,7 @@ function Draggable(params) {
       }
       currentDropzone = null;
       activePointerId = null;
+      draggable.style.willChange = '';
     };
 
     draggable.addEventListener('pointerdown', onPointerDown);
