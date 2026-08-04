@@ -89,8 +89,7 @@ function Draggable(params) {
     return computedStyle.getPropertyValue('--border-width');
   };
 
-  const isOverlapping = (dropzone, dragRect) => {
-    const dropRect = dropzone.getBoundingClientRect();
+  const isOverlapping = (dropzone, dropRect, dragRect) => {
     const tolerance = dropzone.tolerance ?? 'intersect';
 
     switch (tolerance) {
@@ -121,14 +120,11 @@ function Draggable(params) {
     }
   };
 
-  const findDropzone = () => {
-    const dropzones = params.getDropZones?.() ?? [];
-    const dragRect = draggable.getBoundingClientRect();
-
+  const findDropzone = (dropzones, dragRect) => {
     let match = null;
 
-    for (const dropzone of dropzones) {
-      if (isOverlapping(dropzone, dragRect)) {
+    for (const { dropzone, dropRect } of dropzones) {
+      if (isOverlapping(dropzone, dropRect, dragRect)) {
         match = dropzone;
       }
     }
@@ -146,6 +142,8 @@ function Draggable(params) {
     let pointerCurrentY = 0;
     let draggableStartLeft = 0;
     let draggableStartTop = 0;
+    let draggableStartRect = null;
+    let dropzones = [];
     let currentDropzone = null;
 
     const onPointerDown = (e) => {
@@ -159,9 +157,9 @@ function Draggable(params) {
       const parent = draggable.offsetParent ?? draggable.parentElement;
       const parentRect = parent.getBoundingClientRect();
 
-      const dragRect = draggable.getBoundingClientRect();
-      draggableStartLeft = dragRect.left - parentRect.left;
-      draggableStartTop = dragRect.top - parentRect.top;
+      draggableStartRect = draggable.getBoundingClientRect();
+      draggableStartLeft = draggableStartRect.left - parentRect.left;
+      draggableStartTop = draggableStartRect.top - parentRect.top;
 
       draggable.style.left = `${draggableStartLeft}px`;
       draggable.style.top = `${draggableStartTop}px`;
@@ -170,6 +168,11 @@ function Draggable(params) {
       if (params.handleDragStartEvent) {
         params.handleDragStartEvent(e);
       }
+
+      dropzones = (params.getDropZones?.() ?? []).map((dropzone) => ({
+        dropzone,
+        dropRect: dropzone.getBoundingClientRect(),
+      }));
       draggable.setPointerCapture(activePointerId);
     };
 
@@ -183,7 +186,15 @@ function Draggable(params) {
 
       draggable.style.transform = `translate(${pointerCurrentX}px, ${pointerCurrentY}px)`;
 
-      const overlappedDropzone = findDropzone();
+      const dragRect = {
+        left: draggableStartRect.left + pointerCurrentX,
+        top: draggableStartRect.top + pointerCurrentY,
+        right: draggableStartRect.right + pointerCurrentX,
+        bottom: draggableStartRect.bottom + pointerCurrentY,
+        width: draggableStartRect.width,
+        height: draggableStartRect.height,
+      };
+      const overlappedDropzone = findDropzone(dropzones, dragRect);
       if (overlappedDropzone !== currentDropzone) {
         currentDropzone?.handleDropOut?.();
         overlappedDropzone?.handleDropOver?.();
@@ -220,6 +231,8 @@ function Draggable(params) {
       }
       currentDropzone = null;
       activePointerId = null;
+      draggableStartRect = null;
+      dropzones = [];
       draggable.style.willChange = '';
     };
 
