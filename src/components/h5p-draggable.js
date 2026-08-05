@@ -149,9 +149,19 @@ function Draggable(params) {
     let dropzones = [];
     let currentDropzone = null;
 
+    const setPosition = (left, top) => {
+      draggable.style.left = `${left}px`;
+      draggable.style.top = `${top}px`;
+    };
+
+    const setDragging = (value) => {
+      isDragging = value;
+      draggable.style.willChange = value ? 'transform' : '';
+    };
+
     const onPointerDown = (e) => {
       if (disabled || isDragging) return;
-      isDragging = true;
+      setDragging(true);
       activePointerId = e.pointerId;
       e.preventDefault();
 
@@ -164,9 +174,7 @@ function Draggable(params) {
       draggableStartLeft = draggableStartRect.left - parentRect.left;
       draggableStartTop = draggableStartRect.top - parentRect.top;
 
-      draggable.style.left = `${draggableStartLeft}px`;
-      draggable.style.top = `${draggableStartTop}px`;
-      draggable.style.willChange = 'transform';
+      setPosition(draggableStartLeft, draggableStartTop);
 
       if (params.handleDragStartEvent) {
         params.handleDragStartEvent(e);
@@ -212,12 +220,14 @@ function Draggable(params) {
     const finishDrag = (e, cancelled = false) => {
       if (!isDragging || e.pointerId !== activePointerId) return;
 
-      isDragging = false;
+      setDragging(false);
       draggable.releasePointerCapture(activePointerId);
 
       draggable.style.transform = 'translate(0, 0)';
-      draggable.style.left = `${draggableStartLeft + pointerCurrentX}px`;
-      draggable.style.top = `${draggableStartTop + pointerCurrentY}px`;
+      setPosition(
+        draggableStartLeft + pointerCurrentX,
+        draggableStartTop + pointerCurrentY,
+      );
 
       const overlappedDropzone = cancelled ? null : currentDropzone;
       overlappedDropzone?.handleDrop?.(draggable);
@@ -227,8 +237,7 @@ function Draggable(params) {
       }
 
       if (params.handleRevert && params.handleRevert(overlappedDropzone)) {
-        draggable.style.left = `${draggableStartLeft}px`;
-        draggable.style.top = `${draggableStartTop}px`;
+        setPosition(draggableStartLeft, draggableStartTop);
         pointerCurrentX = 0;
         pointerCurrentY = 0;
       }
@@ -236,7 +245,6 @@ function Draggable(params) {
       activePointerId = null;
       draggableStartRect = null;
       dropzones = [];
-      draggable.style.willChange = '';
     };
 
     draggable.addEventListener('pointerdown', onPointerDown);
