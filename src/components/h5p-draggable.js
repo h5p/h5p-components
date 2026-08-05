@@ -197,14 +197,12 @@ function Draggable(params) {
 
       draggable.style.transform = `translate(${pointerCurrentX}px, ${pointerCurrentY}px)`;
 
-      const dragRect = {
-        left: draggableStartRect.left + pointerCurrentX,
-        top: draggableStartRect.top + pointerCurrentY,
-        right: draggableStartRect.right + pointerCurrentX,
-        bottom: draggableStartRect.bottom + pointerCurrentY,
-        width: draggableStartRect.width,
-        height: draggableStartRect.height,
-      };
+      const dragRect = new DOMRect(
+        draggableStartRect.x + pointerCurrentX,
+        draggableStartRect.y + pointerCurrentY,
+        draggableStartRect.width,
+        draggableStartRect.height,
+      );
       const overlappedDropzone = findDropzone(dropzones, dragRect, e.clientX, e.clientY);
       if (overlappedDropzone !== currentDropzone) {
         currentDropzone?.handleDropOut?.();
