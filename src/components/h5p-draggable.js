@@ -89,42 +89,45 @@ function Draggable(params) {
     return computedStyle.getPropertyValue('--border-width');
   };
 
-  const isOverlapping = (dropzone, dropRect, dragRect) => {
+  const isOverlapping = (dropzone, dropRect, dragRect, pointerX, pointerY) => {
     const tolerance = dropzone.tolerance ?? 'intersect';
 
+    /* Taken from jQuery UI's droppable tolerance documentation:
+    https://api.jqueryui.com/droppable/#option-tolerance */
     switch (tolerance) {
       case 'fit':
+        // Draggable overlaps the droppable entirely.
         return dragRect.left >= dropRect.left && dragRect.right <= dropRect.right
           && dragRect.top >= dropRect.top && dragRect.bottom <= dropRect.bottom;
       case 'touch':
+        // Draggable overlaps the droppable any amount.
         return !(dragRect.right < dropRect.left || dragRect.left > dropRect.right
             || dragRect.bottom < dropRect.top || dragRect.top > dropRect.bottom);
-      case 'pointer': {
-        const cx = dragRect.left + dragRect.width / 2;
-        const cy = dragRect.top + dragRect.height / 2;
-        return cx >= dropRect.left && cx <= dropRect.right
-          && cy >= dropRect.top && cy <= dropRect.bottom;
-      }
+      case 'pointer':
+        // Mouse pointer overlaps the droppable.
+        return pointerX >= dropRect.left && pointerX <= dropRect.right
+          && pointerY >= dropRect.top && pointerY <= dropRect.bottom;
       case 'intersect':
       default: {
-        const ox = Math.max(
+        // Draggable overlaps the droppable at least 50% in both directions.
+        const overlapX = Math.max(
           0,
           Math.min(dragRect.right, dropRect.right) - Math.max(dragRect.left, dropRect.left),
         );
-        const oy = Math.max(
+        const overlapY = Math.max(
           0,
           Math.min(dragRect.bottom, dropRect.bottom) - Math.max(dragRect.top, dropRect.top),
         );
-        return (ox * oy) >= (dragRect.width * dragRect.height) / 2;
+        return overlapX >= dragRect.width / 2 && overlapY >= dragRect.height / 2;
       }
     }
   };
 
-  const findDropzone = (dropzones, dragRect) => {
+  const findDropzone = (dropzones, dragRect, pointerX, pointerY) => {
     let match = null;
 
     for (const { dropzone, dropRect } of dropzones) {
-      if (isOverlapping(dropzone, dropRect, dragRect)) {
+      if (isOverlapping(dropzone, dropRect, dragRect, pointerX, pointerY)) {
         match = dropzone;
       }
     }
@@ -194,7 +197,7 @@ function Draggable(params) {
         width: draggableStartRect.width,
         height: draggableStartRect.height,
       };
-      const overlappedDropzone = findDropzone(dropzones, dragRect);
+      const overlappedDropzone = findDropzone(dropzones, dragRect, e.clientX, e.clientY);
       if (overlappedDropzone !== currentDropzone) {
         currentDropzone?.handleDropOut?.();
         overlappedDropzone?.handleDropOver?.();
