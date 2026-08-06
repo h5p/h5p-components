@@ -22,7 +22,6 @@ import { createElement } from '../utils.js';
  * @property {DropzoneTolerance} tolerance
  *    Specifies which mode to use for testing whether draggable is hovering over a droppable
  * @property {string} [areaLabel] A label used for a dropzone area
- * @property {function} handleAcceptEvent A function for jquery-droppable accept option
  * @property {function} handleDropEvent A callback function for the drop event
  * @property {function} handleDropOutEvent A callback function for the out event
  * @property {function} handleDropOverEvent A callback function for the over event
@@ -34,6 +33,7 @@ import { createElement } from '../utils.js';
  * @returns {HTMLElement} The dropzone element
  */
 function Dropzone(params) {
+  let disabled = false;
   const classList = ['h5p-dropzone',
     params.variant === 'area' ? 'h5p-dropzone--area' : 'h5p-dropzone--inline',
   ];
@@ -63,30 +63,43 @@ function Dropzone(params) {
     dropzoneContainer.appendChild(areaLabel);
   }
 
-  const $dropzone = H5P.jQuery('<div/>', {
-    'aria-dropeffect': 'none',
-    'aria-label': params.ariaLabel,
-    tabindex: params.tabIndex ?? -1,
-    class: params.classes ? params.classes : '',
-  }).appendTo(dropzoneContainer)
-    .droppable({
-      activeClass: 'h5p-dropzone--active',
-      tolerance: params.tolerance,
-      accept: params.handleAcceptEvent,
-      over: (event, ui) => {
-        dropzone.classList.add('h5p-dropzone--hover');
-        params.handleDropOverEvent?.(event, ui);
-      },
-      out: (event, ui) => {
-        dropzone.classList.remove('h5p-dropzone--hover');
-        params.handleDropOutEvent?.(event, ui);
-      },
-      drop: (event, ui) => {
-        dropzone.classList.remove('h5p-dropzone--hover');
-        params.handleDropEvent?.(event, ui, params.index ?? -1);
-      },
-    });
-  const dropzone = $dropzone.get(0);
+  const dropzone = createElement('div', {
+    className: params.classes ?? '',
+    tabIndex: params.tabIndex ?? -1,
+  });
+
+  dropzone.setAttribute('aria-dropeffect', 'none');
+  dropzone.setAttribute('aria-label', params.ariaLabel);
+  dropzoneContainer.appendChild(dropzone);
+
+  dropzoneContainer.tolerance = params.tolerance ?? 'intersect';
+
+  const setHoverState = (active) => {
+    dropzone.classList.toggle('h5p-dropzone--hover', active);
+    dropzoneContainer.classList.toggle('h5p-dropzone--active', active);
+  };
+
+  const setDisabled = (value) => {
+    disabled = !!value;
+    dropzoneContainer.setAttribute('aria-disabled', disabled ? 'true' : 'false');
+  };
+
+  dropzoneContainer.setDisabled = setDisabled;
+
+  dropzoneContainer.handleDropOver = () => {
+    setHoverState(true);
+    params.handleDropOverEvent?.();
+  };
+
+  dropzoneContainer.handleDropOut = () => {
+    setHoverState(false);
+    params.handleDropOutEvent?.();
+  };
+
+  dropzoneContainer.handleDrop = (draggable) => {
+    setHoverState(false);
+    params.handleDropEvent?.(draggable, params.index ?? -1);
+  };
 
   return dropzoneContainer;
 }
