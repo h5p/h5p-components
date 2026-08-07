@@ -19,14 +19,13 @@
   text-align: center;
   vertical-align: top;
   z-index: 3;
-  user-select: none;
 }
 
 .h5p-theme .h5p-draggable.h5p-draggable--points-and-status {
   flex-flow: column;
 }
 
-.h5p-theme .h5p-draggable.h5p-draggable--has-handle:not(.h5p-draggable-correct):not(.h5p-draggable-wrong):not(:has(.h5p-image)) {
+.h5p-theme .h5p-draggable.h5p-draggable--has-handle:not(.h5p-draggable-correct):not(.h5p-draggable-wrong):not(.ui-draggable-disabled):not(:has(.h5p-image)) {
   /* Matching the size of the handle */
   padding-left: calc(var(--padding) + var(--handle-width));
 }
@@ -67,11 +66,11 @@
   opacity: 0;
 }
 
-.h5p-theme .h5p-draggable:not(.h5p-draggable--disabled) {
+.h5p-theme .h5p-draggable:not(.ui-draggable-disabled) {
   cursor: pointer;
 }
 
-.h5p-theme .h5p-draggable.h5p-draggable--has-handle:not(.h5p-draggable--disabled):before {
+.h5p-theme .h5p-draggable.h5p-draggable--has-handle.ui-draggable-handle:not(.ui-draggable-disabled):before {
   font-family: 'h5p-theme';
   font-size: inherit;
   content: "\e90f";
@@ -91,9 +90,9 @@
 }
 
 .h5p-theme .h5p-draggable[aria-grabbed='true'],
-.h5p-theme .h5p-draggable.h5p-draggable--dropped:not(.h5p-draggable--disabled):hover,
-.h5p-theme .h5p-draggable.h5p-draggable--dropped:not(.h5p-draggable--disabled).hover,
-.h5p-theme .h5p-draggable:not(.h5p-draggable--disabled):hover {
+.h5p-theme .h5p-draggable.h5p-draggable--dropped:not(.ui-draggable-disabled):hover,
+.h5p-theme .h5p-draggable.h5p-draggable--dropped:not(.ui-draggable-disabled).hover,
+.h5p-theme .h5p-draggable:not(.ui-draggable-disabled):hover {
   color: var(--h5p-theme-text-primary);
   background: hsl(from var(--h5p-theme-alternative-dark) h s l / var(--content-opacity, 1));
   box-shadow: 0px 3px 0.3em 0px hsl(from var(--h5p-theme-alternative-darker) h s l / var(--content-opacity, 1));
@@ -101,9 +100,9 @@
 }
 
 .h5p-theme .h5p-draggable.h5p-draggable--has-handle[aria-grabbed='true'].ui-draggable-handle:before,
-.h5p-theme .h5p-draggable.h5p-draggable--has-handle.h5p-draggable--dropped:not(.h5p-draggable--disabled):hover:before,
-.h5p-theme .h5p-draggable.h5p-draggable--has-handle.h5p-draggable--dropped:not(.h5p-draggable--disabled).hover:before,
-.h5p-theme .h5p-draggable[aria-grabbed]:not(.h5p-draggable--disabled):hover:before {
+.h5p-theme .h5p-draggable.h5p-draggable--has-handle.h5p-draggable--dropped:not(.ui-draggable-disabled):hover:before,
+.h5p-theme .h5p-draggable.h5p-draggable--has-handle.h5p-draggable--dropped:not(.ui-draggable-disabled).hover:before,
+.h5p-theme .h5p-draggable[aria-grabbed]:not(.ui-draggable-disabled):hover:before {
   color: var(--h5p-theme-secondary-contrast-cta-hover);
   background-color: var(--h5p-theme-contrast-cta-white);
   box-shadow: 0 0 0 2px var(--h5p-theme-contrast-cta-white);

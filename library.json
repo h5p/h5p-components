@@ -21,5 +21,12 @@
     {
       "path": "dist/h5p-components.css"
     }
+  ],
+  "preloadedDependencies": [
+    {
+      "machineName": "jQuery.ui",
+      "majorVersion": 1,
+      "minorVersion": 10
+    }
   ]
 }
