@@ -4,13 +4,17 @@ import { createElement } from '../utils.js';
  * @typedef ResultQuestion
  * @type {object}
  * @property {[string]} imgUrl The url to an image to display before the question
+ * @property {[string]} imgAlt The text alternative for the image
  * @property {[boolean]} useDefaultImg Use a default image. Will be overwritten by imgUrl
  * @property {string} title The textual description of the question
  * @property {string} points The score of the question
  * @property {[boolean]} isCorrect If the answer is correct (Some content types are more lenient)
+ * @property {[boolean]} isCorrectionText Correct/Incorrect text to display
  * @property {[string]} userAnswer What the user answered
+ * @property {[string]} userAnswerPrepend The label before the user answer
  * @property {[string]} correctAnswer The correct answer
  * @property {[string]} correctAnswerPrepend The label before the correct answer
+ * @property {[string]} scorePrepend The label before the score
  */
 
 /**
@@ -78,26 +82,31 @@ function ResultScreen(params) {
 }
 
 const createQuestion = (question) => {
+  const createSrOnlyElement = (text, container) => {
+    if (text) {
+      const srOnlyElement = document.createElement('span');
+      srOnlyElement.className = 'sr-only';
+      srOnlyElement.textContent = text;
+      container.appendChild(srOnlyElement);
+    }
+  };
   const listItem = createElement('li', {
     classList: 'h5p-theme-results-list-item',
   });
 
+  const imageContainer = createElement('div', {
+    classList: 'h5p-theme-results-image',
+    role: 'img',
+    ariaLabel: question.imgAlt || '',
+  });
+
   if (question.imgUrl) {
-    listItem.appendChild(createElement(
-      'div',
-      { classList: 'h5p-theme-results-image' },
-      { 'background-image': `url("${question.imgUrl}")` },
-    ));
+    imageContainer.style.backgroundImage = `url(${question.imgUrl})`;
   }
   else if (question.useDefaultImg) {
-    const imageContainer = createElement('div', {
-      classList: 'h5p-theme-results-image',
-    });
-
     imageContainer.appendChild(H5P.Components.PlaceholderImg('h5pImageDefault'));
-
-    listItem.appendChild(imageContainer);
   }
+  listItem.appendChild(imageContainer);
 
   const questionContainer = createElement('div', {
     classList: 'h5p-theme-results-question-container',
@@ -114,12 +123,15 @@ const createQuestion = (question) => {
       classList: 'h5p-theme-results-answer',
     });
 
+    createSrOnlyElement(question.isCorrectionText, answerContainer);
+    createSrOnlyElement(question.userAnswerPrepend, answerContainer);
+
     const answer = createElement('span', {
       classList: 'h5p-theme-results-box-small h5p-theme-results-correct',
       textContent: question.userAnswer,
     });
-    answerContainer.appendChild(answer);
 
+    answerContainer.appendChild(answer);
     // isCorrect defined AND false
     if (question.isCorrect === false) {
       answer.classList.add('h5p-theme-results-incorrect');
@@ -147,11 +159,12 @@ const createQuestion = (question) => {
   }
 
   listItem.appendChild(questionContainer);
-
-  listItem.appendChild(createElement('div', {
+  const pointsContainer = createElement('div', {
     classList: 'h5p-theme-results-points',
-    innerHTML: question.points,
-  }));
+  });
+  createSrOnlyElement(question.scorePrepend, pointsContainer);
+  pointsContainer.innerHTML += question.points;
+  listItem.appendChild(pointsContainer);
 
   return listItem;
 };
