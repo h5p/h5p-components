@@ -123,8 +123,7 @@ const createQuestion = (question) => {
       classList: 'h5p-theme-results-answer',
     });
 
-    createSrOnlyElement(question.isCorrectionText, answerContainer);
-    createSrOnlyElement(question.userAnswerPrepend, answerContainer);
+    createSrOnlyElement(question.isCorrectionText + question.userAnswerPrepend, answerContainer);
 
     const answer = createElement('span', {
       classList: 'h5p-theme-results-box-small h5p-theme-results-correct',
