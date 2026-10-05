@@ -3,24 +3,24 @@ import { createElement } from '../utils.js';
 /**
  * @typedef ResultQuestion
  * @type {object}
- * @property {[string]} imgUrl The url to an image to display before the question
- * @property {[string]} imgAlt The text alternative for the image
- * @property {[boolean]} useDefaultImg Use a default image. Will be overwritten by imgUrl
+ * @property {string} [imgUrl] The url to an image to display before the question
+ * @property {string} [imgAlt] The text alternative for the image
+ * @property {boolean} [useDefaultImg] Use a default image. Will be overwritten by imgUrl
  * @property {string} title The textual description of the question
  * @property {string} points The score of the question
- * @property {[boolean]} isCorrect If the answer is correct (Some content types are more lenient)
- * @property {[boolean]} isCorrectionText Correct/Incorrect text to display
- * @property {[string]} userAnswer What the user answered
- * @property {[string]} userAnswerPrepend The label before the user answer
- * @property {[string]} correctAnswer The correct answer
- * @property {[string]} correctAnswerPrepend The label before the correct answer
- * @property {[string]} scorePrepend The label before the score
+ * @property {boolean} [isCorrect] If the answer is correct (Some content types are more lenient)
+ * @property {string} [answerStatusText]  Correct/incorrect feedback for screen readers
+ * @property {string} [userAnswer] What the user answered
+ * @property {string} [userAnswerPrepend] The label before the user answer
+ * @property {string} [correctAnswer] The correct answer
+ * @property {string} [correctAnswerPrepend] The label before the correct answer
+ * @property {string} [scorePrepend] The label before the score
  */
 
 /**
  * @typedef ResultQuestionGroup
  * @type {object}
- * @property {[string[]]} listHeaders The table headers
+ * @property {string[]} [listHeaders] The table headers
  * @property {ResultQuestion[]} questions The list of tasks to be summarized
  */
 
@@ -82,14 +82,10 @@ function ResultScreen(params) {
 }
 
 const createQuestion = (question) => {
-  const createSrOnlyElement = (text, container) => {
-    if (text) {
-      const srOnlyElement = document.createElement('span');
-      srOnlyElement.className = 'sr-only';
-      srOnlyElement.textContent = text;
-      container.appendChild(srOnlyElement);
-    }
-  };
+  const createSrOnlyText = (text) => createElement('span', {
+    classList: 'sr-only',
+    textContent: text,
+  });
   const listItem = createElement('li', {
     classList: 'h5p-theme-results-list-item',
   });
@@ -123,7 +119,12 @@ const createQuestion = (question) => {
       classList: 'h5p-theme-results-answer',
     });
 
-    createSrOnlyElement(question.isCorrectionText + question.userAnswerPrepend, answerContainer);
+    const answerPrepend = question.answerStatusText + question.userAnswerPrepend;
+
+    if (answerPrepend) {
+      const srOnlyText = createSrOnlyText(answerPrepend);
+      answerContainer.appendChild(srOnlyText);
+    }
 
     const answer = createElement('span', {
       classList: 'h5p-theme-results-box-small h5p-theme-results-correct',
@@ -161,7 +162,11 @@ const createQuestion = (question) => {
   const pointsContainer = createElement('div', {
     classList: 'h5p-theme-results-points',
   });
-  createSrOnlyElement(question.scorePrepend, pointsContainer);
+
+  if (question.scorePrepend) {
+    const scorePrepend = createSrOnlyText(question.scorePrepend);
+    pointsContainer.appendChild(scorePrepend);
+  }
   pointsContainer.innerHTML += question.points;
   listItem.appendChild(pointsContainer);
 
