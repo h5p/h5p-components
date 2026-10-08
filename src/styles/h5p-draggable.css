@@ -38,6 +38,10 @@
   padding: var(--h5p-theme-spacing-xxs) var(--h5p-theme-spacing-xs);
   line-height: 1;
   font-size: var(--h5p-theme-font-size-m);
+
+  span {
+    display: contents; /* Ensure styled text is displayed as it is shown */
+  }
 }
 
 .h5p-theme .h5p-draggable > img {
