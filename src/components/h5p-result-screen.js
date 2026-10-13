@@ -98,11 +98,12 @@ const createQuestion = (question) => {
 
   if (question.imgUrl) {
     imageContainer.style.backgroundImage = `url(${question.imgUrl})`;
+    listItem.appendChild(imageContainer);
   }
   else if (question.useDefaultImg) {
     imageContainer.appendChild(H5P.Components.PlaceholderImg('h5pImageDefault'));
+    listItem.appendChild(imageContainer);
   }
-  listItem.appendChild(imageContainer);
 
   const questionContainer = createElement('div', {
     classList: 'h5p-theme-results-question-container',
