@@ -36,13 +36,31 @@ function Draggable(params) {
     classes += ' h5p-draggable--points-and-status';
   }
 
+  let hasDomContent = false;
   const setContent = ({ dom, label }) => {
-    draggable.innerHTML = '';
     if (dom) {
+      draggable.innerHTML = '';
       draggable.append(dom);
+      hasDomContent = true;
+      return;
     }
-    else {
-      draggable.innerHTML = `<span>${label}</span><span class="h5p-hidden-read"></span>`;
+
+    if (hasDomContent) {
+      draggable.innerHTML = '';
+      hasDomContent = false;
+    }
+
+    let labelSpan = draggable.querySelector(':scope > span:not(.h5p-hidden-read)');
+    if (!labelSpan) {
+      labelSpan = document.createElement('span');
+      draggable.prepend(labelSpan);
+    }
+    labelSpan.innerHTML = label;
+
+    if (!draggable.querySelector(':scope > .h5p-hidden-read')) {
+      const hiddenReadSpan = document.createElement('span');
+      hiddenReadSpan.classList.add('h5p-hidden-read');
+      draggable.append(hiddenReadSpan);
     }
   };
 
