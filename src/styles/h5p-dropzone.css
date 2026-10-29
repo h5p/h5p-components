@@ -64,7 +64,8 @@
   border-top-right-radius: 0;
 }
 
-.h5p-dropzone.h5p-dropzone--area > .h5p-inner.h5p-over {
+.h5p-inner[role="application"]:has(.h5p-draggable.h5p-dropped)
+  .h5p-dropzone.h5p-dropzone--area > .h5p-inner.h5p-over {
   background: var(--h5p-theme-alternative-base);
 }
 
