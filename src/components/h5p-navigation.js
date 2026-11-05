@@ -310,11 +310,19 @@ function Navigation(params = {}) {
         nextButton.toggleAttribute('disabled', isLastPage);
         nextButton.classList.toggle('h5p-disabled', isLastPage);
 
-        // Last button still uses visibility logic
-        lastButton?.classList.toggle(
-          'h5p-visibility-hidden',
-          !canShowLast || !isLastPage,
-        );
+        if (lastButton) {
+          const enableLast = !canShowLast || !isLastPage;
+
+          lastButton.toggleAttribute('disabled', enableLast);
+          lastButton.classList.toggle('h5p-disabled', enableLast);
+          lastButton.classList.toggle('h5p-visibility-hidden', !isLastPage);
+
+          // Hide the next button if last button is showing
+          nextButton.classList.toggle(
+            'h5p-visibility-hidden',
+            isLastPage
+          );
+        }
       }
     }
     else {
