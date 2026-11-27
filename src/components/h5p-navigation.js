@@ -320,7 +320,7 @@ function Navigation(params = {}) {
           // Hide the next button if last button is showing
           nextButton.classList.toggle(
             'h5p-visibility-hidden',
-            isLastPage
+            isLastPage,
           );
         }
       }
